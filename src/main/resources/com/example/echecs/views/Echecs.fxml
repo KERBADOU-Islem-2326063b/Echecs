@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="655.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.echecs.controllers.EchecController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="655.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.echecs.controllers.BoardController">
    <children>
       <HBox prefHeight="527.0" prefWidth="665.0">
          <children>
@@ -53,336 +53,336 @@
                      <children>
                         <!-- Manually adding ImageView nodes for each cell -->
                         <!-- Row 0 -->
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="0" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="0" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="0" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="0" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="0" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="0" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="0" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="0" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="4" GridPane.rowIndex="0" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="4" GridPane.rowIndex="0" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="0" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="0" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="6" GridPane.rowIndex="0" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="6" GridPane.rowIndex="0" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="0" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="0" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
 
                         <!-- Row 1 -->
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="1" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="1" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="1" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="1" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="1" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="1" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="4" GridPane.rowIndex="1" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="4" GridPane.rowIndex="1" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="1" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="1" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="6" GridPane.rowIndex="1" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="6" GridPane.rowIndex="1" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="1" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="1" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
 
                         <!-- Row 2 -->
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="2" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="2" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="2" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="2" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="2" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="2" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="4" GridPane.rowIndex="2" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="4" GridPane.rowIndex="2" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="2" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="2" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="6" GridPane.rowIndex="2" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="6" GridPane.rowIndex="2" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="2" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="2" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
 
                         <!-- Row 3 -->
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="3" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="3" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="3" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="3" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="3" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="3" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="3" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="3" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="4" GridPane.rowIndex="3" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="4" GridPane.rowIndex="3" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="3" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="3" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="6" GridPane.rowIndex="3" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="6" GridPane.rowIndex="3" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="3" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="3" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
 
                         <!-- Row 4 -->
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="4" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="4" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="4" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="4" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="4" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="4" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="4" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="4" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="4" GridPane.rowIndex="4" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="4" GridPane.rowIndex="4" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="4" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="4" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="6" GridPane.rowIndex="4" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="6" GridPane.rowIndex="4" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="4" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="4" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
 
                         <!-- Row 5 -->
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="5" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="5" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="5" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="5" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="5" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="5" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="5" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="5" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="4" GridPane.rowIndex="5" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="4" GridPane.rowIndex="5" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="5" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="5" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="6" GridPane.rowIndex="5" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="6" GridPane.rowIndex="5" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="5" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="5" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
 
                         <!-- Row 6 -->
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="6" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="6" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="6" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="6" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="6" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="6" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="6" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="6" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="4" GridPane.rowIndex="6" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="4" GridPane.rowIndex="6" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="6" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="6" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="6" GridPane.rowIndex="6" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="6" GridPane.rowIndex="6" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="6" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="6" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
 
                         <!-- Row 7 -->
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="7" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="7" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="7" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="7" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="7" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="7" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="7" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="7" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="4" GridPane.rowIndex="7" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="4" GridPane.rowIndex="7" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="7" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="5" GridPane.rowIndex="7" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="6" GridPane.rowIndex="7" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="6" GridPane.rowIndex="7" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="7" onMouseClicked="#onClick">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="7" onMouseClicked="#onCaseClick">
                            <image>
                               <Image url="@../img/echiquier2.png" />
                            </image>
