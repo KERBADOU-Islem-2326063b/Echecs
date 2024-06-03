@@ -7,10 +7,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Echec extends Application {
+public class EchecApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Echec.class.getResource("Echec.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(EchecApp.class.getResource("Echec.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load(), 665, 527);
         stage.setTitle("Echecs");
