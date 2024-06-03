@@ -5,13 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cafb6311-df47-41a5-b88f-fb5892fbb4c2" name="Changes" comment="feat: Ajout du dossier image">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Pion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/echiquier2_clique.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/Echec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/EchecApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/EchecController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/EchecController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/Echec.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/Echec.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/EchecApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/EchecApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/EchecController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/EchecController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/Echec.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Echec.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/img/cavalier_blanc.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/cavalier_blanc.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/img/cavalier_noir.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/cavalier_noir.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/img/echiquier1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/echiquier1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/img/echiquier1_clique.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/echiquier1_clique.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/img/echiquier2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/echiquier2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/img/echiquier2_clique.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/echiquier2_clique.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/img/fou_blanc.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/fou_blanc.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/img/fou_noir.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/fou_noir.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/img/pion_blanc.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/pion_blanc.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/img/pion_noir.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/pion_noir.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/img/profil_blanc.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/profil_blanc.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/img/profil_noir.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/profil_noir.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/img/reine_blanc.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/reine_blanc.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/img/reine_noir.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/reine_noir.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/img/roi_blanc.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/roi_blanc.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/img/roi_noir.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/roi_noir.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/img/tour_blanc.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/tour_blanc.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/img/tour_noir.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/tour_noir.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,25 +60,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/amuhome/k23003542/IdeaProjects/Echecs/src/main/java/com/example/echecs&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/amuhome/k23003542/IdeaProjects/Echecs/src/main/java/com/example/echecs/controllers",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers" />
       <recent name="$PROJECT_DIR$/src/main/java/com/example/echecs" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/echecs" />
       <recent name="$PROJECT_DIR$/src/main/resources/java/com" />
       <recent name="$PROJECT_DIR$/src/main/resources/java" />
     </key>
@@ -93,6 +111,7 @@
       <workItem from="1717402772122" duration="5309000" />
       <workItem from="1717408082590" duration="593000" />
       <workItem from="1717408678979" duration="1187000" />
+      <workItem from="1717414347765" duration="1003000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Rennomage des fichiers, et début interface graphique">
       <created>1717403773299</created>

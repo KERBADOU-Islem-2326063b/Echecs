@@ -20,12 +20,9 @@ public class EchecController {
         int rowIndex = GridPane.getRowIndex((Node) event.getSource());
 
         // On change l'image
-        if (getClass().getResource("img/cavalier_noir.png") != null){
-            Image newImage = new Image(getClass().getResource("img/cavalier_noir.png").toExternalForm());
-            clickedImageView.setImage(newImage);
-        }
+        Image newImage = new Image(getClass().getResource("echiquier2_clique.png").toString());
+        clickedImageView.setImage(newImage);
 
-
-        System.out.println("Clicked on row " + rowIndex + ", column " + columnIndex);
+        System.out.println("Ligne : " + rowIndex + "\nColonne : " + columnIndex);
     }
 }
