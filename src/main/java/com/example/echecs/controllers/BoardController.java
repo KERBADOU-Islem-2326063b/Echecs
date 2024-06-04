@@ -9,11 +9,13 @@ import javafx.scene.layout.GridPane;
 
 public class BoardController {
     int clickNumber = 0;
+    int columnIndex;
+    int rowIndex;
     int firstClickedCol;
     int firstClickedRow;
 
-    ImageView firstClickedImg;
-    ImageView secondClickedImg;
+    ImageView firstCaseClickedImg;
+    ImageView secondCaseClickedImg;
 
     @FXML
     private void onCaseClick(Event event) {
@@ -29,8 +31,8 @@ public class BoardController {
             return;
         }
 
-        int columnIndex = GridPane.getColumnIndex(clickedImageView);
-        int rowIndex = GridPane.getRowIndex(clickedImageView);
+        columnIndex = GridPane.getColumnIndex(clickedImageView);
+        rowIndex = GridPane.getRowIndex(clickedImageView);
 
         if (clickNumber < 2 && !(firstClickedCol == columnIndex && firstClickedRow == rowIndex)) {
             updateImage(clickedImageView, columnIndex, rowIndex, clickedEchiquier1, clickedEchiquier2);
@@ -38,23 +40,23 @@ public class BoardController {
             if (clickNumber == 1) {
                 firstClickedRow = rowIndex;
                 firstClickedCol = columnIndex;
-                firstClickedImg = clickedImageView;
+                firstCaseClickedImg = clickedImageView;
             } else if (clickNumber == 2) {
-                secondClickedImg = clickedImageView;
+                secondCaseClickedImg = clickedImageView;
             }
         }
     }
 
     private void resetImages(Image echiquier1, Image echiquier2) {
         if ((firstClickedCol + firstClickedRow) % 2 == 0) {
-            firstClickedImg.setImage(echiquier2);
+            firstCaseClickedImg.setImage(echiquier2);
         }
-        else firstClickedImg.setImage(echiquier1);
+        else firstCaseClickedImg.setImage(echiquier1);
 
-        if ((GridPane.getColumnIndex(secondClickedImg) + GridPane.getRowIndex(secondClickedImg)) % 2 == 0) {
-            secondClickedImg.setImage(echiquier2);
+        if ((GridPane.getColumnIndex(secondCaseClickedImg) + GridPane.getRowIndex(secondCaseClickedImg)) % 2 == 0) {
+            secondCaseClickedImg.setImage(echiquier2);
         }
-        else secondClickedImg.setImage(echiquier1);
+        else secondCaseClickedImg.setImage(echiquier1);
 
         clickNumber = 0;
 
@@ -70,5 +72,16 @@ public class BoardController {
             imageView.setImage(clickedEchiquier1);
         }
         clickNumber++;
+    }
+
+    @FXML
+    private void onChessClick(Event event) {
+        ImageView clickedImageView = (ImageView) event.getSource();
+
+        if (clickNumber == 1) {
+            System.out.println("recup image");
+        }
+
+        else System.out.println("change piece");
     }
 }
