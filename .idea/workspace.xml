@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cafb6311-df47-41a5-b88f-fb5892fbb4c2" name="Changes" comment="feat: Ajout du dossier image">
+    <list default="true" id="cafb6311-df47-41a5-b88f-fb5892fbb4c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/BoardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Echecs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Echecs.fxml" afterDir="false" />
@@ -92,7 +92,7 @@
       <workItem from="1717408082590" duration="593000" />
       <workItem from="1717408678979" duration="1187000" />
       <workItem from="1717414347765" duration="1003000" />
-      <workItem from="1717491471205" duration="2062000" />
+      <workItem from="1717491471205" duration="4998000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Rennomage des fichiers, et début interface graphique">
       <created>1717403773299</created>
@@ -101,7 +101,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717403773299</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat: Ajout piece echec dans fxml">
+      <created>1717493769456</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1717493769456</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -110,6 +117,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="feat: Rennomage des fichiers, et début interface graphique" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Rennomage des fichiers, et début interface graphique" />
+    <MESSAGE value="feat: Ajout piece echec dans fxml" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Ajout piece echec dans fxml" />
   </component>
 </project>

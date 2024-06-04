@@ -16,9 +16,16 @@ public class BoardController {
 
     ImageView firstCaseClickedImg;
     ImageView secondCaseClickedImg;
+    ImageView firstChessClickedImg;
+
+    @FXML
+    GridPane boardGrid;
 
     @FXML
     private void onCaseClick(Event event) {
+        // Si on clique pas d'abord sur un pion, on sort de la fonction
+        if (clickNumber == 0) return;
+
         ImageView clickedImageView = (ImageView) event.getSource();
 
         Image clickedEchiquier1 = new Image("file:src/main/resources/com/example/echecs/img/echiquier1_clique.png");
@@ -36,13 +43,54 @@ public class BoardController {
 
         if (clickNumber < 2 && !(firstClickedCol == columnIndex && firstClickedRow == rowIndex)) {
             updateImage(clickedImageView, columnIndex, rowIndex, clickedEchiquier1, clickedEchiquier2);
+            GridPane.setRowIndex(firstChessClickedImg, rowIndex);
+            GridPane.setColumnIndex(firstChessClickedImg, columnIndex);
 
-            if (clickNumber == 1) {
-                firstClickedRow = rowIndex;
-                firstClickedCol = columnIndex;
-                firstCaseClickedImg = clickedImageView;
-            } else if (clickNumber == 2) {
+            if (clickNumber == 2) {
                 secondCaseClickedImg = clickedImageView;
+            }
+        }
+    }
+
+    private void onChessAndCaseClick(int columnIndex, int rowIndex) {
+        ImageView clickedImageView = null;
+
+        for (Node node : boardGrid.getChildren()) {
+            if (node instanceof ImageView) {
+                int currentColumnIndex = GridPane.getColumnIndex(node);
+                int currentRowIndex = GridPane.getRowIndex(node);
+
+                if (currentColumnIndex == columnIndex && currentRowIndex == rowIndex) {
+                    clickedImageView = (ImageView) node;
+                    break;
+                }
+            }
+        }
+
+        if (clickedImageView!= null) {
+            Image clickedEchiquier1 = new Image("file:src/main/resources/com/example/echecs/img/echiquier1_clique.png");
+            Image clickedEchiquier2 = new Image("file:src/main/resources/com/example/echecs/img/echiquier2_clique.png");
+            Image echiquier1 = new Image("file:src/main/resources/com/example/echecs/img/echiquier1.png");
+            Image echiquier2 = new Image("file:src/main/resources/com/example/echecs/img/echiquier2.png");
+
+            if (clickNumber == 2) {
+                resetImages(echiquier1, echiquier2);
+                return;
+            }
+
+            columnIndex = GridPane.getColumnIndex(clickedImageView);
+            rowIndex = GridPane.getRowIndex(clickedImageView);
+
+            if (clickNumber < 2 &&!(firstClickedCol == columnIndex && firstClickedRow == rowIndex)) {
+                updateImage(clickedImageView, columnIndex, rowIndex, clickedEchiquier1, clickedEchiquier2);
+
+                if (clickNumber == 1) {
+                    firstClickedRow = rowIndex;
+                    firstClickedCol = columnIndex;
+                    firstCaseClickedImg = clickedImageView;
+                } else if (clickNumber == 2) {
+                    secondCaseClickedImg = clickedImageView;
+                }
             }
         }
     }
@@ -78,10 +126,17 @@ public class BoardController {
     private void onChessClick(Event event) {
         ImageView clickedImageView = (ImageView) event.getSource();
 
-        if (clickNumber == 1) {
-            System.out.println("recup image");
+        columnIndex = GridPane.getColumnIndex(clickedImageView);
+        rowIndex = GridPane.getRowIndex(clickedImageView);
+
+        if (clickNumber == 0) {
+            firstChessClickedImg = clickedImageView;
+            onChessAndCaseClick(columnIndex, rowIndex);
         }
 
-        else System.out.println("change piece");
+        // Si on clique sur une autre piece, a faire plus tard
+        else  {
+            // boardGrid.getChildren().remove(firstChessClickedImg);
+        };
     }
 }

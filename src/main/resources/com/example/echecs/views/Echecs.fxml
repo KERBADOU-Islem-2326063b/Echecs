@@ -29,7 +29,7 @@
                         <Insets left="10.0" top="10.0" />
                      </padding>
                   </HBox>
-                  <GridPane prefHeight="376.0" prefWidth="438.0">
+                  <GridPane fx:id="boardGrid" prefHeight="376.0" prefWidth="438.0">
                      <columnConstraints>
                         <ColumnConstraints maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
                         <ColumnConstraints maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
@@ -387,82 +387,82 @@
                               <Image url="@../img/echiquier2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="7">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="7">
                            <image>
                               <Image url="@../img/tour_blanc.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
                            <image>
                               <Image url="@../img/cavalier_blanc.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="7">
                            <image>
                               <Image url="@../img/fou_blanc.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="7">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="7">
                            <image>
                               <Image url="@../img/reine_blanc.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="7">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="7">
                            <image>
                               <Image url="@../img/roi_blanc.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="7">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="7">
                            <image>
                               <Image url="@../img/fou_blanc.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="7">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="7">
                            <image>
                               <Image url="@../img/cavalier_blanc.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="7">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="7">
                            <image>
                               <Image url="@../img/tour_blanc.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="6">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="6">
                            <image>
                               <Image url="@../img/pion_blanc.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="6">
                            <image>
                               <Image url="@../img/pion_blanc.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="6">
                            <image>
                               <Image url="@../img/pion_blanc.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="6">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="6">
                            <image>
                               <Image url="@../img/pion_blanc.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="6">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="6">
                            <image>
                               <Image url="@../img/pion_blanc.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="6">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="6">
                            <image>
                               <Image url="@../img/pion_blanc.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="6">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="6">
                            <image>
                               <Image url="@../img/pion_blanc.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="6">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="6">
                            <image>
                               <Image url="@../img/pion_blanc.png" />
                            </image>
