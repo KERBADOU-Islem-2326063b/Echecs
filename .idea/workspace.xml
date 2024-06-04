@@ -4,35 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cafb6311-df47-41a5-b88f-fb5892fbb4c2" name="Changes" comment="feat: Ajout du tour par tour et reglage de bug">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/ChessPiece.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="cafb6311-df47-41a5-b88f-fb5892fbb4c2" name="Changes" comment="feat: Changement total du code, on utilise desormes des classes pour les pièces">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/BoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Bishop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Bishop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/King.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Knight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Pawn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Queen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Queen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Tower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Rook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/cavalier_blanc.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/white_knight.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/cavalier_noir.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/black_knight.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/echiquier1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/green_case.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/echiquier1_clique.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/green_case_clicked.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/echiquier2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/white_case.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/echiquier2_clique.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/white_case_clicked.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/fou_blanc.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/white_bishop.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/fou_noir.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/black_bishop.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/pion_blanc.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/white_pawn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/pion_noir.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/black_pawn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/profil_blanc.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/black_profile.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/profil_noir.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/white_profile.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/reine_blanc.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/white_queen.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/reine_noir.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/black_queen.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/roi_blanc.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/white_king.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/roi_noir.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/black_king.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/tour_blanc.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/white_rook.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/tour_noir.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/black_rook.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Echecs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Echecs.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +117,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717532002625</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat: Changement total du code, on utilise desormes des classes pour les pièces">
+      <option name="closed" value="true" />
+      <created>1717535886510</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1717535886510</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,6 +136,7 @@
     <MESSAGE value="feat: Rennomage des fichiers, et début interface graphique" />
     <MESSAGE value="feat: Ajout piece echec dans fxml" />
     <MESSAGE value="feat: Ajout du tour par tour et reglage de bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Ajout du tour par tour et reglage de bug" />
+    <MESSAGE value="feat: Changement total du code, on utilise desormes des classes pour les pièces" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Changement total du code, on utilise desormes des classes pour les pièces" />
   </component>
 </project>

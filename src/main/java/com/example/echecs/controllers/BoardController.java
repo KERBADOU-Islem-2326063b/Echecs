@@ -8,14 +8,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
-
-import javafx.event.Event;
-import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-
 public class BoardController {
     private ChessPiece[][] board = new ChessPiece[8][8];
     private ChessPiece selectedPiece;
