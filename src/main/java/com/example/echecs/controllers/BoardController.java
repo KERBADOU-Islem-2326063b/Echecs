@@ -1,5 +1,14 @@
 package com.example.echecs.controllers;
 
+import com.example.echecs.model.*;
+import javafx.event.Event;
+import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+
+
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -8,169 +17,140 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
 public class BoardController {
-    int clickNumber = 0;
-    int columnIndex;
-    int rowIndex;
-    int firstClickedCol = -1;
-    int firstClickedRow = -1;
-    boolean whiteTurn = true;
-
-    ImageView firstCaseClickedImg;
-    ImageView secondCaseClickedImg;
-    ImageView firstChessClickedImg;
-    String type;
-    String color;
-    String firstColor;
+    private ChessPiece[][] board = new ChessPiece[8][8];
+    private ChessPiece selectedPiece;
+    private boolean whiteTurn = true;
+    private ImageView oldClickedSquare;
 
     @FXML
-    GridPane boardGrid;
+    private GridPane boardGrid;
 
     @FXML
+    public void initialize() {
+        initializeBoard();
+        updateBoardUI();
+    }
+
+    private void initializeBoard() {
+        // Add Pawns
+        for (int i = 0; i < 8; i++) {
+            board[1][i] = new Pawn("Black", i, 1);
+            board[6][i] = new Pawn("White", i, 6);
+        }
+
+        // Add other pieces
+        board[0][0] = new Rook("Black", 0, 0);
+        board[0][7] = new Rook("Black", 7, 0);
+        board[7][0] = new Rook("White", 0, 7);
+        board[7][7] = new Rook("White", 7, 7);
+
+        board[0][1] = new Knight("Black", 1, 0);
+        board[0][6] = new Knight("Black", 6, 0);
+        board[7][1] = new Knight("White", 1, 7);
+        board[7][6] = new Knight("White", 6, 7);
+
+        board[0][2] = new Bishop("Black", 2, 0);
+        board[0][5] = new Bishop("Black", 5, 0);
+        board[7][2] = new Bishop("White", 2, 7);
+        board[7][5] = new Bishop("White", 5, 7);
+
+        board[0][3] = new Queen("Black", 3, 0);
+        board[7][3] = new Queen("White", 3, 7);
+
+        board[0][4] = new King("Black", 4, 0);
+        board[7][4] = new King("White", 4, 7);
+    }
+
+    private void updateBoardUI() {
+        boardGrid.getChildren().clear();
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 8; col++) {
+                ImageView squareImageView = new ImageView();
+                squareImageView.setFitWidth(50);
+                squareImageView.setFitHeight(50);
+
+                if ((row + col) % 2 == 0) {
+                    squareImageView.setImage(new Image("file:src/main/resources/com/example/echecs/img/green_case.png"));
+                } else {
+                    squareImageView.setImage(new Image("file:src/main/resources/com/example/echecs/img/white_case.png"));
+                }
+                squareImageView.setOnMouseClicked(this::onCaseClick);
+
+                boardGrid.add(squareImageView, col, row);
+
+                ChessPiece piece = board[row][col];
+                if (piece != null) {
+                    ImageView pieceImageView = new ImageView(new Image(piece.getImagePath()));
+                    pieceImageView.setUserData(piece);
+                    pieceImageView.setOnMouseClicked(this::onChessClick);
+                    pieceImageView.setFitWidth(50);
+                    pieceImageView.setFitHeight(50);
+                    boardGrid.add(pieceImageView, col, row);
+                }
+            }
+        }
+    }
+
+
+
     private void onCaseClick(Event event) {
-        if (clickNumber == 0) return;
+        if (selectedPiece == null) return;
 
-        ImageView clickedImageView = (ImageView) event.getSource();
+        Node clickedNode = (Node) event.getSource();
+        int targetCol = GridPane.getColumnIndex(clickedNode);
+        int targetRow = GridPane.getRowIndex(clickedNode);
 
-        Image clickedEchiquier1 = new Image("file:src/main/resources/com/example/echecs/img/echiquier1_clique.png");
-        Image clickedEchiquier2 = new Image("file:src/main/resources/com/example/echecs/img/echiquier2_clique.png");
-        Image echiquier1 = new Image("file:src/main/resources/com/example/echecs/img/echiquier1.png");
-        Image echiquier2 = new Image("file:src/main/resources/com/example/echecs/img/echiquier2.png");
-
-        columnIndex = GridPane.getColumnIndex(clickedImageView);
-        rowIndex = GridPane.getRowIndex(clickedImageView);
-
-        if (!(firstClickedCol == columnIndex && firstClickedRow == rowIndex) && canMove(color, type)) {
-            updateImage(clickedImageView, columnIndex, rowIndex, clickedEchiquier1, clickedEchiquier2);
-            GridPane.setRowIndex(firstChessClickedImg, rowIndex);
-            GridPane.setColumnIndex(firstChessClickedImg, columnIndex);
-
-            if (clickNumber == 2) {
-                secondCaseClickedImg = clickedImageView;
-                resetImages(echiquier1, echiquier2);
-                clickNumber = 0;
-                whiteTurn = !whiteTurn;
-            }
+        if (selectedPiece.canMove(targetCol, targetRow, board)) {
+            movePiece(selectedPiece, targetCol, targetRow);
+            switchTurn();
         }
     }
 
-    private void onChessAndCaseClick(int columnIndex, int rowIndex) {
-        ImageView clickedImageView = getNodeAtPosition(columnIndex, rowIndex);
-
-        if (clickedImageView != null) {
-            Image clickedEchiquier1 = new Image("file:src/main/resources/com/example/echecs/img/echiquier1_clique.png");
-            Image clickedEchiquier2 = new Image("file:src/main/resources/com/example/echecs/img/echiquier2_clique.png");
-            Image echiquier1 = new Image("file:src/main/resources/com/example/echecs/img/echiquier1.png");
-            Image echiquier2 = new Image("file:src/main/resources/com/example/echecs/img/echiquier2.png");
-
-            if (clickNumber == 2) {
-                resetImages(echiquier1, echiquier2);
-                return;
-            }
-
-            if (clickNumber < 2 && !(firstClickedCol == columnIndex && firstClickedRow == rowIndex)) {
-                updateImage(clickedImageView, columnIndex, rowIndex, clickedEchiquier1, clickedEchiquier2);
-
-                if (clickNumber == 1) {
-                    firstClickedRow = rowIndex;
-                    firstClickedCol = columnIndex;
-                    firstCaseClickedImg = clickedImageView;
-                }
-            }
-        }
-    }
-
-    private void resetImages(Image echiquier1, Image echiquier2) {
-        if ((firstClickedCol + firstClickedRow) % 2 == 0) {
-            firstCaseClickedImg.setImage(echiquier2);
-        } else {
-            firstCaseClickedImg.setImage(echiquier1);
-        }
-
-        if ((GridPane.getColumnIndex(secondCaseClickedImg) + GridPane.getRowIndex(secondCaseClickedImg)) % 2 == 0) {
-            secondCaseClickedImg.setImage(echiquier2);
-        } else {
-            secondCaseClickedImg.setImage(echiquier1);
-        }
-
-        clickNumber = 0;
-        firstClickedCol = -1;
-        firstClickedRow = -1;
-    }
-
-    private void updateImage(ImageView imageView, int columnIndex, int rowIndex, Image clickedEchiquier1, Image clickedEchiquier2) {
-        if ((columnIndex + rowIndex) % 2 == 0) {
-            imageView.setImage(clickedEchiquier2);
-        } else {
-            imageView.setImage(clickedEchiquier1);
-        }
-        ++clickNumber;
-    }
-
-    private boolean canMove(String color, String type) {
-        int columnDifference = Math.abs(columnIndex - firstClickedCol);
-        int rowDifference = Math.abs(rowIndex - firstClickedRow);
-
-        switch (type) {
-            case "Knight":
-                return (columnDifference == 2 && rowDifference == 1) || (columnDifference == 1 && rowDifference == 2);
-            case "Bishop":
-                return columnDifference == rowDifference;
-            case "King":
-                return columnDifference <= 1 && rowDifference <= 1;
-            case "Pawn":
-                int pawnMovement = color.equals("White") ? -1 : 1;
-                return (columnIndex == firstClickedCol && (rowIndex - firstClickedRow == pawnMovement || (rowIndex - firstClickedRow == pawnMovement * 2 && (firstClickedRow == 1 || firstClickedRow == 6)))) ||
-                        (columnDifference == 1 && rowDifference == 1 && rowIndex - firstClickedRow == pawnMovement && isOpponentPieceAt(columnIndex, rowIndex));
-            case "Queen":
-                return columnDifference == rowDifference || (columnIndex == firstClickedCol || rowIndex == firstClickedRow);
-            case "Tower":
-                return columnIndex == firstClickedCol || rowIndex == firstClickedRow;
-            default:
-                return false;
-        }
-    }
-
-    private boolean canClick(String color) {
-        return whiteTurn ? color.equals("White") : color.equals("Black");
-    }
-
-    private boolean isOpponentPieceAt(int col, int row) {
-        ImageView piece = getNodeAtPosition(col, row);
-        if (piece == null) return false;
-        String pieceColor = piece.getUserData().toString().substring(0, 5);
-        return !pieceColor.equals(color);
-    }
-
-    private ImageView getNodeAtPosition(int col, int row) {
-        for (Node node : boardGrid.getChildren()) {
-            if (node instanceof ImageView) {
-                Integer nodeCol = GridPane.getColumnIndex(node);
-                Integer nodeRow = GridPane.getRowIndex(node);
-                if (nodeCol != null && nodeRow != null && nodeCol == col && nodeRow == row) {
-                    return (ImageView) node;
-                }
-            }
-        }
-        return null;
-    }
-
-    @FXML
     private void onChessClick(Event event) {
+        System.out.println("Click");
         ImageView clickedImageView = (ImageView) event.getSource();
-        color = clickedImageView.getUserData().toString().substring(0, 5);
-        type = clickedImageView.getUserData().toString().substring(5);
+        ChessPiece piece = (ChessPiece) clickedImageView.getUserData();
+        if (piece != null && piece.getColor().equals(whiteTurn ? "White" : "Black")) {
+            selectedPiece = piece;
+            int row = GridPane.getRowIndex(clickedImageView);
+            int col = GridPane.getColumnIndex(clickedImageView);
+            Node targetSquare = null;
 
-        if (!canClick(color)) return;
+            for (Node node : boardGrid.getChildren()) {
+                if (GridPane.getRowIndex(node) == row && GridPane.getColumnIndex(node) == col) {
+                    targetSquare = node;
+                    break;
+                }
+            }
 
-        columnIndex = GridPane.getColumnIndex(clickedImageView) == null ? 0 : GridPane.getColumnIndex(clickedImageView);
-        rowIndex = GridPane.getRowIndex(clickedImageView) == null ? 0 : GridPane.getRowIndex(clickedImageView);
-
-        if (clickNumber == 0) {
-            firstChessClickedImg = clickedImageView;
-            firstColor = color;
-            onChessAndCaseClick(columnIndex, rowIndex);
-        } else if (!color.equals(firstColor)) {
-            boardGrid.getChildren().remove(clickedImageView);
+            if (targetSquare != null && targetSquare instanceof ImageView) {
+                ImageView squareImageView = (ImageView) targetSquare;
+                changeSquareColor(squareImageView, col, row);
+            }
         }
+    }
+
+    private void movePiece(ChessPiece piece, int targetCol, int targetRow) {
+        board[piece.getRowIndex()][piece.getColumnIndex()] = null;
+        piece.setPosition(targetCol, targetRow);
+        board[targetRow][targetCol] = piece;
+        updateBoardUI();
+    }
+
+    private void changeSquareColor(ImageView targetSquare, int targetCol, int targetRow) {
+        if ((targetRow + targetCol) % 2 == 0) {
+            if (oldClickedSquare != null) oldClickedSquare.setImage(new Image("file:src/main/resources/com/example/echecs/img/white_case.png"));
+            targetSquare.setImage(new Image("file:src/main/resources/com/example/echecs/img/green_case_clicked.png"));
+        } else {
+            if (oldClickedSquare != null) oldClickedSquare.setImage(new Image("file:src/main/resources/com/example/echecs/img/green_case.png"));
+            targetSquare.setImage(new Image("file:src/main/resources/com/example/echecs/img/white_case_clicked.png"));
+        }
+        oldClickedSquare = targetSquare;
+    }
+
+    private void switchTurn() {
+        whiteTurn = !whiteTurn;
+        selectedPiece = null;
     }
 }
+

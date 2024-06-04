@@ -1,17 +1,20 @@
 package com.example.echecs.model;
 
-public class Knight {
-    public String color;
-
-    public Knight(String color) {
-        this.color = color;
+public class Knight extends ChessPiece {
+    public Knight(String color, int columnIndex, int rowIndex) {
+        super(color, columnIndex, rowIndex);
     }
 
-    public String getColor() {
-        return this.color;
-    }
+    @Override
+    public boolean canMove(int targetCol, int targetRow, ChessPiece[][] board) {
+        int columnDifference = Math.abs(targetCol - columnIndex);
+        int rowDifference = Math.abs(targetRow - rowIndex);
 
-    public boolean canMove(int rowIndex, int colIndex){
-        return true;
+        if ((columnDifference == 2 && rowDifference == 1) || (columnDifference == 1 && rowDifference == 2)) {
+            ChessPiece targetPiece = board[targetRow][targetCol];
+            return targetPiece == null || !targetPiece.getColor().equals(this.color);
+        }
+
+        return false;
     }
 }
