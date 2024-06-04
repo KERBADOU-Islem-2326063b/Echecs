@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cafb6311-df47-41a5-b88f-fb5892fbb4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Bishop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/King.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Knight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Pawn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Queen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Tower.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/BoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Pion.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Echecs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Echecs.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,6 +100,8 @@
       <workItem from="1717408678979" duration="1187000" />
       <workItem from="1717414347765" duration="1003000" />
       <workItem from="1717491471205" duration="4998000" />
+      <workItem from="1717500110747" duration="5121000" />
+      <workItem from="1717505779250" duration="5931000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Rennomage des fichiers, et début interface graphique">
       <created>1717403773299</created>

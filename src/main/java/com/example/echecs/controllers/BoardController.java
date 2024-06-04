@@ -1,5 +1,6 @@
 package com.example.echecs.controllers;
 
+import com.example.echecs.model.*;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -17,10 +18,11 @@ public class BoardController {
     ImageView firstCaseClickedImg;
     ImageView secondCaseClickedImg;
     ImageView firstChessClickedImg;
+    String type;
+    String color;
 
     @FXML
     GridPane boardGrid;
-
     @FXML
     private void onCaseClick(Event event) {
         // Si on clique pas d'abord sur un pion, on sort de la fonction
@@ -41,7 +43,7 @@ public class BoardController {
         columnIndex = GridPane.getColumnIndex(clickedImageView);
         rowIndex = GridPane.getRowIndex(clickedImageView);
 
-        if (clickNumber < 2 && !(firstClickedCol == columnIndex && firstClickedRow == rowIndex)) {
+        if (!(firstClickedCol == columnIndex && firstClickedRow == rowIndex) && canMove(color, type)) {
             updateImage(clickedImageView, columnIndex, rowIndex, clickedEchiquier1, clickedEchiquier2);
             GridPane.setRowIndex(firstChessClickedImg, rowIndex);
             GridPane.setColumnIndex(firstChessClickedImg, columnIndex);
@@ -88,8 +90,6 @@ public class BoardController {
                     firstClickedRow = rowIndex;
                     firstClickedCol = columnIndex;
                     firstCaseClickedImg = clickedImageView;
-                } else if (clickNumber == 2) {
-                    secondCaseClickedImg = clickedImageView;
                 }
             }
         }
@@ -119,24 +119,69 @@ public class BoardController {
         } else {
             imageView.setImage(clickedEchiquier1);
         }
-        clickNumber++;
+        ++clickNumber;
+    }
+
+    private boolean canMove(String color, String type) {
+        int columnDifference = Math.abs(columnIndex - firstClickedCol);
+        int rowDifference = Math.abs(rowIndex - firstClickedRow);
+
+        if (type.equals("Knight")) {
+            return (columnDifference == 2 && rowDifference == 1) || (columnDifference == 1 && rowDifference == 2);
+        } else if (type.equals("Bishop")) {
+            return columnDifference == rowDifference;
+
+        } else if (type.equals("King")) {
+            return columnDifference <= 1 && rowDifference <= 1;
+
+        } else if (type.equals("Pawn")) {
+            int pawnMovement = color.equals("White")? -1 : 1;
+            return (columnIndex == firstClickedCol && (rowIndex - firstClickedRow == pawnMovement * 2 || rowIndex - firstClickedRow == pawnMovement));
+
+        } else if (type.equals("Queen")) {
+            return (columnDifference == rowDifference || (columnIndex == firstClickedCol || rowIndex == firstClickedRow));
+
+        } else if (type.equals("Rook") || type.equals("Tower")) {
+            return columnIndex == firstClickedCol || rowIndex == firstClickedRow;
+
+        } else {
+            return false;
+        }
     }
 
     @FXML
     private void onChessClick(Event event) {
         ImageView clickedImageView = (ImageView) event.getSource();
+        color = clickedImageView.getUserData().toString().substring(0, 5);
+        type = clickedImageView.getUserData().toString().substring(5, clickedImageView.getUserData().toString().length());
+        System.out.println(clickedImageView.getUserData());
 
-        columnIndex = GridPane.getColumnIndex(clickedImageView);
-        rowIndex = GridPane.getRowIndex(clickedImageView);
+        if (GridPane.getColumnIndex(clickedImageView) == null && GridPane.getRowIndex(clickedImageView) == null) {
+            columnIndex = 0;
+            rowIndex = 0;
+        }
+        else if (GridPane.getColumnIndex(clickedImageView) == null && GridPane.getRowIndex(clickedImageView) != null) {
+            columnIndex = 0;
+            rowIndex = GridPane.getRowIndex(clickedImageView);
+        }
+
+        else if (GridPane.getRowIndex(clickedImageView) == null && GridPane.getColumnIndex(clickedImageView) != null) {
+            rowIndex = 0;
+            columnIndex = GridPane.getColumnIndex(clickedImageView);
+        }
+
+        else {
+            columnIndex = GridPane.getColumnIndex(clickedImageView);
+            rowIndex = GridPane.getRowIndex(clickedImageView);
+        }
 
         if (clickNumber == 0) {
             firstChessClickedImg = clickedImageView;
             onChessAndCaseClick(columnIndex, rowIndex);
         }
 
-        // Si on clique sur une autre piece, a faire plus tard
         else  {
-            // boardGrid.getChildren().remove(firstChessClickedImg);
+            // boardGrid.getChildren().remove(clickedImageView);
         };
     }
 }
