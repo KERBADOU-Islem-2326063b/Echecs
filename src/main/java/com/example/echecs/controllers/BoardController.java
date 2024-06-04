@@ -58,8 +58,8 @@ public class BoardController {
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
                 ImageView squareImageView = new ImageView();
-                squareImageView.setFitWidth(50);
-                squareImageView.setFitHeight(50);
+                squareImageView.setFitWidth(70);
+                squareImageView.setFitHeight(70);
 
                 if ((row + col) % 2 == 0) {
                     squareImageView.setImage(new Image("file:src/main/resources/com/example/echecs/img/green_case.png"));
@@ -75,8 +75,8 @@ public class BoardController {
                     ImageView pieceImageView = new ImageView(new Image(piece.getImagePath()));
                     pieceImageView.setUserData(piece);
                     pieceImageView.setOnMouseClicked(this::onChessClick);
-                    pieceImageView.setFitWidth(50);
-                    pieceImageView.setFitHeight(50);
+                    pieceImageView.setFitWidth(70);
+                    pieceImageView.setFitHeight(70);
                     boardGrid.add(pieceImageView, col, row);
                 }
             }

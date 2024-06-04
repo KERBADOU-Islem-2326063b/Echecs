@@ -12,7 +12,7 @@ public class EchecsApp extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(EchecsApp.class.getResource("views/Echecs.fxml"));
 
-        Scene scene = new Scene(fxmlLoader.load(), 665, 527);
+        Scene scene = new Scene(fxmlLoader.load(), 1020, 720);
         stage.setTitle("Echecs");
 
         stage.setScene(scene);
