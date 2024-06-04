@@ -83,8 +83,6 @@ public class BoardController {
         }
     }
 
-
-
     private void onCaseClick(Event event) {
         if (selectedPiece == null) return;
 
@@ -99,7 +97,6 @@ public class BoardController {
     }
 
     private void onChessClick(Event event) {
-        System.out.println("Click");
         ImageView clickedImageView = (ImageView) event.getSource();
         ChessPiece piece = (ChessPiece) clickedImageView.getUserData();
         if (piece != null && piece.getColor().equals(whiteTurn ? "White" : "Black")) {
@@ -115,8 +112,7 @@ public class BoardController {
                 }
             }
 
-            if (targetSquare != null && targetSquare instanceof ImageView) {
-                ImageView squareImageView = (ImageView) targetSquare;
+            if (targetSquare instanceof ImageView squareImageView) {
                 changeSquareColor(squareImageView, col, row);
             }
         }
