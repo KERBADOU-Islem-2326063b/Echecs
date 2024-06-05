@@ -35,6 +35,7 @@ public class BoardController {
     private Image greenCaseClickedImage = new Image("file:src/main/resources/com/example/echecs/img/green_case_clicked.png");
     private Image whiteCaseDotImage = new Image("file:src/main/resources/com/example/echecs/img/white_case_dot.png");
     private Image greenCaseDotImage = new Image("file:src/main/resources/com/example/echecs/img/green_case_dot.png");
+    private Image redSquareImage = new Image("file:src/main/resources/com/example/echecs/img/red_square.png");
 
     @FXML
     public void initialize() {
@@ -132,9 +133,13 @@ public class BoardController {
         if (clickedNode instanceof ImageView) {
             ChessPiece clickedPiece = (ChessPiece) (clickedNode).getUserData();
             if (clickedPiece != null) {
-                // changeSquareColor((ImageView) clickedNode, targetCol, targetRow);
                 if (clickedPiece.getColor().equals(whiteTurn ? "White" : "Black")) {
+                    if (selectedPiece != null) {
+                        resetCases(oldClickedSquare, selectedPiece.getRowIndex(), selectedPiece.getColumnIndex());
+                    }
                     selectedPiece = clickedPiece;
+                    oldClickedSquare = (ImageView) getNodeFromGridPane(boardGrid, selectedPiece.getRowIndex(), selectedPiece.getColumnIndex());
+                    highlightSelectedSquare(oldClickedSquare);
                     highlightValidMoves(selectedPiece);
                 } else if (selectedPiece != null && selectedPiece.canMove(targetCol, targetRow, board)) {
                     movePiece(selectedPiece, targetCol, targetRow);
@@ -144,7 +149,6 @@ public class BoardController {
             }
         }
     }
-
 
     private void movePiece(ChessPiece piece, int targetCol, int targetRow) {
         board[piece.getRowIndex()][piece.getColumnIndex()] = null;
@@ -170,8 +174,14 @@ public class BoardController {
                 if (piece.canMove(col, row, board)) {
                     Node node = getNodeFromGridPane(boardGrid, row, col);
                     if (node instanceof ImageView squareImageView) {
-                        if ((col + row) % 2 == 0) squareImageView.setImage(whiteCaseDotImage);
-                        else squareImageView.setImage(greenCaseDotImage);
+                        if (board[row][col] != null && !board[row][col].getColor().equals(piece.getColor())) {
+                            // Highlight capture moves with red squares
+                            squareImageView.setImage(redSquareImage);
+                        } else {
+                            // Highlight normal moves
+                            if ((col + row) % 2 == 0) squareImageView.setImage(whiteCaseDotImage);
+                            else squareImageView.setImage(greenCaseDotImage);
+                        }
                         highlightedSquares.add(squareImageView);
                         squareImageView.setOnMouseClicked(this::onBoardClick);
                     }
@@ -180,16 +190,14 @@ public class BoardController {
         }
     }
 
-    private void changeSquareColor(ImageView targetSquare, int targetCol, int targetRow) {
-        if ((targetRow + targetCol) % 2 == 0) {
-            if (oldClickedSquare != null) oldClickedSquare.setImage(new Image("file:src/main/resources/com/example/echecs/img/green_case.png"));
-            targetSquare.setImage(new Image("file:src/main/resources/com/example/echecs/img/white_case_clicked.png"));
+    private void highlightSelectedSquare(ImageView squareImageView) {
+        int col = GridPane.getColumnIndex(squareImageView);
+        int row = GridPane.getRowIndex(squareImageView);
+        if ((row + col) % 2 == 0) {
+            squareImageView.setImage(whiteCaseClickedImage);
         } else {
-            if (oldClickedSquare != null) oldClickedSquare.setImage(new Image("file:src/main/resources/com/example/echecs/img/white_case.png"));
-            targetSquare.setImage(new Image("file:src/main/resources/com/example/echecs/img/green_case_clicked.png"));
+            squareImageView.setImage(greenCaseClickedImage);
         }
-        oldClickedSquare = targetSquare;
-
     }
 
     private void resetCases(ImageView squareImageView, int row, int col) {
@@ -219,12 +227,11 @@ public class BoardController {
     }
 
     private void highlightCheckSquare(King king) {
-        System.out.println("test");
         int kingRow = king.getRowIndex();
         int kingCol = king.getColumnIndex();
         ImageView squareImageView = (ImageView) getNodeFromGridPane(boardGrid, kingRow, kingCol);
         if (squareImageView != null) {
-            squareImageView.setImage(new Image("file:src/main/resources/com/example/echecs/img/red_square.png"));
+            squareImageView.setImage(redSquareImage);
         }
     }
 
@@ -237,7 +244,6 @@ public class BoardController {
         }
         return null;
     }
-
 
     private void endGame() {
         if (!whiteTurn) turnLabel.setText("C'est la fin de la partie, victoire des noirs !");
