@@ -9,8 +9,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="655.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.echecs.controllers.BoardController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.echecs.controllers.BoardController">
    <children>
       <HBox prefHeight="527.0" prefWidth="665.0">
          <children>
@@ -67,6 +68,15 @@
                         <Insets left="10.0" top="10.0" />
                      </padding>
                   </HBox>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="679.0" prefWidth="443.0">
+               <children>
+                  <Label fx:id="turnLabel" text="C'est au tour des blancs !">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
          </children>

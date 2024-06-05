@@ -4,22 +4,35 @@ import com.example.echecs.model.*;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BoardController {
     // Le plateau de jeu et les pièces
     private ChessPiece[][] board = new ChessPiece[8][8];
+    // Les cases jouables
+    private List<ImageView> highlightedSquares = new ArrayList<>();
     // La pièce sélectionnée
     private ChessPiece selectedPiece;
     // Tour du joueur blanc ou noir
     private boolean whiteTurn = true;
+    // Si c'est la fin
+    private boolean endGame = false;
     // Carré précédemment cliqué
     private ImageView oldClickedSquare;
 
     @FXML
     private GridPane boardGrid;
+    @FXML
+    private Label turnLabel;
+
+    King BlackKing;
+    King WhiteKing;
 
     @FXML
     public void initialize() {
@@ -56,8 +69,10 @@ public class BoardController {
         board[0][3] = new Queen("Black", 3, 0);
         board[7][3] = new Queen("White", 3, 7);
 
-        board[0][4] = new King("Black", 4, 0);
-        board[7][4] = new King("White", 4, 7);
+        BlackKing = new King("Black", 4, 0);
+        WhiteKing = new King("White", 4, 7);
+        board[0][4] = BlackKing;
+        board[7][4] = WhiteKing;
     }
 
     // Mise à jour du plateau de jeu avec les pièces
@@ -68,16 +83,19 @@ public class BoardController {
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
                 ImageView squareImageView = new ImageView();
-                squareImageView.setFitWidth(70);
-                squareImageView.setFitHeight(70);
+                squareImageView.setFitWidth(72);
+                squareImageView.setFitHeight(72);
 
                 // Changer l'image en fonction de la couleur de la case
-                if ((row + col) % 2 == 0) {
-                    squareImageView.setImage(new Image("file:src/main/resources/com/example/echecs/img/green_case.png"));
-                } else {
-                    squareImageView.setImage(new Image("file:src/main/resources/com/example/echecs/img/white_case.png"));
+                resetCases(squareImageView, row, col);
+
+                // Vérifier si le roi est en échec pour changer la couleur de la case
+                if (board[row][col] instanceof King) {
+                    King king = (King) board[row][col];
+                    if (king.isCheck(board)) {
+                        squareImageView.setImage(new Image("file:src/main/resources/com/example/echecs/img/red_square.png"));
+                    }
                 }
-                squareImageView.setOnMouseClicked(this::onCaseClick);
 
                 boardGrid.add(squareImageView, col, row);
 
@@ -97,6 +115,7 @@ public class BoardController {
 
     // Gestionnaire d'événements lorsqu'une case est cliquée
     private void onCaseClick(Event event) {
+        System.out.println("click");
         if (selectedPiece == null) return;
 
         Node clickedNode = (Node) event.getSource();
@@ -107,6 +126,7 @@ public class BoardController {
         if (selectedPiece.canMove(targetCol, targetRow, board)) {
             // Déplacer la pièce
             movePiece(selectedPiece, targetCol, targetRow);
+
             // Passer au tour suivant
             switchTurn();
         }
@@ -117,13 +137,11 @@ public class BoardController {
         ImageView clickedImageView = (ImageView) event.getSource();
         ChessPiece piece = (ChessPiece) clickedImageView.getUserData();
         if (piece != null && piece.getColor().equals(whiteTurn ? "White" : "Black")) {
-            // Sélectionner la pièce
             selectedPiece = piece;
             int row = GridPane.getRowIndex(clickedImageView);
             int col = GridPane.getColumnIndex(clickedImageView);
             Node targetSquare = null;
 
-            // Trouver la case cliquée
             for (Node node : boardGrid.getChildren()) {
                 if (GridPane.getRowIndex(node) == row && GridPane.getColumnIndex(node) == col) {
                     targetSquare = node;
@@ -132,12 +150,11 @@ public class BoardController {
             }
 
             if (targetSquare instanceof ImageView squareImageView) {
-                // Changer la couleur de la case cliquée pour indiquer la sélection
+                highlightValidMoves(piece);
                 changeSquareColor(squareImageView, col, row);
             }
         }
-        // On traite l'evenement comme un clique sur une case
-        else onCaseClick(event);
+        onCaseClick(event);
     }
 
     // Déplacer une pièce sur le plateau
@@ -151,18 +168,77 @@ public class BoardController {
     // Changer la couleur de la case cliquée pour indiquer la sélection
     private void changeSquareColor(ImageView targetSquare, int targetCol, int targetRow) {
         if ((targetRow + targetCol) % 2 == 0) {
-            if (oldClickedSquare != null) oldClickedSquare.setImage(new Image("file:src/main/resources/com/example/echecs/img/white_case.png"));
-            targetSquare.setImage(new Image("file:src/main/resources/com/example/echecs/img/green_case_clicked.png"));
-        } else {
             if (oldClickedSquare != null) oldClickedSquare.setImage(new Image("file:src/main/resources/com/example/echecs/img/green_case.png"));
             targetSquare.setImage(new Image("file:src/main/resources/com/example/echecs/img/white_case_clicked.png"));
+        } else {
+            if (oldClickedSquare != null) oldClickedSquare.setImage(new Image("file:src/main/resources/com/example/echecs/img/white_case.png"));
+            targetSquare.setImage(new Image("file:src/main/resources/com/example/echecs/img/green_case_clicked.png"));
         }
         oldClickedSquare = targetSquare;
+    }
+
+    // Récupérer la colonne de la GridPane à telle indice
+    private Node getNodeFromGridPane(GridPane gridPane, int row, int col) {
+        for (Node node : gridPane.getChildren()) {
+            if (GridPane.getRowIndex(node) == row && GridPane.getColumnIndex(node) == col) {
+                return node;
+            }
+        }
+        return null;
+    }
+    // Méthode pour mettre en avant les cases déplacables
+    private void highlightValidMoves(ChessPiece piece) {
+        highlightedSquares.clear();
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 8; col++) {
+                Node node = getNodeFromGridPane(boardGrid, row, col);
+                ImageView squareImageView = (ImageView) node;
+                resetCases(squareImageView, row, col);
+
+                if (piece.canMove(col, row, board)) {
+                    if (node instanceof ImageView) {
+                        if ((col + row) % 2 == 0) squareImageView.setImage(new Image("file:src/main/resources/com/example/echecs/img/white_case_dot.png"));
+                        else squareImageView.setImage(new Image("file:src/main/resources/com/example/echecs/img/green_case_dot.png"));
+                        highlightedSquares.add(squareImageView);
+                    }
+                    squareImageView.setOnMouseClicked(this::onCaseClick);
+                }
+            }
+        }
+    }
+
+    private void resetCases(ImageView squareImageView, int row, int col) {
+        if ((row + col) % 2 == 0) {
+            squareImageView.setImage(new Image("file:src/main/resources/com/example/echecs/img/white_case.png"));
+        } else {
+            squareImageView.setImage(new Image("file:src/main/resources/com/example/echecs/img/green_case.png"));
+        }
     }
 
     // Passer au tour suivant
     private void switchTurn() {
         whiteTurn = !whiteTurn;
+        // On met à jour le tour et si c'est la fin de la partie
+        if (whiteTurn) {
+            turnLabel.setText("C'est au tour des blancs !");
+            if (WhiteKing.isCheck(board)) {
+                endGame();
+            }
+        } else {
+            turnLabel.setText("C'est au tour des noirs !");
+            if (BlackKing.isCheck(board)) {
+                endGame();
+            }
+        }
         selectedPiece = null;
+        // Mise à jour du plateau pour refléter les changements (notamment pour l'affichage de l'échec)
+        updateBoard();
+    }
+
+    // Fonction pour mettre fin à la partie
+    private void endGame() {
+        if (!whiteTurn) turnLabel.setText("C'est la fin de la partie, victoire des noirs !");
+        else turnLabel.setText("C'est la fin de la partie, victoire des blancs !");
+        endGame = true;
     }
 }

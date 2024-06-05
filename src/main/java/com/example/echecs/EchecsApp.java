@@ -13,7 +13,7 @@ public class EchecsApp extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(EchecsApp.class.getResource("views/Echecs.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load(), 1020, 720);
-        stage.setTitle("Echecs");
+        stage.setTitle("ChessyApp");
 
         stage.setScene(scene);
         stage.show();
