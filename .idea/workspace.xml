@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cafb6311-df47-41a5-b88f-fb5892fbb4c2" name="Changes" comment="feat: augmentation de la fenêtre et du tableau de jeu">
+    <list default="true" id="cafb6311-df47-41a5-b88f-fb5892fbb4c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/EchecsApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/EchecsApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/BoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Bishop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Bishop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/King.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Queen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Queen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Echecs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Echecs.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/ChessPiece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/ChessPiece.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Knight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Pawn.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +91,8 @@
       <workItem from="1717491471205" duration="4998000" />
       <workItem from="1717500110747" duration="5121000" />
       <workItem from="1717505779250" duration="5931000" />
-      <workItem from="1717587502877" duration="2291000" />
+      <workItem from="1717587502877" duration="8117000" />
+      <workItem from="1717595834857" duration="5098000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Rennomage des fichiers, et début interface graphique">
       <created>1717403773299</created>
@@ -149,7 +148,21 @@
       <option name="project" value="LOCAL" />
       <updated>1717539449623</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="feat: ajout de nouvelles fonctionnalités">
+      <created>1717589900838</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1717589900838</updated>
+    </task>
+    <task id="LOCAL-00009" summary="feat: ajout d'echec (il reste mat)">
+      <created>1717590040202</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1717590040202</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,6 +176,8 @@
     <MESSAGE value="feat: Changement total du code, on utilise desormes des classes pour les pièces" />
     <MESSAGE value="fix: optimisation du code" />
     <MESSAGE value="feat: augmentation de la fenêtre et du tableau de jeu" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: augmentation de la fenêtre et du tableau de jeu" />
+    <MESSAGE value="feat: ajout de nouvelles fonctionnalités" />
+    <MESSAGE value="feat: ajout d'echec (il reste mat)" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: ajout d'echec (il reste mat)" />
   </component>
 </project>

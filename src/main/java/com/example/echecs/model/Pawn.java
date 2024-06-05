@@ -6,6 +6,7 @@ public class Pawn extends ChessPiece {
         super(color, columnIndex, rowIndex);
     }
 
+
     @Override
     public boolean canMove(int targetCol, int targetRow, ChessPiece[][] board) {
         // Déterminer la direction du mouvement en fonction de la couleur du pion
