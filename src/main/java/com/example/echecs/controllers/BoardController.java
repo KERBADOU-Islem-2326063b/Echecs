@@ -222,12 +222,12 @@ public class BoardController {
         if (whiteTurn) {
             turnLabel.setText("C'est au tour des blancs !");
             if (WhiteKing.isCheck(board)) {
-                endGame();
+                turnLabel.setText("C'est au tour des blancs !\nRoi Blanc en échec !");
             }
         } else {
             turnLabel.setText("C'est au tour des noirs !");
             if (BlackKing.isCheck(board)) {
-                endGame();
+                turnLabel.setText("C'est au tour des noirs !\nRoi Noir en échec !");
             }
         }
         selectedPiece = null;
