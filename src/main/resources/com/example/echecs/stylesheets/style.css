@@ -1,0 +1,70 @@
+@font-face {
+    font-family: "Ginto Medium";
+    src: url('../fnt/GintoMedium.ttf');
+}
+
+@font-face {
+    font-family: "Ginto";
+    src: url('../fnt/GintoRegular.ttf');
+}
+
+
+@font-face {
+    font-family: "Ginto Black Italic";
+    src: url('../fnt/GintoBlackItalic.ttf');
+}
+
+@font-face {
+    font-family: "Ginto Black";
+    src: url('../fnt/GintoBlack.ttf');
+}
+
+@font-face {
+    font-family: "Ginto Bold";
+    src: url('../fnt/GintoBold.ttf');
+}
+
+
+
+.playerName {
+    -fx-font-family: "Ginto Black Italic";
+    -fx-font-size: 20.0;
+}
+
+.playerInfo {
+    -fx-font-family: "Ginto Medium";
+    -fx-font-size: 20.0;
+    -fx-line-spacing: 10px;
+}
+
+.versusText {
+    -fx-font-family: "Ginto Black Italic";
+    -fx-font-size: 50.0;
+}
+
+.startPos {
+    -fx-font-family: "Ginto Medium";
+    -fx-font-size: 18.0;
+}
+
+.newButton {
+    -fx-font-family: "Ginto Black";
+    -fx-font-size: 32.0;
+    -fx-text-fill: white;
+    -fx-background-color: #6eaa37;
+    -fx-background-radius: 20px;
+}
+
+.cancelButton {
+    -fx-font-family: "Ginto Black";
+    -fx-font-size: 32.0;
+    -fx-background-color: #d40000;
+    -fx-text-fill: white;
+    -fx-background-radius: 20px;
+}
+
+.player-turn {
+    -fx-effect: dropshadow(gaussian, #6eaa37, 35, 0.6, 0, 0);
+    -fx-border-radius: 50%;
+}
+

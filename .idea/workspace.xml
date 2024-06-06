@@ -4,8 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cafb6311-df47-41a5-b88f-fb5892fbb4c2" name="Changes" comment="feat: augmentation de la fenêtre et du tableau de jeu">
+    <list default="true" id="cafb6311-df47-41a5-b88f-fb5892fbb4c2" name="Changes" comment="feat: Ajout du dossier image">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/fnt/GintoBlack.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/fnt/GintoBlackItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/fnt/GintoBold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/fnt/GintoBoldItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/fnt/GintoLight.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/fnt/GintoLightItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/fnt/GintoMedium.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/fnt/GintoMediumItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/fnt/GintoRegular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/fnt/GintoRegularItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/fnt/GintoThin.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/fnt/GintoThinItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/stylesheets/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/EchecsApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/EchecsApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/BoardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Bishop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Bishop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/ChessPiece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/ChessPiece.java" afterDir="false" />
@@ -13,7 +28,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Knight.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Pawn.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Queen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Queen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Rook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Rook.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Echecs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Echecs.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,6 +45,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;BUCHMULLER-Nassim-2326028b&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/KERBADOU-Islem-2326063b/Echecs.git&quot;,
+    &quot;accountId&quot;: &quot;19d35f89-4c59-4e38-b6f7-770840f8ed32&quot;
+  }
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -38,6 +64,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2hMICpd6WFyCipj3kNkk35KhsTx" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -46,31 +75,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.EchecApp.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/amuhome/k23003542/IdeaProjects/Echecs/src/main/java/com/example/echecs/controllers",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.EchecApp.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/amuhome/k23003542/IdeaProjects/Echecs/src/main/java/com/example/echecs/controllers&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers" />
       <recent name="$PROJECT_DIR$/src/main/java/com/example/echecs" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Nassim\IntelliJ\Echecs\src\main\resources\com\example\echecs\stylesheets" />
+      <recent name="C:\Users\Nassim\IntelliJ\Echecs\src\main\resources\com\example\echecs" />
+      <recent name="C:\Users\Nassim\IntelliJ\Echecs\src\main\java\com\example\echecs" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/echecs" />
       <recent name="$PROJECT_DIR$/src/main/resources/java/com" />
-      <recent name="$PROJECT_DIR$/src/main/resources/java" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.example.echecs" />
@@ -86,6 +119,14 @@
       </method>
     </configuration>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17011.79" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17011.79" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -100,9 +141,10 @@
       <workItem from="1717408082590" duration="593000" />
       <workItem from="1717408678979" duration="1187000" />
       <workItem from="1717414347765" duration="1003000" />
-      <workItem from="1717491471205" duration="4998000" />
-      <workItem from="1717500110747" duration="5121000" />
-      <workItem from="1717505779250" duration="5931000" />
+      <workItem from="1717491471205" duration="2062000" />
+      <workItem from="1717582602967" duration="156000" />
+      <workItem from="1717588017106" duration="11027000" />
+      <workItem from="1717662739591" duration="5222000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Rennomage des fichiers, et début interface graphique">
       <created>1717403773299</created>
@@ -111,54 +153,7 @@
       <option name="project" value="LOCAL" />
       <updated>1717403773299</updated>
     </task>
-    <task id="LOCAL-00002" summary="feat: Ajout piece echec dans fxml">
-      <created>1717493769456</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1717493769456</updated>
-    </task>
-    <task id="LOCAL-00003" summary="feat: Ajout du tour par tour et reglage de bug">
-      <option name="closed" value="true" />
-      <created>1717532002625</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1717532002625</updated>
-    </task>
-    <task id="LOCAL-00004" summary="feat: Changement total du code, on utilise desormes des classes pour les pièces">
-      <option name="closed" value="true" />
-      <created>1717535886510</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1717535886510</updated>
-    </task>
-    <task id="LOCAL-00005" summary="fix: optimisation du code">
-      <option name="closed" value="true" />
-      <created>1717536078667</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1717536078667</updated>
-    </task>
-    <task id="LOCAL-00006" summary="fix: optimisation du code">
-      <option name="closed" value="true" />
-      <created>1717539189352</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1717539189352</updated>
-    </task>
-    <task id="LOCAL-00007" summary="feat: augmentation de la fenêtre et du tableau de jeu">
-      <option name="closed" value="true" />
-      <created>1717539449623</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1717539449623</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,11 +162,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="feat: Rennomage des fichiers, et début interface graphique" />
-    <MESSAGE value="feat: Ajout piece echec dans fxml" />
-    <MESSAGE value="feat: Ajout du tour par tour et reglage de bug" />
-    <MESSAGE value="feat: Changement total du code, on utilise desormes des classes pour les pièces" />
-    <MESSAGE value="fix: optimisation du code" />
-    <MESSAGE value="feat: augmentation de la fenêtre et du tableau de jeu" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: augmentation de la fenêtre et du tableau de jeu" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Rennomage des fichiers, et début interface graphique" />
   </component>
 </project>

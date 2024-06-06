@@ -6,6 +6,7 @@ public class Knight extends ChessPiece {
         super(color, columnIndex, rowIndex);
     }
 
+
     @Override
     public boolean canMove(int targetCol, int targetRow, ChessPiece[][] board) {
         // Calcul des différences de colonne et de ligne entre la position cible et la position actuelle du cavalier

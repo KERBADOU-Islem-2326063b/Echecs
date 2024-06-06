@@ -6,6 +6,13 @@ public class Queen extends ChessPiece {
         super(color, columnIndex, rowIndex);
     }
 
+    /**
+     *
+     * @param targetCol
+     * @param targetRow
+     * @param board
+     * @return
+     */
     @Override
     public boolean canMove(int targetCol, int targetRow, ChessPiece[][] board) {
         // Calcul des différences de colonne et de ligne entre la position cible et la position actuelle de la reine
