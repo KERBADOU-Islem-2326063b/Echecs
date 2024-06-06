@@ -6,6 +6,10 @@ public class Rook extends ChessPiece {
         super(color, columnIndex, rowIndex);
     }
 
+    public ChessPiece copy() {
+        return new Pawn(this.getColor(), this.getColumnIndex(), this.getRowIndex());
+    }
+
     @Override
     public boolean canMove(int targetCol, int targetRow, ChessPiece[][] board) {
         // Vérifier si le mouvement est horizontal ou vertical

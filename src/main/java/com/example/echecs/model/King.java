@@ -8,6 +8,10 @@ public class King extends ChessPiece {
         super(color, columnIndex, rowIndex);
     }
 
+    public ChessPiece copy() {
+        return new Pawn(this.getColor(), this.getColumnIndex(), this.getRowIndex());
+    }
+
     @Override
     public boolean canMove(int targetCol, int targetRow, ChessPiece[][] board) {
         int columnDifference = Math.abs(targetCol - columnIndex);

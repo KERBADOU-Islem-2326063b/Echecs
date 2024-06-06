@@ -6,6 +6,10 @@ public class Queen extends ChessPiece {
         super(color, columnIndex, rowIndex);
     }
 
+    public ChessPiece copy() {
+        return new Pawn(this.getColor(), this.getColumnIndex(), this.getRowIndex());
+    }
+
     /**
      *
      * @param targetCol

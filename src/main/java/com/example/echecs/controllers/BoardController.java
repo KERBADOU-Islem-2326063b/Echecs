@@ -13,8 +13,11 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.stage.FileChooser;
 import javafx.util.Duration;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 public class BoardController {
@@ -45,6 +48,8 @@ public class BoardController {
     private Button undoMovement;
     @FXML
     private Button surrenderButton;
+    @FXML
+    private Button saveGameButton;
     private Timeline whiteTimer;
     private Timeline blackTimer;
     int whiteSecondsRemaining = 1200; // 1200 secondes = 20 minutes
@@ -62,9 +67,10 @@ public class BoardController {
         player1ImageView.getStyleClass().add("player-turn");
         updateBoard(); // Mise à jour de l'affichage du plateau
 
-        // On initialise le bouton d'abondon et detecte si il est cliqué
+        // On initialise les boutons
         undoMovement.setOnAction(this::handleUndoButton);
         surrenderButton.setOnAction(this::handleSurrenderButton);
+        saveGameButton.setOnAction(this::handleSaveButton);
     }
 
     private void initializeTimers() {
@@ -248,8 +254,8 @@ public class BoardController {
         clearHighlightedSquares();
 
         // On calcul la distance pour l'animation
-        double distanceX = (targetCol - col) * 71;
-        double distanceY = (targetRow - row) * 71;
+        double distanceX = (targetCol - col) * 70;
+        double distanceY = (targetRow - row) * 70;
 
         // On met la piece devant pour l'animation
         pieceImageView.toFront();
@@ -458,19 +464,37 @@ public class BoardController {
         }
     }
 
-    // On met a jour l'historique des messages
     public void updateLogJeu(String move) {
+        // On met a jour l'historique des messages
         String currentText = logJeu.getText();
-        String playerColor = whiteTurn ? "Adversaire :" : "Vous :";
+        String playerColor = whiteTurn ? "Vous :" : "Adversaire :";
         String newText = currentText + "\n" + playerColor + " " + move;
 
         logJeu.setText(newText);
     }
 
-    // On traduit en coordonne echec les colonnes et lignes
     private String coorPiece(int col, int row) {
+        // On traduit en coordonne echec les colonnes et lignes
         char colLabel = (char) ('a' + col);
         int rowLabel = 8 - row;
         return colLabel + Integer.toString(rowLabel);
+    }
+
+
+    private void handleSaveButton(ActionEvent event)  {
+        // On sauvegarde dans un fichier CSV l'etat du jeu d'Echec
+        GameState gameState = new GameState(board, moveHistory, whiteTurn, whiteSecondsRemaining, blackSecondsRemaining);
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV Files", "*.csv"));
+        File file = fileChooser.showSaveDialog(saveGameButton.getScene().getWindow());
+
+        if (file != null) {
+            try {
+                gameState.saveToFile(file.getAbsolutePath());
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 }
