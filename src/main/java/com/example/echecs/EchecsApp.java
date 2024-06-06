@@ -15,7 +15,7 @@ public class EchecsApp extends Application {
 
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         scene.getStylesheets().add(getClass().getResource("stylesheets/style.css").toExternalForm());
-        stage.setTitle("Echecs");
+        stage.setTitle("ChessyApp");
 
         stage.setScene(scene);
         stage.show();

@@ -1,6 +1,8 @@
 package com.example.echecs.controllers;
 
 import com.example.echecs.model.*;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -13,6 +15,7 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
 
 public class BoardController {
     private ChessPiece[][] board = new ChessPiece[8][8];
@@ -33,26 +36,69 @@ public class BoardController {
 
     @FXML
     private ImageView player2ImageView;
-
-    private List<String> moveLog = new ArrayList<>();
+    @FXML
+    private Label whiteTimeLabel = new Label();
+    @FXML
+    private Label blackTimeLabel = new Label();
+    private Timeline whiteTimer;
+    private Timeline blackTimer;
+    int whiteSecondsRemaining = 1200; // 1200 secondes = 20 minutes
+    int blackSecondsRemaining = 1200;
 
     private King blackKing;
     private King whiteKing;
-
-    private int compteurTour = 0;
 
     // Chargement des images
     private Image whiteCaseImage, greenCaseImage, whiteCaseClickedImage, greenCaseClickedImage, whiteCaseDotImage, greenCaseDotImage, redSquareImage;
 
     @FXML
     public void initialize() {
-        initializeImages(); // Initialisation des images
+        initializeImagesLabels(); // Initialisation des images
         initializeBoard(); // Initialisation du plateau de jeu
+        initializeTimers();
         player1ImageView.getStyleClass().add("player-turn");
         updateBoard(); // Mise à jour de l'affichage du plateau
     }
 
-    private void initializeImages() {
+    private void initializeTimers() {
+        whiteTimeLabel.setText(formatTime(whiteSecondsRemaining));
+        blackTimeLabel.setText(formatTime(blackSecondsRemaining));
+
+        // Initialisation du timer pour le joueur blanc
+        whiteTimer = new Timeline(
+                new KeyFrame(Duration.seconds(1), event -> {
+                    if (whiteSecondsRemaining > 0) --whiteSecondsRemaining;
+                    whiteTimeLabel.setText(formatTime(whiteSecondsRemaining));
+                    if (whiteSecondsRemaining <= 0) {
+                        endGame("Fin du temps important, victoire des noirs");
+                    }
+                })
+        );
+        whiteTimer.setCycleCount(Timeline.INDEFINITE);
+
+        // Initialisation du timer pour le joueur noir
+        blackTimer = new Timeline(
+                new KeyFrame(Duration.seconds(1), event -> {
+                    if (blackSecondsRemaining > 0) --blackSecondsRemaining;
+                    blackTimeLabel.setText(formatTime(blackSecondsRemaining));
+                    if (blackSecondsRemaining <= 0) {
+                        endGame("Fin du temps important, victoire des blanc");
+                    }
+                })
+        );
+        blackTimer.setCycleCount(Timeline.INDEFINITE);
+
+        // On commence avec le timer du joueur blanc
+        whiteTimer.play();
+    }
+
+    private String formatTime(int seconds) {
+        int minutes = seconds / 60;
+        int remainingSeconds = seconds % 60;
+        return String.format("%02d:%02d", minutes, remainingSeconds);
+    }
+
+    private void initializeImagesLabels() {
         // Chargement des images depuis les ressources
         whiteCaseImage = new Image("file:src/main/resources/com/example/echecs/img/white_case.png");
         greenCaseImage = new Image("file:src/main/resources/com/example/echecs/img/green_case.png");
@@ -206,8 +252,8 @@ public class BoardController {
         transition.setByY(distanceY);
         transition.setOnFinished(event -> {
             // Quand l'animation fini, on met a jour le resultat final
-            pieceImageView.setTranslateX(0);
-            pieceImageView.setTranslateY(0);
+            // pieceImageView.setTranslateX(0);
+            // pieceImageView.setTranslateY(0);
             movePiece(piece, targetCol, targetRow);
         });
 
@@ -279,22 +325,26 @@ public class BoardController {
     }
 
     private void switchTurn() {
-
-        if (!whiteTurn) {
-            player1ImageView.getStyleClass().add("player-turn");
-            player2ImageView.getStyleClass().remove("player-turn");
-        } else {
-            player2ImageView.getStyleClass().add("player-turn");
+        // On arrete le timer du joueur en cours, et relance l'autre
+        if (whiteTurn) {
+            whiteTimer.stop();
+            blackTimer.play();
             player1ImageView.getStyleClass().remove("player-turn");
+            player2ImageView.getStyleClass().add("player-turn");
+        } else {
+            blackTimer.stop();
+            whiteTimer.play();
+            player2ImageView.getStyleClass().remove("player-turn");
+            player1ImageView.getStyleClass().add("player-turn");
         }
 
-        // Changement de tour et vérification de l'échec et mat
+        // On change de tour et on check si y a un checkmate
         if (whiteKing.isCheckmate(board)) {
-            updateLogJeu("C'est la fin de la partie, victoire des noirs !");
+            endGame("Game over! Black wins!");
             return;
         }
         if (blackKing.isCheckmate(board)) {
-            updateLogJeu("C'est la fin de la partie, victoire des blancs !");
+            endGame("Game over! White wins!");
             return;
         }
 

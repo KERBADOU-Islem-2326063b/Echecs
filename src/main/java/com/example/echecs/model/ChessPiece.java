@@ -36,10 +36,6 @@ public abstract class ChessPiece {
     // Méthode abstraite pour vérifier si une pièce peut se déplacer vers une position cible
     public abstract boolean canMove(int targetCol, int targetRow, ChessPiece[][] board);
 
-    public ChessPiece copy() {
-        return new Pawn(this.getColor(), this.getColumnIndex(), this.getRowIndex());
-    }
-
     // Méthode pour obtenir le chemin de l'image représentant la pièce
     public String getImagePath() {
         return "file:src/main/resources/com/example/echecs/img/" + color.toLowerCase() + "_" + getClass().getSimpleName().toLowerCase() + ".png";
