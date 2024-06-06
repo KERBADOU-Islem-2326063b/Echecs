@@ -1,6 +1,7 @@
 package com.example.echecs.controllers;
 
 import com.example.echecs.model.*;
+import javafx.animation.TranslateTransition;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -8,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,14 +99,6 @@ public class BoardController {
                     ImageView pieceImageView = createPieceImageView(piece);
                     boardGrid.add(pieceImageView, col, row);
                 }
-                // Mise en évidence de la case sélectionnée
-                if (selectedPiece != null && (row == selectedPiece.getRowIndex() && col == selectedPiece.getColumnIndex())) {
-                    highlightSelectedSquare(squareImageView);
-                }
-                // Mise en évidence de l'ancienne case cliquée
-                if (oldClickedSquare != null && (row == GridPane.getRowIndex(oldClickedSquare) && col == GridPane.getColumnIndex(oldClickedSquare))) {
-                    highlightSelectedSquare(squareImageView);
-                }
             }
         }
     }
@@ -148,7 +142,7 @@ public class BoardController {
             }
             // Sinon, si une pièce est déjà sélectionnée et que le mouvement est valide, déplacer la pièce
             else if (selectedPiece != null && selectedPiece.canMove(targetCol, targetRow, board)) {
-                movePiece(selectedPiece, targetCol, targetRow);
+                animatePieceMove(selectedPiece, targetCol, targetRow);
             }
         }
     }
@@ -171,37 +165,58 @@ public class BoardController {
         // Si une pièce est déjà sélectionnée et que le clic est sur une case vide ou une case avec une pièce adverse,
         // vérifier si le mouvement est valide et déplacer la pièce le cas échéant
         else if (selectedPiece != null && selectedPiece.canMove(clickedPiece.getColumnIndex(), clickedPiece.getRowIndex(), board)) {
-            movePiece(selectedPiece, clickedPiece.getColumnIndex(), clickedPiece.getRowIndex());
+            animatePieceMove(selectedPiece, clickedPiece.getColumnIndex(), clickedPiece.getRowIndex());
         }
     }
 
+    private void animatePieceMove(ChessPiece piece, int targetCol, int targetRow) {
+        int row = piece.getRowIndex();
+        int col = piece.getColumnIndex();
+
+        // On recupere l'imageview de la piece
+        ImageView pieceImageView = (ImageView) getNodeFromGridPane(boardGrid, row, col, piece);
+        if (pieceImageView == null) return;
+
+        // On retire les cases avec des points
+        clearHighlightedSquares();
+
+        // On calcul la distance pour l'animation
+        double distanceX = (targetCol - col) * 71;
+        double distanceY = (targetRow - row) * 71;
+
+        // On met la piece devant pour l'animation
+        pieceImageView.toFront();
+
+        // On cree l'animation
+        TranslateTransition transition = new TranslateTransition(Duration.millis(450), pieceImageView);
+        transition.setByX(distanceX);
+        transition.setByY(distanceY);
+        transition.setOnFinished(event -> {
+            // Quand l'animation fini, on met a jour le resultat final
+            pieceImageView.setTranslateX(0);
+            pieceImageView.setTranslateY(0);
+            movePiece(piece, targetCol, targetRow);
+        });
+
+        transition.play();
+    }
 
     private void movePiece(ChessPiece piece, int targetCol, int targetRow) {
         int row = piece.getRowIndex();
         int col = piece.getColumnIndex();
 
-        // Déplacer la pièce
+        // On déplace la pièce
         board[row][col] = null;
         piece.setPosition(targetRow, targetCol);
         board[targetRow][targetCol] = piece;
 
-        // Mise en évidence de la case où la pièce était précédemment
-        if (oldClickedSquare != null) {
-            highlightSelectedSquare(oldClickedSquare);
-        }
-
-        // Mise en évidence de la case où la pièce est déplacée
-        ImageView targetSquareImageView = (ImageView) getNodeFromGridPane(boardGrid, targetRow, targetCol);
-        if (targetSquareImageView != null) {
-            highlightSelectedSquare(targetSquareImageView);
-        }
-
-        // Mettre à jour l'interface du plateau
+        // On met à jour le tableau
         updateBoard();
 
-        // Changer de tour
+        // On change de tour
         switchTurn();
     }
+
 
     private void clearHighlightedSquares() {
         // Effacer les cases mises en évidence
@@ -298,6 +313,18 @@ public class BoardController {
         for (Node node : gridPane.getChildren()) {
             if (GridPane.getRowIndex(node) != null && GridPane.getRowIndex(node) == row &&
                     GridPane.getColumnIndex(node) != null && GridPane.getColumnIndex(node) == col) {
+                return node;
+            }
+        }
+        return null;
+    }
+
+    private Node getNodeFromGridPane(GridPane gridPane, int row, int col, ChessPiece piece) {
+        // Récupérer un noeud spécifique dans le GridPane qui contient la pièce
+        for (Node node : gridPane.getChildren()) {
+            if (GridPane.getRowIndex(node) != null && GridPane.getRowIndex(node) == row &&
+                    GridPane.getColumnIndex(node) != null && GridPane.getColumnIndex(node) == col &&
+                    node.getUserData() == piece) {
                 return node;
             }
         }
