@@ -42,23 +42,6 @@
                      <padding>
                         <Insets left="35.0" top="80.0" />
                      </padding>
-                     <children>
-                        <Label text="8" />
-                        <Label text="7" GridPane.rowIndex="1" />
-                        <Label text="6" GridPane.rowIndex="2" />
-                        <Label text="5" GridPane.rowIndex="3" />
-                        <Label text="3" GridPane.rowIndex="5" />
-                        <Label text="4" GridPane.rowIndex="4" />
-                        <Label text="2" GridPane.rowIndex="6" />
-                        <Label text="1" GridPane.rowIndex="7" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                        <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-                        <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-                        <Label text="Label" GridPane.columnIndex="4" GridPane.rowIndex="7" />
-                        <Label text="Label" GridPane.columnIndex="5" GridPane.rowIndex="7" />
-                        <Label text="Label" GridPane.columnIndex="6" GridPane.rowIndex="7" />
-                        <Label text="Label" GridPane.columnIndex="7" GridPane.rowIndex="7" />
-                     </children>
                   </GridPane>
                </children>
             </VBox>
@@ -110,15 +93,15 @@
                               <Insets bottom="10.0" left="25.0" top="10.0" />
                            </padding>
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" fx:id="whiteTimeLabel" prefWidth="69.0" styleClass="playerInfo" text="" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+                              <Label fx:id="whiteTimeLabel" alignment="CENTER" contentDisplay="CENTER" prefWidth="69.0" styleClass="playerInfo" text="" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
                                  <HBox.margin>
                                     <Insets left="35.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label alignment="CENTER" fx:id="blackTimeLabel"  prefWidth="107.0" styleClass="playerInfo" text="" textFill="WHITE" textOverrun="CLIP" />
+                              <Label fx:id="blackTimeLabel" alignment="CENTER" prefWidth="107.0" styleClass="playerInfo" text="" textFill="WHITE" textOverrun="CLIP" />
                            </children>
                         </HBox>
-                        <Label contentDisplay="CENTER" prefHeight="22.0" styleClass="startPos" text="Position de départ" textFill="WHITE" textOverrun="CLIP">
+                        <Label contentDisplay="CENTER" prefHeight="22.0" styleClass="startPos" text="Historique" textFill="WHITE" textOverrun="CLIP">
                            <VBox.margin>
                               <Insets left="20.0" />
                            </VBox.margin>
@@ -135,7 +118,7 @@
                         </ScrollPane>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                      <children>
-                        <Button alignment="CENTER" graphicTextGap="12.0" mouseTransparent="true" onMouseClicked="#initialize" prefHeight="69.0" prefWidth="260.0" styleClass="newButton" text="Nouveau">
+                        <Button fx:id="undoMovement" alignment="CENTER" graphicTextGap="12.0" prefHeight="69.0" prefWidth="260.0" styleClass="newButton" text="Annuler">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="60.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -149,7 +132,7 @@
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets></Button>
-                        <Button alignment="CENTER" graphicTextGap="12.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="260.0" styleClass="cancelButton" text="Abandon">
+                        <Button fx:id="surrenderButton" alignment="CENTER" graphicTextGap="12.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="260.0" styleClass="cancelButton" text="Abandon">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="60.0" preserveRatio="true">
                                  <image>

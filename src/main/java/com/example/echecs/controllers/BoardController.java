@@ -4,9 +4,11 @@ import com.example.echecs.model.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,10 +17,9 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-
 public class BoardController {
     private ChessPiece[][] board = new ChessPiece[8][8];
+    private List<Move> moveHistory = new ArrayList<>();
     private List<ImageView> highlightedSquares = new ArrayList<>();
     private ChessPiece selectedPiece;
     private boolean whiteTurn = true;
@@ -37,9 +38,13 @@ public class BoardController {
     @FXML
     private ImageView player2ImageView;
     @FXML
-    private Label whiteTimeLabel = new Label();
+    private Label whiteTimeLabel;
     @FXML
-    private Label blackTimeLabel = new Label();
+    private Label blackTimeLabel;
+    @FXML
+    private Button undoMovement;
+    @FXML
+    private Button surrenderButton;
     private Timeline whiteTimer;
     private Timeline blackTimer;
     int whiteSecondsRemaining = 1200; // 1200 secondes = 20 minutes
@@ -48,9 +53,7 @@ public class BoardController {
     private King blackKing;
     private King whiteKing;
 
-    // Chargement des images
     private Image whiteCaseImage, greenCaseImage, whiteCaseClickedImage, greenCaseClickedImage, whiteCaseDotImage, greenCaseDotImage, redSquareImage;
-
     @FXML
     public void initialize() {
         initializeImagesLabels(); // Initialisation des images
@@ -58,6 +61,10 @@ public class BoardController {
         initializeTimers();
         player1ImageView.getStyleClass().add("player-turn");
         updateBoard(); // Mise à jour de l'affichage du plateau
+
+        // On initialise le bouton d'abondon et detecte si il est cliqué
+        undoMovement.setOnAction(this::handleUndoButton);
+        surrenderButton.setOnAction(this::handleSurrenderButton);
     }
 
     private void initializeTimers() {
@@ -146,6 +153,7 @@ public class BoardController {
     }
 
     private void updateBoard() {
+        // Mis a jour de l'affichage de la grille de jeu
         boardGrid.getChildren().clear();
         for (int row = 0; row < 8; ++row) {
             for (int col = 0; col < 8; ++col) {
@@ -252,8 +260,6 @@ public class BoardController {
         transition.setByY(distanceY);
         transition.setOnFinished(event -> {
             // Quand l'animation fini, on met a jour le resultat final
-            // pieceImageView.setTranslateX(0);
-            // pieceImageView.setTranslateY(0);
             movePiece(piece, targetCol, targetRow);
         });
 
@@ -263,6 +269,11 @@ public class BoardController {
     private void movePiece(ChessPiece piece, int targetCol, int targetRow) {
         int row = piece.getRowIndex();
         int col = piece.getColumnIndex();
+
+        // On sauvegarde le mouvement effectué et la piece mangé dans l'historique
+        ChessPiece capturedPiece = board[targetRow][targetCol];
+        Move newMove = new Move(piece, row, col, targetRow, targetCol, capturedPiece);
+        moveHistory.add(newMove);
 
         String move = coorPiece(col, row) + " -> " + coorPiece(targetCol, targetRow);
 
@@ -295,13 +306,14 @@ public class BoardController {
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
                 if (piece.canMove(col, row, board)) {
-                    highlightSquare(row, col, piece);
+                    dotSquare(row, col, piece);
                 }
             }
         }
     }
 
-    private void highlightSquare(int row, int col, ChessPiece piece) {
+    private void dotSquare(int row, int col, ChessPiece piece) {
+        // Change un carré en un carré avec un point
         Node node = getNodeFromGridPane(boardGrid, row, col);
         if (node instanceof ImageView squareImageView) {
             if (board[row][col] != null && !board[row][col].getColor().equals(piece.getColor())) {
@@ -315,12 +327,14 @@ public class BoardController {
     }
 
     private void highlightSelectedSquare(ImageView squareImageView) {
+        // On met en surbriance le carré selectionné
         int col = GridPane.getColumnIndex(squareImageView);
         int row = GridPane.getRowIndex(squareImageView);
         squareImageView.setImage((row + col) % 2 == 0 ? whiteCaseClickedImage : greenCaseClickedImage);
     }
 
     private void resetCases(ImageView squareImageView, int row, int col) {
+        // On remet l'image d'origine a la case selectionée
         squareImageView.setImage((row + col) % 2 == 0 ? whiteCaseImage : greenCaseImage);
     }
 
@@ -338,15 +352,6 @@ public class BoardController {
             player1ImageView.getStyleClass().add("player-turn");
         }
 
-        // On change de tour et on check si y a un checkmate
-        if (whiteKing.isCheckmate(board)) {
-            endGame("Game over! Black wins!");
-            return;
-        }
-        if (blackKing.isCheckmate(board)) {
-            endGame("Game over! White wins!");
-            return;
-        }
 
         whiteTurn = !whiteTurn;
         selectedPiece = null;
@@ -354,12 +359,31 @@ public class BoardController {
     }
 
     private void endGame(String message) {
-        logJeu.setText(message);
+        // On met fin à la partie
+        String currentText = logJeu.getText();
+        String newText = currentText + "\n" + message;
+
+        logJeu.setText(newText);
+        whiteTimer.stop();
+        blackTimer.stop();
         endGame = true;
     }
 
     private void updateTurnLabel() {
-        // Mettre à jour le label de tour et vérifier l'échec
+        // Mettre à jour le label de tour et vérifier l'échec ou echec et mat
+
+        // On change de tour et on check si y a un echec/echec et mat
+        if (whiteKing.isCheckmate(board)) {
+            System.out.println("Blanc echec et mat");
+            endGame("ECHEC ET MAT ! Victoire des noirs");
+            return;
+        }
+        if (blackKing.isCheckmate(board)) {
+            System.out.println("Noir echec et mat");
+            endGame("ECHEC ET MAT ! Victoire des blancs");
+            return;
+        }
+
         if (whiteTurn) {
             if (whiteKing.isCheck(board)) {
                 highlightCheckSquare(whiteKing);
@@ -374,6 +398,7 @@ public class BoardController {
     }
 
     private void highlightCheckSquare(King king) {
+        // On met en rouge le carré en dessous du roi
         int kingRow = king.getRowIndex();
         int kingCol = king.getColumnIndex();
         ImageView squareImageView = (ImageView) getNodeFromGridPane(boardGrid, kingRow, kingCol);
@@ -405,14 +430,44 @@ public class BoardController {
         return null;
     }
 
+    private void handleSurrenderButton(ActionEvent event) {
+        // Gestion de l'événement de clic sur le bouton "Abandonner"
+        String winner = whiteTurn ? "noirs" : "blancs";
+        endGame("Abandon, victoire des " + winner);
+    }
+
+    private void handleUndoButton(ActionEvent event) {
+        if (!moveHistory.isEmpty()) {
+            // On prend le dernier mouvement effectué
+            Move lastMove = moveHistory.remove(moveHistory.size() - 1);
+            ChessPiece piece = lastMove.getPiece();
+            int fromRow = lastMove.getFromRow();
+            int fromCol = lastMove.getFromCol();
+            int toRow = lastMove.getToRow();
+            int toCol = lastMove.getToCol();
+            ChessPiece capturedPiece = lastMove.getCapturedPiece();
+
+            // On bouge la piece à sa position d'origine
+            movePiece(piece, fromCol, fromRow);
+
+            // Si une pièce a été capturée, on la remet dans sa position d'origine
+            if (capturedPiece != null) {
+                board[toRow][toCol] = capturedPiece;
+                updateBoard(); // Update the board to reflect the replaced piece
+            }
+        }
+    }
+
+    // On met a jour l'historique des messages
     public void updateLogJeu(String move) {
         String currentText = logJeu.getText();
-        String playerColor = whiteTurn ? "Adversaire" : "Vous";
-        String newText = currentText + "\n" + playerColor + " - DÉPLACEMENT : " + move;
+        String playerColor = whiteTurn ? "Adversaire :" : "Vous :";
+        String newText = currentText + "\n" + playerColor + " " + move;
 
         logJeu.setText(newText);
     }
 
+    // On traduit en coordonne echec les colonnes et lignes
     private String coorPiece(int col, int row) {
         char colLabel = (char) ('a' + col);
         int rowLabel = 8 - row;
