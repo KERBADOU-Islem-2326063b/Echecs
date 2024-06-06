@@ -1,0 +1,1108 @@
+Index: src/main/java/com/example/echecs/EchecsApp.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.echecs;\n\nimport javafx.application.Application;\nimport javafx.fxml.FXMLLoader;\nimport javafx.scene.Scene;\nimport javafx.stage.Stage;\n\nimport java.io.IOException;\n\npublic class EchecsApp extends Application {\n    @Override\n    public void start(Stage stage) throws IOException {\n        FXMLLoader fxmlLoader = new FXMLLoader(EchecsApp.class.getResource(\"views/Echecs.fxml\"));\n\n        Scene scene = new Scene(fxmlLoader.load(), 665, 527);\n        stage.setTitle(\"Echecs\");\n\n        stage.setScene(scene);\n        stage.show();\n    }\n\n    public static void main(String[] args) {\n        launch();\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/echecs/EchecsApp.java b/src/main/java/com/example/echecs/EchecsApp.java
+--- a/src/main/java/com/example/echecs/EchecsApp.java	(revision 79e0f40f735551684c0eb4b2197b729fc0f298e3)
++++ b/src/main/java/com/example/echecs/EchecsApp.java	(date 1717505297828)
+@@ -12,7 +12,7 @@
+     public void start(Stage stage) throws IOException {
+         FXMLLoader fxmlLoader = new FXMLLoader(EchecsApp.class.getResource("views/Echecs.fxml"));
+ 
+-        Scene scene = new Scene(fxmlLoader.load(), 665, 527);
++        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+         stage.setTitle("Echecs");
+ 
+         stage.setScene(scene);
+Index: src/main/resources/com/example/echecs/views/Echecs.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.geometry.Insets?>\n<?import javafx.scene.control.Label?>\n<?import javafx.scene.image.Image?>\n<?import javafx.scene.image.ImageView?>\n<?import javafx.scene.layout.ColumnConstraints?>\n<?import javafx.scene.layout.GridPane?>\n<?import javafx.scene.layout.HBox?>\n<?import javafx.scene.layout.RowConstraints?>\n<?import javafx.scene.layout.VBox?>\n\n<VBox maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" prefHeight=\"527.0\" prefWidth=\"655.0\" xmlns=\"http://javafx.com/javafx/20.0.1\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.example.echecs.controllers.BoardController\">\n   <children>\n      <HBox prefHeight=\"527.0\" prefWidth=\"665.0\">\n         <children>\n            <VBox prefHeight=\"477.0\" prefWidth=\"438.0\">\n               <children>\n                  <HBox prefHeight=\"51.0\" prefWidth=\"438.0\" spacing=\"10.0\">\n                     <children>\n                        <ImageView fitHeight=\"40.0\" fitWidth=\"40.0\" pickOnBounds=\"true\" preserveRatio=\"true\">\n                           <image>\n                              <Image url=\"@../img/profil_noir.png\" />\n                           </image>\n                        </ImageView>\n                        <Label text=\"Adversaire\" />\n                     </children>\n                     <padding>\n                        <Insets left=\"10.0\" top=\"10.0\" />\n                     </padding>\n                  </HBox>\n                  <GridPane prefHeight=\"376.0\" prefWidth=\"438.0\">\n                     <columnConstraints>\n                        <ColumnConstraints maxWidth=\"50.0\" minWidth=\"50.0\" prefWidth=\"50.0\" />\n                        <ColumnConstraints maxWidth=\"50.0\" minWidth=\"50.0\" prefWidth=\"50.0\" />\n                        <ColumnConstraints maxWidth=\"50.0\" minWidth=\"50.0\" prefWidth=\"50.0\" />\n                        <ColumnConstraints maxWidth=\"50.0\" minWidth=\"50.0\" prefWidth=\"50.0\" />\n                        <ColumnConstraints maxWidth=\"50.0\" minWidth=\"50.0\" prefWidth=\"50.0\" />\n                        <ColumnConstraints maxWidth=\"50.0\" minWidth=\"50.0\" prefWidth=\"50.0\" />\n                        <ColumnConstraints maxWidth=\"50.0\" minWidth=\"50.0\" prefWidth=\"50.0\" />\n                        <ColumnConstraints maxWidth=\"50.0\" minWidth=\"50.0\" prefWidth=\"50.0\" />\n                     </columnConstraints>\n                     <rowConstraints>\n                        <RowConstraints maxHeight=\"50.0\" minHeight=\"50.0\" prefHeight=\"50.0\" />\n                        <RowConstraints maxHeight=\"50.0\" minHeight=\"50.0\" prefHeight=\"50.0\" />\n                        <RowConstraints maxHeight=\"50.0\" minHeight=\"50.0\" prefHeight=\"50.0\" />\n                        <RowConstraints maxHeight=\"50.0\" minHeight=\"50.0\" prefHeight=\"50.0\" />\n                        <RowConstraints maxHeight=\"50.0\" minHeight=\"50.0\" prefHeight=\"50.0\" />\n                        <RowConstraints maxHeight=\"50.0\" minHeight=\"50.0\" prefHeight=\"50.0\" />\n                        <RowConstraints maxHeight=\"50.0\" minHeight=\"50.0\" prefHeight=\"50.0\" />\n                        <RowConstraints maxHeight=\"50.0\" minHeight=\"50.0\" prefHeight=\"50.0\" />\n                     </rowConstraints>\n                     <children>\n                        <!-- Manually adding ImageView nodes for each cell -->\n                        <!-- Row 0 -->\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"0\" GridPane.rowIndex=\"0\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"1\" GridPane.rowIndex=\"0\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"2\" GridPane.rowIndex=\"0\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"3\" GridPane.rowIndex=\"0\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"4\" GridPane.rowIndex=\"0\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"5\" GridPane.rowIndex=\"0\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"6\" GridPane.rowIndex=\"0\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"7\" GridPane.rowIndex=\"0\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n\n                        <!-- Row 1 -->\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"0\" GridPane.rowIndex=\"1\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"1\" GridPane.rowIndex=\"1\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"2\" GridPane.rowIndex=\"1\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"3\" GridPane.rowIndex=\"1\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"4\" GridPane.rowIndex=\"1\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"5\" GridPane.rowIndex=\"1\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"6\" GridPane.rowIndex=\"1\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"7\" GridPane.rowIndex=\"1\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n\n                        <!-- Row 2 -->\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"0\" GridPane.rowIndex=\"2\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"1\" GridPane.rowIndex=\"2\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"2\" GridPane.rowIndex=\"2\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"3\" GridPane.rowIndex=\"2\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"4\" GridPane.rowIndex=\"2\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"5\" GridPane.rowIndex=\"2\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"6\" GridPane.rowIndex=\"2\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"7\" GridPane.rowIndex=\"2\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n\n                        <!-- Row 3 -->\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"0\" GridPane.rowIndex=\"3\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"1\" GridPane.rowIndex=\"3\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"2\" GridPane.rowIndex=\"3\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"3\" GridPane.rowIndex=\"3\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"4\" GridPane.rowIndex=\"3\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"5\" GridPane.rowIndex=\"3\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"6\" GridPane.rowIndex=\"3\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"7\" GridPane.rowIndex=\"3\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n\n                        <!-- Row 4 -->\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"0\" GridPane.rowIndex=\"4\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"1\" GridPane.rowIndex=\"4\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"2\" GridPane.rowIndex=\"4\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"3\" GridPane.rowIndex=\"4\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"4\" GridPane.rowIndex=\"4\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"5\" GridPane.rowIndex=\"4\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"6\" GridPane.rowIndex=\"4\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"7\" GridPane.rowIndex=\"4\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n\n                        <!-- Row 5 -->\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"0\" GridPane.rowIndex=\"5\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"1\" GridPane.rowIndex=\"5\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"2\" GridPane.rowIndex=\"5\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"3\" GridPane.rowIndex=\"5\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"4\" GridPane.rowIndex=\"5\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"5\" GridPane.rowIndex=\"5\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"6\" GridPane.rowIndex=\"5\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"7\" GridPane.rowIndex=\"5\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n\n                        <!-- Row 6 -->\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"0\" GridPane.rowIndex=\"6\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"1\" GridPane.rowIndex=\"6\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"2\" GridPane.rowIndex=\"6\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"3\" GridPane.rowIndex=\"6\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"4\" GridPane.rowIndex=\"6\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"5\" GridPane.rowIndex=\"6\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"6\" GridPane.rowIndex=\"6\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"7\" GridPane.rowIndex=\"6\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n\n                        <!-- Row 7 -->\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"0\" GridPane.rowIndex=\"7\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"1\" GridPane.rowIndex=\"7\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"2\" GridPane.rowIndex=\"7\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"3\" GridPane.rowIndex=\"7\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"4\" GridPane.rowIndex=\"7\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"5\" GridPane.rowIndex=\"7\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"6\" GridPane.rowIndex=\"7\">\n                           <image>\n                              <Image url=\"@../img/echiquier1.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" onMouseClicked=\"#onCaseClick\" GridPane.columnIndex=\"7\" GridPane.rowIndex=\"7\">\n                           <image>\n                              <Image url=\"@../img/echiquier2.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" mouseTransparent=\"true\" onMouseClicked=\"#onChessClick\" pickOnBounds=\"true\" preserveRatio=\"true\" GridPane.rowIndex=\"7\">\n                           <image>\n                              <Image url=\"@../img/tour_blanc.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" mouseTransparent=\"true\" onMouseClicked=\"#onChessClick\" pickOnBounds=\"true\" preserveRatio=\"true\" GridPane.columnIndex=\"1\" GridPane.rowIndex=\"7\">\n                           <image>\n                              <Image url=\"@../img/cavalier_blanc.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" mouseTransparent=\"true\" onMouseClicked=\"#onChessClick\" pickOnBounds=\"true\" preserveRatio=\"true\" GridPane.columnIndex=\"2\" GridPane.rowIndex=\"7\">\n                           <image>\n                              <Image url=\"@../img/fou_blanc.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" mouseTransparent=\"true\" onMouseClicked=\"#onChessClick\" pickOnBounds=\"true\" preserveRatio=\"true\" GridPane.columnIndex=\"3\" GridPane.rowIndex=\"7\">\n                           <image>\n                              <Image url=\"@../img/reine_blanc.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" mouseTransparent=\"true\" onMouseClicked=\"#onChessClick\" pickOnBounds=\"true\" preserveRatio=\"true\" GridPane.columnIndex=\"4\" GridPane.rowIndex=\"7\">\n                           <image>\n                              <Image url=\"@../img/roi_blanc.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" mouseTransparent=\"true\" onMouseClicked=\"#onChessClick\" pickOnBounds=\"true\" preserveRatio=\"true\" GridPane.columnIndex=\"5\" GridPane.rowIndex=\"7\">\n                           <image>\n                              <Image url=\"@../img/fou_blanc.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" mouseTransparent=\"true\" onMouseClicked=\"#onChessClick\" pickOnBounds=\"true\" preserveRatio=\"true\" GridPane.columnIndex=\"6\" GridPane.rowIndex=\"7\">\n                           <image>\n                              <Image url=\"@../img/cavalier_blanc.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" mouseTransparent=\"true\" onMouseClicked=\"#onChessClick\" pickOnBounds=\"true\" preserveRatio=\"true\" GridPane.columnIndex=\"7\" GridPane.rowIndex=\"7\">\n                           <image>\n                              <Image url=\"@../img/tour_blanc.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" mouseTransparent=\"true\" onMouseClicked=\"#onChessClick\" pickOnBounds=\"true\" preserveRatio=\"true\" GridPane.rowIndex=\"6\">\n                           <image>\n                              <Image url=\"@../img/pion_blanc.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" mouseTransparent=\"true\" onMouseClicked=\"#onChessClick\" pickOnBounds=\"true\" preserveRatio=\"true\" GridPane.columnIndex=\"1\" GridPane.rowIndex=\"6\">\n                           <image>\n                              <Image url=\"@../img/pion_blanc.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" mouseTransparent=\"true\" onMouseClicked=\"#onChessClick\" pickOnBounds=\"true\" preserveRatio=\"true\" GridPane.columnIndex=\"2\" GridPane.rowIndex=\"6\">\n                           <image>\n                              <Image url=\"@../img/pion_blanc.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" mouseTransparent=\"true\" onMouseClicked=\"#onChessClick\" pickOnBounds=\"true\" preserveRatio=\"true\" GridPane.columnIndex=\"3\" GridPane.rowIndex=\"6\">\n                           <image>\n                              <Image url=\"@../img/pion_blanc.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" mouseTransparent=\"true\" onMouseClicked=\"#onChessClick\" pickOnBounds=\"true\" preserveRatio=\"true\" GridPane.columnIndex=\"4\" GridPane.rowIndex=\"6\">\n                           <image>\n                              <Image url=\"@../img/pion_blanc.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" mouseTransparent=\"true\" onMouseClicked=\"#onChessClick\" pickOnBounds=\"true\" preserveRatio=\"true\" GridPane.columnIndex=\"5\" GridPane.rowIndex=\"6\">\n                           <image>\n                              <Image url=\"@../img/pion_blanc.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" mouseTransparent=\"true\" onMouseClicked=\"#onChessClick\" pickOnBounds=\"true\" preserveRatio=\"true\" GridPane.columnIndex=\"6\" GridPane.rowIndex=\"6\">\n                           <image>\n                              <Image url=\"@../img/pion_blanc.png\" />\n                           </image>\n                        </ImageView>\n                        <ImageView fitHeight=\"50.0\" fitWidth=\"50.0\" mouseTransparent=\"true\" onMouseClicked=\"#onChessClick\" pickOnBounds=\"true\" preserveRatio=\"true\" GridPane.columnIndex=\"7\" GridPane.rowIndex=\"6\">\n                           <image>\n                              <Image url=\"@../img/pion_blanc.png\" />\n                           </image>\n                        </ImageView>\n                     </children>\n                     <padding>\n                        <Insets left=\"10.0\" top=\"10.0\" />\n                     </padding>\n                  </GridPane>\n                  <HBox prefHeight=\"100.0\" prefWidth=\"200.0\" spacing=\"10.0\">\n                     <children>\n                        <ImageView fitHeight=\"40.0\" fitWidth=\"40.0\" pickOnBounds=\"true\" preserveRatio=\"true\">\n                           <image>\n                              <Image url=\"@../img/profil_blanc.png\" />\n                           </image>\n                        </ImageView>\n                        <Label text=\"Vous\" />\n                     </children>\n                     <padding>\n                        <Insets left=\"10.0\" top=\"10.0\" />\n                     </padding>\n                  </HBox>\n               </children>\n            </VBox>\n         </children>\n      </HBox>\n   </children>\n</VBox>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/com/example/echecs/views/Echecs.fxml b/src/main/resources/com/example/echecs/views/Echecs.fxml
+--- a/src/main/resources/com/example/echecs/views/Echecs.fxml	(revision 79e0f40f735551684c0eb4b2197b729fc0f298e3)
++++ b/src/main/resources/com/example/echecs/views/Echecs.fxml	(date 1717506302332)
+@@ -9,485 +9,652 @@
+ <?import javafx.scene.layout.HBox?>
+ <?import javafx.scene.layout.RowConstraints?>
+ <?import javafx.scene.layout.VBox?>
++<?import javafx.scene.text.Font?>
+ 
+-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="655.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.echecs.controllers.BoardController">
++<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #3d3d3d;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.echecs.controllers.BoardController">
+    <children>
+-      <HBox prefHeight="527.0" prefWidth="665.0">
++      <HBox prefHeight="720.0" prefWidth="720.0">
+          <children>
+-            <VBox prefHeight="477.0" prefWidth="438.0">
++            <VBox prefHeight="720.0" prefWidth="640.0">
+                <children>
+-                  <HBox prefHeight="51.0" prefWidth="438.0" spacing="10.0">
+-                     <children>
+-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+-                           <image>
+-                              <Image url="@../img/profil_noir.png" />
+-                           </image>
+-                        </ImageView>
+-                        <Label text="Adversaire" />
+-                     </children>
+-                     <padding>
+-                        <Insets left="10.0" top="10.0" />
+-                     </padding>
+-                  </HBox>
+-                  <GridPane prefHeight="376.0" prefWidth="438.0">
++                  <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="560.0" prefWidth="560.0">
+                      <columnConstraints>
+-                        <ColumnConstraints maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+-                        <ColumnConstraints maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+-                        <ColumnConstraints maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+-                        <ColumnConstraints maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+-                        <ColumnConstraints maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+-                        <ColumnConstraints maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+-                        <ColumnConstraints maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+-                        <ColumnConstraints maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
++                        <ColumnConstraints maxWidth="50.0" minWidth="70.0" prefWidth="50.0" />
++                        <ColumnConstraints maxWidth="50.0" minWidth="70.0" prefWidth="50.0" />
++                        <ColumnConstraints maxWidth="50.0" minWidth="70.0" prefWidth="50.0" />
++                        <ColumnConstraints maxWidth="50.0" minWidth="70.0" prefWidth="50.0" />
++                        <ColumnConstraints maxWidth="50.0" minWidth="70.0" prefWidth="50.0" />
++                        <ColumnConstraints maxWidth="50.0" minWidth="70.0" prefWidth="50.0" />
++                        <ColumnConstraints maxWidth="50.0" minWidth="70.0" prefWidth="50.0" />
++                        <ColumnConstraints maxWidth="50.0" minWidth="70.0" prefWidth="50.0" />
+                      </columnConstraints>
+                      <rowConstraints>
+-                        <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" />
+-                        <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" />
+-                        <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" />
+-                        <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" />
+-                        <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" />
+-                        <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" />
+-                        <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" />
+-                        <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" />
++                        <RowConstraints maxHeight="50.0" minHeight="70.0" prefHeight="50.0" />
++                        <RowConstraints maxHeight="50.0" minHeight="70.0" prefHeight="50.0" />
++                        <RowConstraints maxHeight="50.0" minHeight="70.0" prefHeight="50.0" />
++                        <RowConstraints maxHeight="50.0" minHeight="70.0" prefHeight="50.0" />
++                        <RowConstraints maxHeight="50.0" minHeight="70.0" prefHeight="50.0" />
++                        <RowConstraints maxHeight="50.0" minHeight="70.0" prefHeight="50.0" />
++                        <RowConstraints maxHeight="50.0" minHeight="70.0" prefHeight="50.0" />
++                        <RowConstraints maxHeight="50.0" minHeight="70.0" prefHeight="50.0" />
+                      </rowConstraints>
+                      <children>
+-                        <!-- Manually adding ImageView nodes for each cell -->
+-                        <!-- Row 0 -->
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="0" GridPane.rowIndex="0">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="7" GridPane.rowIndex="7">
+                            <image>
+                               <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="1" GridPane.rowIndex="0">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="6" GridPane.rowIndex="7">
+                            <image>
+                               <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="2" GridPane.rowIndex="0">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="4" GridPane.rowIndex="7">
+                            <image>
+-                              <Image url="@../img/echiquier2.png" />
++                              <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="3" GridPane.rowIndex="0">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                            <image>
+                               <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="4" GridPane.rowIndex="0">
+-                           <image>
+-                              <Image url="@../img/echiquier2.png" />
+-                           </image>
+-                        </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="5" GridPane.rowIndex="0">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.rowIndex="7">
+                            <image>
+                               <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="6" GridPane.rowIndex="0">
+-                           <image>
+-                              <Image url="@../img/echiquier2.png" />
+-                           </image>
+-                        </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="7" GridPane.rowIndex="0">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="5" GridPane.rowIndex="6">
+                            <image>
+                               <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-
+-                        <!-- Row 1 -->
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="0" GridPane.rowIndex="1">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="7" GridPane.rowIndex="6">
+                            <image>
+                               <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="1" GridPane.rowIndex="1">
+-                           <image>
+-                              <Image url="@../img/echiquier2.png" />
+-                           </image>
+-                        </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="2" GridPane.rowIndex="1">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="3" GridPane.rowIndex="6">
+                            <image>
+                               <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="3" GridPane.rowIndex="1">
+-                           <image>
+-                              <Image url="@../img/echiquier2.png" />
+-                           </image>
+-                        </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="4" GridPane.rowIndex="1">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                            <image>
+                               <Image url="@../img/echiquier1.png" />
+                            </image>
+-                        </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="5" GridPane.rowIndex="1">
+-                           <image>
+-                              <Image url="@../img/echiquier2.png" />
+-                           </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="6" GridPane.rowIndex="1">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.rowIndex="5">
+                            <image>
+                               <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="7" GridPane.rowIndex="1">
+-                           <image>
+-                              <Image url="@../img/echiquier2.png" />
+-                           </image>
+-                        </ImageView>
+-
+-                        <!-- Row 2 -->
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="0" GridPane.rowIndex="2">
+-                           <image>
+-                              <Image url="@../img/echiquier2.png" />
+-                           </image>
+-                        </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="1" GridPane.rowIndex="2">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                            <image>
+                               <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="2" GridPane.rowIndex="2">
+-                           <image>
+-                              <Image url="@../img/echiquier2.png" />
+-                           </image>
+-                        </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="3" GridPane.rowIndex="2">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="4" GridPane.rowIndex="5">
+                            <image>
+                               <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="4" GridPane.rowIndex="2">
+-                           <image>
+-                              <Image url="@../img/echiquier2.png" />
+-                           </image>
+-                        </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="5" GridPane.rowIndex="2">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="6" GridPane.rowIndex="5">
+                            <image>
+                               <Image url="@../img/echiquier1.png" />
+                            </image>
+-                        </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="6" GridPane.rowIndex="2">
+-                           <image>
+-                              <Image url="@../img/echiquier2.png" />
+-                           </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="7" GridPane.rowIndex="2">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                            <image>
+                               <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-
+-                        <!-- Row 3 -->
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="0" GridPane.rowIndex="3">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                            <image>
+                               <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="1" GridPane.rowIndex="3">
+-                           <image>
+-                              <Image url="@../img/echiquier2.png" />
+-                           </image>
+-                        </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="2" GridPane.rowIndex="3">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="5" GridPane.rowIndex="4">
+                            <image>
+                               <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="3" GridPane.rowIndex="3">
+-                           <image>
+-                              <Image url="@../img/echiquier2.png" />
+-                           </image>
+-                        </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="4" GridPane.rowIndex="3">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="7" GridPane.rowIndex="4">
+                            <image>
+                               <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="5" GridPane.rowIndex="3">
+-                           <image>
+-                              <Image url="@../img/echiquier2.png" />
+-                           </image>
+-                        </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="6" GridPane.rowIndex="3">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.rowIndex="3">
+                            <image>
+                               <Image url="@../img/echiquier1.png" />
+                            </image>
+-                        </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="7" GridPane.rowIndex="3">
+-                           <image>
+-                              <Image url="@../img/echiquier2.png" />
+-                           </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-
+-                        <!-- Row 4 -->
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="0" GridPane.rowIndex="4">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                            <image>
+-                              <Image url="@../img/echiquier2.png" />
++                              <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="1" GridPane.rowIndex="4">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                            <image>
+                               <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="2" GridPane.rowIndex="4">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="6" GridPane.rowIndex="3">
+                            <image>
+-                              <Image url="@../img/echiquier2.png" />
++                              <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="3" GridPane.rowIndex="4">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="7" GridPane.rowIndex="2">
+                            <image>
+                               <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="4" GridPane.rowIndex="4">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                            <image>
+-                              <Image url="@../img/echiquier2.png" />
++                              <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="5" GridPane.rowIndex="4">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                            <image>
+                               <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="6" GridPane.rowIndex="4">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                            <image>
+-                              <Image url="@../img/echiquier2.png" />
++                              <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="7" GridPane.rowIndex="4">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.rowIndex="1">
+                            <image>
+                               <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-
+-                        <!-- Row 5 -->
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="0" GridPane.rowIndex="5">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                            <image>
+                               <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="1" GridPane.rowIndex="5">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                            <image>
+-                              <Image url="@../img/echiquier2.png" />
++                              <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="2" GridPane.rowIndex="5">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                            <image>
+                               <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="3" GridPane.rowIndex="5">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="1">
+                            <image>
+-                              <Image url="@../img/echiquier2.png" />
++                              <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="4" GridPane.rowIndex="5">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="3">
+                            <image>
+                               <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="5" GridPane.rowIndex="5">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="5">
+                            <image>
+-                              <Image url="@../img/echiquier2.png" />
++                              <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="6" GridPane.rowIndex="5">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="7">
+                            <image>
+                               <Image url="@../img/echiquier1.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="7" GridPane.rowIndex="5">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="5" GridPane.rowIndex="7">
+                            <image>
+                               <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-
+-                        <!-- Row 6 -->
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="0" GridPane.rowIndex="6">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="3" GridPane.rowIndex="7">
+                            <image>
+                               <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="1" GridPane.rowIndex="6">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                            <image>
+-                              <Image url="@../img/echiquier1.png" />
++                              <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="2" GridPane.rowIndex="6">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.rowIndex="6">
+                            <image>
+                               <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="3" GridPane.rowIndex="6">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                            <image>
+-                              <Image url="@../img/echiquier1.png" />
++                              <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="4" GridPane.rowIndex="6">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="4" GridPane.rowIndex="6">
+                            <image>
+                               <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="5" GridPane.rowIndex="6">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="6" GridPane.rowIndex="6">
+                            <image>
+-                              <Image url="@../img/echiquier1.png" />
++                              <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="6" GridPane.rowIndex="6">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="7" GridPane.rowIndex="5">
+                            <image>
+                               <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="7" GridPane.rowIndex="6">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="5" GridPane.rowIndex="5">
+                            <image>
+-                              <Image url="@../img/echiquier1.png" />
++                              <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-
+-                        <!-- Row 7 -->
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="0" GridPane.rowIndex="7">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                            <image>
+-                              <Image url="@../img/echiquier1.png" />
++                              <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="1" GridPane.rowIndex="7">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                            <image>
+                               <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="2" GridPane.rowIndex="7">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.rowIndex="4">
+                            <image>
+-                              <Image url="@../img/echiquier1.png" />
++                              <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="3" GridPane.rowIndex="7">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                            <image>
+                               <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="4" GridPane.rowIndex="7">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                            <image>
+-                              <Image url="@../img/echiquier1.png" />
++                              <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="5" GridPane.rowIndex="7">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="6" GridPane.rowIndex="4">
+                            <image>
+                               <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="6" GridPane.rowIndex="7">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="7" GridPane.rowIndex="3">
+                            <image>
+-                              <Image url="@../img/echiquier1.png" />
++                              <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="7" GridPane.rowIndex="7">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="5" GridPane.rowIndex="3">
+                            <image>
+                               <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="7">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                            <image>
+-                              <Image url="@../img/tour_blanc.png" />
++                              <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                            <image>
+-                              <Image url="@../img/cavalier_blanc.png" />
++                              <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="7">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.rowIndex="2">
+                            <image>
+-                              <Image url="@../img/fou_blanc.png" />
++                              <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="7">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                            <image>
+-                              <Image url="@../img/reine_blanc.png" />
++                              <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="7">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                            <image>
+-                              <Image url="@../img/roi_blanc.png" />
++                              <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="7">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                            <image>
+-                              <Image url="@../img/fou_blanc.png" />
++                              <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="7">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="7" GridPane.rowIndex="1">
+                            <image>
+-                              <Image url="@../img/cavalier_blanc.png" />
++                              <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="7">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                            <image>
+-                              <Image url="@../img/tour_blanc.png" />
++                              <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="6">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                            <image>
+-                              <Image url="@../img/pion_blanc.png" />
++                              <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="6">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <image>
+-                              <Image url="@../img/pion_blanc.png" />
++                              <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="6">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick">
+                            <image>
+-                              <Image url="@../img/pion_blanc.png" />
++                              <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="6">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="2">
+                            <image>
+-                              <Image url="@../img/pion_blanc.png" />
++                              <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="6">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="4">
+                            <image>
+-                              <Image url="@../img/pion_blanc.png" />
++                              <Image url="@../img/echiquier2.png" />
+                            </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="6">
++                        <ImageView fitHeight="70.0" fitWidth="70.0" onMouseClicked="#onCaseClick" GridPane.columnIndex="6">
+                            <image>
+-                              <Image url="@../img/pion_blanc.png" />
++                              <Image url="@../img/echiquier2.png" />
+                            </image>
+-                        </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="6">
+-                           <image>
+-                              <Image url="@../img/pion_blanc.png" />
+-                           </image>
+-                        </ImageView>
+-                        <ImageView fitHeight="50.0" fitWidth="50.0" mouseTransparent="true" onMouseClicked="#onChessClick" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="6">
+-                           <image>
+-                              <Image url="@../img/pion_blanc.png" />
+-                           </image>
++                           <GridPane.margin>
++                              <Insets />
++                           </GridPane.margin>
+                         </ImageView>
+                      </children>
+                      <padding>
+                         <Insets left="10.0" top="10.0" />
+                      </padding>
++                     <VBox.margin>
++                        <Insets left="30.0" />
++                     </VBox.margin>
+                   </GridPane>
+-                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
++               </children>
++               <padding>
++                  <Insets top="60.0" />
++               </padding>
++            </VBox>
++            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="610.0" style="-fx-background-color: #1e1e1e; -fx-background-radius: 50 50 50 50;">
++               <children>
++                  <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="640.0" spacing="310.0">
++                     <padding>
++                        <Insets bottom="10.0" />
++                     </padding>
+                      <children>
+-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
++                        <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="22.0" prefWidth="115.0" text="Nassim" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" styleClass="playerInfo">
++
++                           <HBox.margin>
++                              <Insets left="35.0" />
++                           </HBox.margin>
++                        </Label>
++                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="22.0" prefWidth="107.0" text="Guest8123" textFill="WHITE" textOverrun="CLIP" styleClass="playerInfo">
++                        </Label>
++                     </children>
++                     <VBox.margin>
++                        <Insets />
++                     </VBox.margin>
++                  </HBox>
++                  <HBox alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="126.0" prefWidth="640.0" spacing="110.0">
++                     <children>
++                        <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-radius: 5;">
+                            <image>
+                               <Image url="@../img/profil_blanc.png" />
+                            </image>
++                           <HBox.margin>
++                              <Insets left="150.0" />
++                           </HBox.margin>
+                         </ImageView>
+-                        <Label text="Vous" />
++                        <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="79.0" text="VS" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
++                           <font>
++                              <Font name="Ginto Black Italic" size="50.0" />
++                           </font>
++                        </Label>
++                        <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
++                           <image>
++                              <Image url="@../img/profil_noir.png" />
++                           </image>
++                           <HBox.margin>
++                              <Insets />
++                           </HBox.margin>
++                        </ImageView>
+                      </children>
+                      <padding>
+-                        <Insets left="10.0" top="10.0" />
++                        <Insets right="180.0" />
++                     </padding>
++                  </HBox>
++                  <HBox prefHeight="52.0" prefWidth="610.0" spacing="330.0">
++                     <padding>
++                        <Insets bottom="10.0" left="25.0" top="10.0" />
+                      </padding>
++                     <children>
++                        <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="22.0" prefWidth="69.0" text="Vous" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
++                           <font>
++                              <Font name="Ginto Medium" size="20.0" />
++                           </font>
++                           <HBox.margin>
++                              <Insets left="35.0" />
++                           </HBox.margin>
++                        </Label>
++                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="22.0" prefWidth="107.0" text="Adversaire" textFill="WHITE" textOverrun="CLIP">
++                           <font>
++                              <Font name="Ginto" size="20.0" />
++                           </font>
++                        </Label>
++                     </children>
+                   </HBox>
++                  <Label contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="22.0" prefWidth="69.0" text="Position de départ" textFill="WHITE" textOverrun="CLIP">
++                     <font>
++                        <Font name="Ginto Bold" size="22.0" />
++                     </font>
++                     <opaqueInsets>
++                        <Insets />
++                     </opaqueInsets>
++                     <VBox.margin>
++                        <Insets left="20.0" />
++                     </VBox.margin>
++                  </Label>
+                </children>
++               <opaqueInsets>
++                  <Insets />
++               </opaqueInsets>
++               <HBox.margin>
++                  <Insets top="45.0" />
++               </HBox.margin>
+             </VBox>
+          </children>
++         <VBox.margin>
++            <Insets />
++         </VBox.margin>
+       </HBox>
+    </children>
+ </VBox>
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\n  <component name=\"MavenProjectsManager\">\n    <option name=\"originalFiles\">\n      <list>\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_20\" default=\"true\" project-jdk-name=\"20\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/out\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 79e0f40f735551684c0eb4b2197b729fc0f298e3)
++++ b/.idea/misc.xml	(date 1717493812056)
+@@ -8,7 +8,7 @@
+       </list>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_20" default="true" project-jdk-name="20" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_22" default="true" project-jdk-name="openjdk-22" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"cafb6311-df47-41a5-b88f-fb5892fbb4c2\" name=\"Changes\" comment=\"feat: Ajout du dossier image\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/BoardController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/BoardController.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Echecs.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Echecs.fxml\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MavenImportPreferences\">\n    <option name=\"generalSettings\">\n      <MavenGeneralSettings>\n        <option name=\"mavenHome\" value=\"Use Maven wrapper\" />\n        <option name=\"useMavenConfig\" value=\"true\" />\n      </MavenGeneralSettings>\n    </option>\n  </component>\n  <component name=\"ProjectId\" id=\"2hMICpd6WFyCipj3kNkk35KhsTx\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\n    &quot;last_opened_file_path&quot;: &quot;/amuhome/k23003542/IdeaProjects/Echecs/src/main/java/com/example/echecs/controllers&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/src/main/java/com/example/echecs/controllers\" />\n      <recent name=\"$PROJECT_DIR$/src/main/java/com/example/echecs\" />\n    </key>\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/src/main/resources/com/example/echecs\" />\n      <recent name=\"$PROJECT_DIR$/src/main/resources/java/com\" />\n      <recent name=\"$PROJECT_DIR$/src/main/resources/java\" />\n    </key>\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\n      <recent name=\"com.example.echecs\" />\n      <recent name=\"\" />\n    </key>\n  </component>\n  <component name=\"RunManager\">\n    <configuration name=\"EchecApp\" type=\"Application\" factoryName=\"Application\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.echecs.EchecsApp\" />\n      <module name=\"Echecs\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"cafb6311-df47-41a5-b88f-fb5892fbb4c2\" name=\"Changes\" comment=\"\" />\n      <created>1717397398628</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1717397398628</updated>\n      <workItem from=\"1717397399673\" duration=\"1240000\" />\n      <workItem from=\"1717400719040\" duration=\"1102000\" />\n      <workItem from=\"1717402772122\" duration=\"5309000\" />\n      <workItem from=\"1717408082590\" duration=\"593000\" />\n      <workItem from=\"1717408678979\" duration=\"1187000\" />\n      <workItem from=\"1717414347765\" duration=\"1003000\" />\n      <workItem from=\"1717491471205\" duration=\"2062000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"feat: Rennomage des fichiers, et début interface graphique\">\n      <created>1717403773299</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1717403773299</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"2\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\n    <MESSAGE value=\"feat: Rennomage des fichiers, et début interface graphique\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"feat: Rennomage des fichiers, et début interface graphique\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 79e0f40f735551684c0eb4b2197b729fc0f298e3)
++++ b/.idea/workspace.xml	(date 1717571614456)
+@@ -5,8 +5,22 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="cafb6311-df47-41a5-b88f-fb5892fbb4c2" name="Changes" comment="feat: Ajout du dossier image">
++      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/fnt/Ginto Black Italic.ttf" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/fnt/Ginto Black.ttf" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/fnt/Ginto Bold Italic.ttf" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/fnt/Ginto Bold.ttf" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/fnt/Ginto Light Italic.ttf" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/fnt/Ginto Light.ttf" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/fnt/Ginto Medium Italic.ttf" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/fnt/Ginto Medium.ttf" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/fnt/Ginto Regular Italic.ttf" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/fnt/Ginto Regular.ttf" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/fnt/Ginto Thin Italic.ttf" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/fnt/Ginto Thin.ttf" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/style.css" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/BoardController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/EchecsApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/EchecsApp.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Echecs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Echecs.fxml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -24,14 +38,28 @@
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
++  <component name="GitHubPullRequestSearchHistory">{
++  &quot;lastFilter&quot;: {
++    &quot;state&quot;: &quot;OPEN&quot;,
++    &quot;assignee&quot;: &quot;KERBADOU-Islem-2326063b&quot;
++  }
++}</component>
++  <component name="GithubPullRequestsUISettings"><![CDATA[{
++  "selectedUrlAndAccountId": {
++    "url": "https://github.com/KERBADOU-Islem-2326063b/Echecs.git",
++    "accountId": "19d35f89-4c59-4e38-b6f7-770840f8ed32"
++  }
++}]]></component>
+   <component name="MavenImportPreferences">
+     <option name="generalSettings">
+       <MavenGeneralSettings>
+-        <option name="mavenHome" value="Use Maven wrapper" />
+-        <option name="useMavenConfig" value="true" />
++        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+       </MavenGeneralSettings>
+     </option>
+   </component>
++  <component name="ProjectColorInfo">{
++  &quot;associatedIndex&quot;: 1
++}</component>
+   <component name="ProjectId" id="2hMICpd6WFyCipj3kNkk35KhsTx" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+     <ConfirmationsSetting value="2" id="Add" />
+@@ -43,14 +71,19 @@
+   <component name="PropertiesComponent">{
+   &quot;keyToString&quot;: {
+     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
++    &quot;Application.EchecApp.executor&quot;: &quot;Run&quot;,
+     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;/amuhome/k23003542/IdeaProjects/Echecs/src/main/java/com/example/echecs/controllers&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;last_opened_file_path&quot;: &quot;/home/islem/IdeaProjects/Echecs/src/main/java/com/example/echecs/controllers&quot;,
+     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;,
+     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+ }</component>
+@@ -60,6 +93,8 @@
+       <recent name="$PROJECT_DIR$/src/main/java/com/example/echecs" />
+     </key>
+     <key name="MoveFile.RECENT_KEYS">
++      <recent name="C:\Users\Nassim\IntelliJ\Echecs\src\main\resources\com\example\echecs\views" />
++      <recent name="C:\Users\Nassim\IntelliJ\Echecs\src\main\resources\com\example\echecs\img" />
+       <recent name="$PROJECT_DIR$/src/main/resources/com/example/echecs" />
+       <recent name="$PROJECT_DIR$/src/main/resources/java/com" />
+       <recent name="$PROJECT_DIR$/src/main/resources/java" />
+@@ -77,6 +112,14 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
++  </component>
++  <component name="SharedIndexes">
++    <attachedChunks>
++      <set>
++        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17011.79" />
++        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17011.79" />
++      </set>
++    </attachedChunks>
+   </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+@@ -92,7 +135,8 @@
+       <workItem from="1717408082590" duration="593000" />
+       <workItem from="1717408678979" duration="1187000" />
+       <workItem from="1717414347765" duration="1003000" />
+-      <workItem from="1717491471205" duration="2062000" />
++      <workItem from="1717429863210" duration="6179000" />
++      <workItem from="1717503422875" duration="3551000" />
+     </task>
+     <task id="LOCAL-00001" summary="feat: Rennomage des fichiers, et début interface graphique">
+       <created>1717403773299</created>
+@@ -112,4 +156,8 @@
+     <MESSAGE value="feat: Rennomage des fichiers, et début interface graphique" />
+     <option name="LAST_COMMIT_MESSAGE" value="feat: Rennomage des fichiers, et début interface graphique" />
+   </component>
++  <component name="XSLT-Support.FileAssociations.UIState">
++    <expand />
++    <select />
++  </component>
+ </project>
+\ No newline at end of file
+Index: src/main/resources/com/example/echecs/views/style.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/com/example/echecs/views/style.css b/src/main/resources/com/example/echecs/views/style.css
+new file mode 100644
+--- /dev/null	(date 1717506234925)
++++ b/src/main/resources/com/example/echecs/views/style.css	(date 1717506234925)
+@@ -0,0 +1,38 @@
++@font-face {
++    font-family: "Ginto Medium";
++    src: url('../fnt/Ginto Medium.ttf');
++}
++
++@font-face {
++    font-family: "Ginto";
++    src: url('../fnt/Ginto Regular.ttf');
++}
++
++
++@font-face {
++    font-family: "Ginto Black Italic";
++    src: url('../fnt/Ginto Black Italic.ttf');
++}
++
++
++@font-face {
++    font-family: "Ginto Bold";
++    src: url('../fnt/Ginto Regular.ttf');
++}
++
++
++
++.playerInfo {
++    -fx-font-family: "Ginto Medium";
++    -fx-font-size: 20.0;
++}
++
++.versusText {
++    -fx-font-family: "Ginto Black Italic";
++    -fx-font-size: 50.0;
++}
++
++.startPos {
++    -fx-font-family: "Ginto Bold";
++    -fx-font-size: 22.0;
++}
+\ No newline at end of file

@@ -1,0 +1,100 @@
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\n  <component name=\"MavenProjectsManager\">\n    <option name=\"originalFiles\">\n      <list>\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_20\" default=\"true\" project-jdk-name=\"20\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/out\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision a786a276c05c09d7a39a15153b1780cd9d5c207e)
++++ b/.idea/misc.xml	(date 1717493572324)
+@@ -8,7 +8,7 @@
+       </list>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_20" default="true" project-jdk-name="20" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_22" default="true" project-jdk-name="openjdk-22" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"cafb6311-df47-41a5-b88f-fb5892fbb4c2\" name=\"Changes\" comment=\"feat: Ajout du dossier image\">\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/BoardController.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/pom.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/echecs/EchecApp.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/echecs/EchecsApp.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/EchecController.java\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Echec.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Echecs.fxml\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\"><![CDATA[{\n  \"lastFilter\": {\n    \"state\": \"OPEN\",\n    \"assignee\": \"KERBADOU-Islem-2326063b\"\n  }\n}]]></component>\n  <component name=\"GithubPullRequestsUISettings\"><![CDATA[{\n  \"selectedUrlAndAccountId\": {\n    \"url\": \"https://github.com/KERBADOU-Islem-2326063b/Echecs.git\",\n    \"accountId\": \"438b0cac-aecb-4fcd-a937-1a5b9668d7f3\"\n  }\n}]]></component>\n  <component name=\"MavenImportPreferences\">\n    <option name=\"generalSettings\">\n      <MavenGeneralSettings>\n        <option name=\"mavenHomeTypeForPersistence\" value=\"WRAPPER\" />\n      </MavenGeneralSettings>\n    </option>\n  </component>\n  <component name=\"ProjectColorInfo\"><![CDATA[{\n  \"associatedIndex\": 1\n}]]></component>\n  <component name=\"ProjectId\" id=\"2hMICpd6WFyCipj3kNkk35KhsTx\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"ASKED_ADD_EXTERNAL_FILES\": \"true\",\n    \"Application.EchecApp.executor\": \"Run\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\n    \"WebServerToolWindowFactoryState\": \"false\",\n    \"git-widget-placeholder\": \"master\",\n    \"kotlin-language-version-configured\": \"true\",\n    \"last_opened_file_path\": \"/home/islem/IdeaProjects/Echecs/src/main/java/com/example/echecs/controllers\",\n    \"node.js.detected.package.eslint\": \"true\",\n    \"node.js.detected.package.tslint\": \"true\",\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\n    \"nodejs_package_manager_path\": \"npm\",\n    \"settings.editor.selected.configurable\": \"preferences.sourceCode.Java\",\n    \"vue.rearranger.settings.migration\": \"true\"\n  }\n}]]></component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/src/main/java/com/example/echecs/controllers\" />\n      <recent name=\"$PROJECT_DIR$/src/main/java/com/example/echecs\" />\n    </key>\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/src/main/resources/com/example/echecs\" />\n      <recent name=\"$PROJECT_DIR$/src/main/resources/java/com\" />\n      <recent name=\"$PROJECT_DIR$/src/main/resources/java\" />\n    </key>\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\n      <recent name=\"com.example.echecs\" />\n      <recent name=\"\" />\n    </key>\n  </component>\n  <component name=\"RunManager\">\n    <configuration name=\"EchecApp\" type=\"Application\" factoryName=\"Application\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.echecs.EchecsApp\" />\n      <module name=\"Echecs\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17011.79\" />\n        <option value=\"bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17011.79\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"cafb6311-df47-41a5-b88f-fb5892fbb4c2\" name=\"Changes\" comment=\"\" />\n      <created>1717397398628</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1717397398628</updated>\n      <workItem from=\"1717397399673\" duration=\"1240000\" />\n      <workItem from=\"1717400719040\" duration=\"1102000\" />\n      <workItem from=\"1717402772122\" duration=\"5309000\" />\n      <workItem from=\"1717408082590\" duration=\"593000\" />\n      <workItem from=\"1717408678979\" duration=\"1187000\" />\n      <workItem from=\"1717414347765\" duration=\"1003000\" />\n      <workItem from=\"1717429863210\" duration=\"6179000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"feat: Rennomage des fichiers, et début interface graphique\">\n      <created>1717403773299</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1717403773299</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"2\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\n    <MESSAGE value=\"feat: Rennomage des fichiers, et début interface graphique\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"feat: Rennomage des fichiers, et début interface graphique\" />\n  </component>\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\n    <expand />\n    <select />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision a786a276c05c09d7a39a15153b1780cd9d5c207e)
++++ b/.idea/workspace.xml	(date 1717493572317)
+@@ -4,14 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="cafb6311-df47-41a5-b88f-fb5892fbb4c2" name="Changes" comment="feat: Ajout du dossier image">
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/BoardController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/EchecApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/EchecsApp.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/EchecController.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Echec.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Echecs.fxml" afterDir="false" />
+-    </list>
++    <list default="true" id="cafb6311-df47-41a5-b88f-fb5892fbb4c2" name="Changes" comment="feat: Ajout du dossier image" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -27,16 +20,16 @@
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+-  "lastFilter": {
+-    "state": "OPEN",
+-    "assignee": "KERBADOU-Islem-2326063b"
++  <component name="GitHubPullRequestSearchHistory">{
++  &quot;lastFilter&quot;: {
++    &quot;state&quot;: &quot;OPEN&quot;,
++    &quot;assignee&quot;: &quot;KERBADOU-Islem-2326063b&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="GithubPullRequestsUISettings"><![CDATA[{
+   "selectedUrlAndAccountId": {
+     "url": "https://github.com/KERBADOU-Islem-2326063b/Echecs.git",
+-    "accountId": "438b0cac-aecb-4fcd-a937-1a5b9668d7f3"
++    "accountId": "19d35f89-4c59-4e38-b6f7-770840f8ed32"
+   }
+ }]]></component>
+   <component name="MavenImportPreferences">
+@@ -46,9 +39,9 @@
+       </MavenGeneralSettings>
+     </option>
+   </component>
+-  <component name="ProjectColorInfo"><![CDATA[{
+-  "associatedIndex": 1
+-}]]></component>
++  <component name="ProjectColorInfo">{
++  &quot;associatedIndex&quot;: 1
++}</component>
+   <component name="ProjectId" id="2hMICpd6WFyCipj3kNkk35KhsTx" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+     <ConfirmationsSetting value="2" id="Add" />
+@@ -72,6 +65,9 @@
+     "node.js.selected.package.eslint": "(autodetect)",
+     "node.js.selected.package.tslint": "(autodetect)",
+     "nodejs_package_manager_path": "npm",
++    "project.structure.last.edited": "Project",
++    "project.structure.proportion": "0.0",
++    "project.structure.side.proportion": "0.0",
+     "settings.editor.selected.configurable": "preferences.sourceCode.Java",
+     "vue.rearranger.settings.migration": "true"
+   }
+@@ -123,6 +119,7 @@
+       <workItem from="1717408678979" duration="1187000" />
+       <workItem from="1717414347765" duration="1003000" />
+       <workItem from="1717429863210" duration="6179000" />
++      <workItem from="1717493533837" duration="39000" />
+     </task>
+     <task id="LOCAL-00001" summary="feat: Rennomage des fichiers, et début interface graphique">
+       <created>1717403773299</created>
