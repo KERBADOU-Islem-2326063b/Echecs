@@ -119,7 +119,7 @@ public class computerSettings {
     @FXML
     private void onNewGame() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/echecs/views/Echecs.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/echecs/views/computerBoardGame.fxml"));
             Parent root = fxmlLoader.load();
 
             Stage stage = (Stage) boardGrid.getScene().getWindow();
