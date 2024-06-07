@@ -1,4 +1,7 @@
-package com.example.echecs.model;
+package com.example.echecs.model.gameStatus;
+
+import com.example.echecs.model.pieces.ChessPiece;
+
 public class Move {
     private ChessPiece piece;
     private int fromRow;

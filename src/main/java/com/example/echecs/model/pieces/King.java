@@ -1,4 +1,4 @@
-package com.example.echecs.model;
+package com.example.echecs.model.pieces;
 
 import java.util.ArrayList;
 import java.util.List;

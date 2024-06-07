@@ -1,6 +1,9 @@
-package com.example.echecs.controllers;
+package com.example.echecs.controllers.computerClass;
 
-import com.example.echecs.model.*;
+import com.example.echecs.controllers.GameController;
+import com.example.echecs.model.gameStatus.GameState;
+import com.example.echecs.model.gameStatus.Move;
+import com.example.echecs.model.pieces.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
@@ -16,11 +19,15 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-public class BoardController {
+import java.util.Random;
+
+public class ComputerBoardController {
     private ChessPiece[][] board = new ChessPiece[8][8];
     private List<Move> moveHistory = new ArrayList<>();
     private List<ImageView> highlightedSquares = new ArrayList<>();
@@ -61,9 +68,13 @@ public class BoardController {
     private Image whiteCaseImage, greenCaseImage, whiteCaseClickedImage, greenCaseClickedImage, whiteCaseDotImage, greenCaseDotImage, redSquareImage;
     @FXML
     public void initialize() {
-        initializeTimers(); // Initilisation du temps
         initializeImagesLabels(); // Initialisation des images
-        initializeBoard(); // Initialisation du plateau de jeu
+
+        if (GameController.getCharge() == 0)  {
+            initializeBoard(); // Initialisation du plateau de jeu
+            initializeTimers(); // Initilisation du temps
+        }
+        else restoreGameState(GameController.getChargedFile());
         player1ImageView.getStyleClass().add("player-turn");
         updateBoard(); // Mise à jour de l'affichage du plateau
 
@@ -328,7 +339,7 @@ public class BoardController {
                 squareImageView.setImage((col + row) % 2 == 0 ? whiteCaseDotImage : greenCaseDotImage);
             }
             highlightedSquares.add(squareImageView);
-            squareImageView.setOnMouseClicked(this::onBoardClick);
+            if (!whiteTurn) squareImageView.setOnMouseClicked(this::onBoardClick);
         }
     }
 
@@ -357,11 +368,59 @@ public class BoardController {
             player2ImageView.getStyleClass().remove("player-turn");
             player1ImageView.getStyleClass().add("player-turn");
         }
-
-
         whiteTurn = !whiteTurn;
+
+        if (!endGame && !whiteTurn) {
+            // Si ce n'est pas le tour des blancs et que la partie n'est pas terminée,
+            // c'est le tour du robot de jouer.
+            robotPlay();
+        }
+
         selectedPiece = null;
         updateTurnLabel();
+    }
+
+    private void robotPlay() {
+        Random random = new Random();
+        // Liste pour stocker toutes les pièces noires avec des mouvements valides
+        List<ChessPiece> blackPiecesWithValidMoves = new ArrayList<>();
+
+        // Parcourir toutes les pièces du joueur actif
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 8; col++) {
+                ChessPiece piece = board[row][col];
+                if (piece != null && piece.getColor().equals("Black")) { // Si c'est une pièce noire
+                    // Vérifier si la pièce a un mouvement valide
+                    for (int targetRow = 0; targetRow < 8; targetRow++) {
+                        for (int targetCol = 0; targetCol < 8; targetCol++) {
+                            if (piece.canMove(targetCol, targetRow, board)) {
+                                // Vérifier si le mouvement expose le roi
+                                if (!(piece instanceof King) || !((King) piece).isCheck(board)) {
+                                    // Ajouter la pièce à la liste si elle a un mouvement valide qui ne met pas en danger le roi
+                                    blackPiecesWithValidMoves.add(piece);
+                                }
+                                break; // Sortir de la boucle interne
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Choisir une pièce au hasard parmi celles avec des mouvements valides
+        if (!blackPiecesWithValidMoves.isEmpty()) {
+            ChessPiece randomPiece = blackPiecesWithValidMoves.get(random.nextInt(blackPiecesWithValidMoves.size()));
+
+            // Trouver un mouvement valide pour la pièce choisie
+            int randomTargetRow, randomTargetCol;
+            do {
+                randomTargetRow = random.nextInt(8);
+                randomTargetCol = random.nextInt(8);
+            } while (!randomPiece.canMove(randomTargetCol, randomTargetRow, board));
+
+            // Effectuer le mouvement de la pièce choisie
+            animatePieceMove(randomPiece, randomTargetCol, randomTargetRow);
+        }
     }
 
     private void endGame(String message) {
@@ -481,6 +540,8 @@ public class BoardController {
     }
 
 
+
+
     private void handleSaveButton(ActionEvent event)  {
         // On sauvegarde dans un fichier CSV l'etat du jeu d'Echec
         GameState gameState = new GameState(board, moveHistory, whiteTurn, whiteSecondsRemaining, blackSecondsRemaining);
@@ -495,6 +556,52 @@ public class BoardController {
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }
+        }
+    }
+
+    private void restoreGameState(File gameStatus) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(gameStatus))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length == 4) {
+                    String pieceType = parts[0];
+                    String pieceColor = parts[1];
+                    int row = Integer.parseInt(parts[2]);
+                    int col = Integer.parseInt(parts[3]);
+
+                    if (pieceType.equals("Pawn")) {
+                        board[row][col] = new Pawn(pieceColor, col, row);
+                    } else {
+                        switch (pieceType) {
+                            case "Rook":
+                                board[row][col] = new Rook(pieceColor, col, row);
+                                break;
+                            case "Knight":
+                                board[row][col] = new Knight(pieceColor, col, row);
+                                break;
+                            case "Bishop":
+                                board[row][col] = new Bishop(pieceColor, col, row);
+                                break;
+                            case "Queen":
+                                board[row][col] = new Queen(pieceColor, col, row);
+                                break;
+                            case "King":
+                                board[row][col] = new King(pieceColor, col, row);
+                                if (pieceColor.equals("Black")) {
+                                    blackKing = (King) board[row][col];
+                                } else {
+                                    whiteKing = (King) board[row][col];
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

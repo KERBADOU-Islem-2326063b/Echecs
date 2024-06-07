@@ -1,4 +1,4 @@
-package com.example.echecs.model;
+package com.example.echecs.model.pieces;
 
 public class Pawn extends ChessPiece {
     // Constructeur pour initialiser la couleur et la position du pion

@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #3d3d3d;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.echecs.controllers.computerSettings">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #3d3d3d;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.echecs.controllers.friendClass.FriendSettings">
     <children>
         <HBox alignment="CENTER" prefHeight="720.0" prefWidth="720.0" spacing="32.0">
             <children>
@@ -65,44 +65,44 @@
                                 </Label>
                                 <ImageView fitHeight="77.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../img/engrenage.png" />
+                                        <Image url="@../../img/engrenage.png" />
                                     </image>
                                 </ImageView>
                             </children>
                         </VBox>
                         <VBox alignment="TOP_CENTER" prefHeight="309.0" prefWidth="618.0" spacing="24.0">
                             <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
-                           <children>
-                              <Label text="Temps" textFill="WHITE">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Label>
-                              <MenuButton fx:id="timeMenuButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" styleClass="otherButton" text="10 minutes">
-                                <items>
-                                    <MenuItem onAction="#handleMenuAction" mnemonicParsing="false" text="5 minutes" />
-                                    <MenuItem onAction="#handleMenuAction" mnemonicParsing="false" text="10 minutes" />
-                                    <MenuItem onAction="#handleMenuAction" mnemonicParsing="false" text="20 minutes" />
-                                </items>
-                              </MenuButton>
-                           </children>
-                        </VBox>
-                        <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="610.0" spacing="20.0">
-                           <children>
-                              <Label text="Nouvelle partie ou charger une partie" textFill="WHITE">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Label>
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="610.0" spacing="160.0">
-                                 <children>
-                                    <Button minHeight="-Infinity" onAction="#onNewGame" minWidth="-Infinity" mnemonicParsing="false" prefWidth="150.0" styleClass="otherButton" text="Commencer" />
-                                    <Button mnemonicParsing="false" onAction="#onChargeGame" prefWidth="150.0" styleClass="otherButton" text="Commencer" />
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
+                                <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                    <children>
+                                        <Label text="Temps" textFill="WHITE">
+                                            <font>
+                                                <Font size="24.0" />
+                                            </font>
+                                        </Label>
+                                        <MenuButton fx:id="timeMenuButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" styleClass="otherButton" text="10 minutes">
+                                            <items>
+                                                <MenuItem onAction="#handleMenuAction" mnemonicParsing="false" text="5 minutes" />
+                                                <MenuItem onAction="#handleMenuAction" mnemonicParsing="false" text="10 minutes" />
+                                                <MenuItem onAction="#handleMenuAction" mnemonicParsing="false" text="20 minutes" />
+                                            </items>
+                                        </MenuButton>
+                                    </children>
+                                </VBox>
+                                <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="610.0" spacing="20.0">
+                                    <children>
+                                        <Label text="Nouvelle partie ou charger une partie" textFill="WHITE">
+                                            <font>
+                                                <Font size="24.0" />
+                                            </font>
+                                        </Label>
+                                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="610.0" spacing="160.0">
+                                            <children>
+                                                <Button minHeight="-Infinity" onAction="#onNewGame" minWidth="-Infinity" mnemonicParsing="false" prefWidth="150.0" styleClass="otherButton" text="Commencer" />
+                                                <Button mnemonicParsing="false" onAction="#onChargeGame" prefWidth="150.0" styleClass="otherButton" text="Commencer" />
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
                             </children>
                         </VBox>
                     </children>

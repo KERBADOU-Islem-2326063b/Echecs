@@ -1,20 +1,28 @@
-package com.example.echecs.controllers;
+package com.example.echecs.controllers.computerClass;
 
+import com.example.echecs.controllers.GameController;
 import com.example.echecs.model.pieces.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
-public class MenuController {
+public class ComputerSettings {
     @FXML
     private GridPane boardGrid;
+    @FXML
+    private MenuButton timeMenuButton;
     private ChessPiece[][] board = new ChessPiece[8][8];
     private Image whiteCaseImage, greenCaseImage;
     private King blackKing;
@@ -25,6 +33,7 @@ public class MenuController {
         initializeImagesLabels(); // Initialisation des images
         initializeBoard(); // Initialisation du plateau de jeu
         updateBoard();
+        GameController.setInitialTimeInSeconds(600); // On met de base le temps à 10 minutes
     }
     private void initializeImagesLabels() {
         // Chargement des images depuis les ressources
@@ -109,10 +118,12 @@ public class MenuController {
     }
 
     @FXML
-    private void onFriendButtonClick() {
+    private void onNewGame() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/echecs/views/friendFXML/FriendSettings.fxml"));
+            GameController.setCharge(0);
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/echecs/views/computerFXML/ComputerBoardGame.fxml"));
             Parent root = fxmlLoader.load();
+
             Stage stage = (Stage) boardGrid.getScene().getWindow();
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("/com/example/echecs/stylesheets/style.css").toExternalForm());
@@ -124,33 +135,54 @@ public class MenuController {
     }
 
     @FXML
-    private void onComputerButtonClick() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/echecs/views/computerFXML/ComputerSettings.fxml"));
-            Parent root = fxmlLoader.load();
-            Stage stage = (Stage) boardGrid.getScene().getWindow();
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("/com/example/echecs/stylesheets/style.css").toExternalForm());
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+    private void onChargeGame() {
+        // Créer un sélecteur de fichiers
+        FileChooser fileChooser = new FileChooser();
+
+        // Afficher la boîte de dialogue d'ouverture de fichier
+        File selectedFile = fileChooser.showOpenDialog(boardGrid.getScene().getWindow());
+
+
+        // Si un fichier est sélectionné, procéder au chargement
+        if (selectedFile != null) {
+            GameController.setCharge(1);
+            GameController.setChargedFile(selectedFile);
+
+            // Définir le filtre d'extension pour ne permettre que les fichiers CSV
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Fichiers CSV (*.csv)", "*.csv");
+            fileChooser.getExtensionFilters().add(extFilter);
+
+            // On change de fenêtre
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/echecs/views/computerFXML/ComputerBoardGame.fxml"));
+                Parent root = fxmlLoader.load();
+
+                Stage stage = (Stage) boardGrid.getScene().getWindow();
+                Scene scene = new Scene(root);
+                scene.getStylesheets().add(getClass().getResource("/com/example/echecs/stylesheets/style.css").toExternalForm());
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
         }
     }
 
-    @FXML
-    private void onTournamentButtonClick() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/echecs/views/computerFXML/ComputerSettings.fxml"));
-            Parent root = fxmlLoader.load();
-            Stage stage = (Stage) boardGrid.getScene().getWindow();
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("/com/example/echecs/stylesheets/style.css").toExternalForm());
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
+    public void handleMenuAction(ActionEvent event) {
+        MenuItem source = (MenuItem) event.getSource();
+        timeMenuButton.setText(source.getText());
+
+        if (timeMenuButton.getText().equals("5 minutes")) {
+            GameController.setInitialTimeInSeconds(300); // 5 minutes
+        } else if (timeMenuButton.getText().equals("10 minutes")) {
+            GameController.setInitialTimeInSeconds(600);; // 10 minutes
+        }
+        else GameController.setInitialTimeInSeconds(1200); // 20 minutes
+
+
+
+    }
 }

@@ -1,4 +1,7 @@
-package com.example.echecs.model;
+package com.example.echecs.model.gameStatus;
+
+import com.example.echecs.model.gameStatus.Move;
+import com.example.echecs.model.pieces.ChessPiece;
 
 import java.io.IOException;
 import java.util.List;

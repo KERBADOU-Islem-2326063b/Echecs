@@ -1,6 +1,9 @@
-package com.example.echecs.controllers;
+package com.example.echecs.controllers.friendClass;
 
-import com.example.echecs.model.*;
+import com.example.echecs.controllers.GameController;
+import com.example.echecs.model.gameStatus.GameState;
+import com.example.echecs.model.gameStatus.Move;
+import com.example.echecs.model.pieces.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
@@ -20,9 +23,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
-public class ComputerBoardController {
+public class FriendBoardController {
     private ChessPiece[][] board = new ChessPiece[8][8];
     private List<Move> moveHistory = new ArrayList<>();
     private List<ImageView> highlightedSquares = new ArrayList<>();
@@ -359,60 +360,11 @@ public class ComputerBoardController {
             player2ImageView.getStyleClass().remove("player-turn");
             player1ImageView.getStyleClass().add("player-turn");
         }
+
+
         whiteTurn = !whiteTurn;
-
-        if (!endGame && !whiteTurn) {
-            // Si ce n'est pas le tour des blancs et que la partie n'est pas terminée,
-            // c'est le tour du robot de jouer.
-            System.out.println("Tour du robot");
-            robotPlay();
-        }
-
         selectedPiece = null;
         updateTurnLabel();
-    }
-
-    private void robotPlay() {
-        Random random = new Random();
-        // Liste pour stocker toutes les pièces noires avec des mouvements valides
-        List<ChessPiece> blackPiecesWithValidMoves = new ArrayList<>();
-
-        // Parcourir toutes les pièces du joueur actif
-        for (int row = 0; row < 8; row++) {
-            for (int col = 0; col < 8; col++) {
-                ChessPiece piece = board[row][col];
-                if (piece != null && piece.getColor().equals("Black")) { // Si c'est une pièce noire
-                    // Vérifier si la pièce a un mouvement valide
-                    for (int targetRow = 0; targetRow < 8; targetRow++) {
-                        for (int targetCol = 0; targetCol < 8; targetCol++) {
-                            if (piece.canMove(targetCol, targetRow, board)) {
-                                // Vérifier si le mouvement expose le roi
-                                if (!(piece instanceof King) || !((King) piece).isCheck(board)) {
-                                    // Ajouter la pièce à la liste si elle a un mouvement valide qui ne met pas en danger le roi
-                                    blackPiecesWithValidMoves.add(piece);
-                                }
-                                break; // Sortir de la boucle interne
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        // Choisir une pièce au hasard parmi celles avec des mouvements valides
-        if (!blackPiecesWithValidMoves.isEmpty()) {
-            ChessPiece randomPiece = blackPiecesWithValidMoves.get(random.nextInt(blackPiecesWithValidMoves.size()));
-
-            // Trouver un mouvement valide pour la pièce choisie
-            int randomTargetRow, randomTargetCol;
-            do {
-                randomTargetRow = random.nextInt(8);
-                randomTargetCol = random.nextInt(8);
-            } while (!randomPiece.canMove(randomTargetCol, randomTargetRow, board));
-
-            // Effectuer le mouvement de la pièce choisie
-            animatePieceMove(randomPiece, randomTargetCol, randomTargetRow);
-        }
     }
 
     private void endGame(String message) {
@@ -530,8 +482,6 @@ public class ComputerBoardController {
         int rowLabel = 8 - row;
         return colLabel + Integer.toString(rowLabel);
     }
-
-
 
 
     private void handleSaveButton(ActionEvent event)  {

@@ -1,6 +1,7 @@
-package com.example.echecs.controllers;
+package com.example.echecs.controllers.friendClass;
 
-import com.example.echecs.model.*;
+import com.example.echecs.controllers.GameController;
+import com.example.echecs.model.pieces.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +18,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 
-public class computerSettings {
+public class FriendSettings {
     @FXML
     private GridPane boardGrid;
     @FXML
@@ -119,7 +120,7 @@ public class computerSettings {
     @FXML
     private void onNewGame() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/echecs/views/computerBoardGame.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/echecs/views/friendFXML/FriendBoardGame.fxml"));
             Parent root = fxmlLoader.load();
 
             Stage stage = (Stage) boardGrid.getScene().getWindow();

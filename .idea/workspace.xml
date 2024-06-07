@@ -5,10 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cafb6311-df47-41a5-b88f-fb5892fbb4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/ComputerBoardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/computerBoardGame.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/computerClass/ComputerSettings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/tournamentClass/TournamentBoardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/tournamentClass/TournamentSettings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/gameStatus/GameState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/friendFXML/FriendSettings.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/tournamentFXML/tournamentSettings.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/computerSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/computerSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/friendClass/FriendBoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/ComputerBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/computerClass/ComputerBoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/computerSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/friendClass/FriendSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Bishop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/pieces/Bishop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/ChessPiece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/pieces/ChessPiece.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/GameState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/pieces/King.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/pieces/Knight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/gameStatus/Move.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/pieces/Pawn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Queen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/pieces/Queen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/Rook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/pieces/Rook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Echecs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/friendFXML/FriendBoardGame.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/computerBoardGame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/computerFXML/ComputerBoardGame.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/computerSettings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/computerFXML/ComputerSettings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +40,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -77,6 +99,8 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/example/echecs" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/friendFXML" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/computerFXML" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/echecs" />
       <recent name="$PROJECT_DIR$/src/main/resources/java/com" />
       <recent name="$PROJECT_DIR$/src/main/resources/java" />
@@ -122,7 +146,8 @@
       <workItem from="1717505779250" duration="5931000" />
       <workItem from="1717587502877" duration="8117000" />
       <workItem from="1717595834857" duration="5098000" />
-      <workItem from="1717746040515" duration="8493000" />
+      <workItem from="1717746040515" duration="8748000" />
+      <workItem from="1717759749656" duration="7115000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Rennomage des fichiers, et début interface graphique">
       <created>1717403773299</created>
@@ -228,7 +253,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717754234563</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="feat: ajout du robot et de choix du temps">
+      <created>1717755131847</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1717755131847</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,6 +280,7 @@
     <MESSAGE value="feat: version la plus récente, jeu fonctionnel et début implémention sauvegarde jeu" />
     <MESSAGE value="feat: version la plus récente, ajout du menu seulement" />
     <MESSAGE value="feat: ajout du choix de temps" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: ajout du choix de temps" />
+    <MESSAGE value="feat: ajout du robot et de choix du temps" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: ajout du robot et de choix du temps" />
   </component>
 </project>

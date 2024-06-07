@@ -1,4 +1,4 @@
-package com.example.echecs.model;
+package com.example.echecs.model.pieces;
 
 public abstract class ChessPiece {
     // Attributs représentant la couleur et la position de la pièce
