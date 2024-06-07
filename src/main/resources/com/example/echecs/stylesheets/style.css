@@ -68,3 +68,26 @@
     -fx-border-radius: 50%;
 }
 
+.tournamentButton {
+    -fx-font-family: "Ginto Black";
+    -fx-font-size: 32.0;
+    -fx-text-fill: white;
+    -fx-background-color: #6eaa37;
+    -fx-background-radius: 20px;
+}
+
+.friendButton {
+    -fx-font-family: "Ginto Black";
+    -fx-font-size: 32.0;
+    -fx-text-fill: white;
+    -fx-background-color: #6eaa37;
+    -fx-background-radius: 20px;
+}
+
+.computerButton {
+    -fx-font-family: "Ginto Black";
+    -fx-font-size: 32.0;
+    -fx-text-fill: white;
+    -fx-background-color: #6eaa37;
+    -fx-background-radius: 20px;
+}
