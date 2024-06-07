@@ -41,9 +41,9 @@ public class BoardController {
     @FXML
     private ImageView player2ImageView;
     @FXML
-    private Label whiteTimeLabel;
+    private Label whiteTimeLabel = new Label("00:00");
     @FXML
-    private Label blackTimeLabel;
+    private Label blackTimeLabel = new Label("00:00");
     @FXML
     private Button undoMovement;
     @FXML
@@ -52,8 +52,8 @@ public class BoardController {
     private Button saveGameButton;
     private Timeline whiteTimer;
     private Timeline blackTimer;
-    int whiteSecondsRemaining = 1200; // 1200 secondes = 20 minutes
-    int blackSecondsRemaining = 1200;
+    int whiteSecondsRemaining = GameController.getInitialTimeInSeconds(); // On récupère le temps défini avant
+    int blackSecondsRemaining = GameController.getInitialTimeInSeconds();
 
     private King blackKing;
     private King whiteKing;
@@ -61,9 +61,9 @@ public class BoardController {
     private Image whiteCaseImage, greenCaseImage, whiteCaseClickedImage, greenCaseClickedImage, whiteCaseDotImage, greenCaseDotImage, redSquareImage;
     @FXML
     public void initialize() {
+        initializeTimers(); // Initilisation du temps
         initializeImagesLabels(); // Initialisation des images
         initializeBoard(); // Initialisation du plateau de jeu
-        initializeTimers();
         player1ImageView.getStyleClass().add("player-turn");
         updateBoard(); // Mise à jour de l'affichage du plateau
 
@@ -73,35 +73,35 @@ public class BoardController {
         saveGameButton.setOnAction(this::handleSaveButton);
     }
 
-    private void initializeTimers() {
+
+    public void initializeTimers() {
         whiteTimeLabel.setText(formatTime(whiteSecondsRemaining));
         blackTimeLabel.setText(formatTime(blackSecondsRemaining));
 
-        // Initialisation du timer pour le joueur blanc
+        // Initialisation du temps pour le joueur blanc
         whiteTimer = new Timeline(
                 new KeyFrame(Duration.seconds(1), event -> {
                     if (whiteSecondsRemaining > 0) --whiteSecondsRemaining;
                     whiteTimeLabel.setText(formatTime(whiteSecondsRemaining));
                     if (whiteSecondsRemaining <= 0) {
-                        endGame("Fin du temps important, victoire des noirs");
+                        endGame("Fin du temps imparti, victoire des noirs");
                     }
                 })
         );
         whiteTimer.setCycleCount(Timeline.INDEFINITE);
 
-        // Initialisation du timer pour le joueur noir
         blackTimer = new Timeline(
                 new KeyFrame(Duration.seconds(1), event -> {
                     if (blackSecondsRemaining > 0) --blackSecondsRemaining;
                     blackTimeLabel.setText(formatTime(blackSecondsRemaining));
                     if (blackSecondsRemaining <= 0) {
-                        endGame("Fin du temps important, victoire des blanc");
+                        endGame("Fin du temps imparti, victoire des blancs");
                     }
                 })
         );
         blackTimer.setCycleCount(Timeline.INDEFINITE);
 
-        // On commence avec le timer du joueur blanc
+        // On lance le timer
         whiteTimer.play();
     }
 

@@ -5,12 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cafb6311-df47-41a5-b88f-fb5892fbb4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/MenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Menu.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/GameController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/computerSettings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/computer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/engrenage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/computerSettings.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/EchecsApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/EchecsApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/BoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/MenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/stylesheets/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/stylesheets/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Echecs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Echecs.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Menu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +129,7 @@
       <workItem from="1717505779250" duration="5931000" />
       <workItem from="1717587502877" duration="8117000" />
       <workItem from="1717595834857" duration="5098000" />
-      <workItem from="1717746040515" duration="310000" />
+      <workItem from="1717746040515" duration="7605000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Rennomage des fichiers, et début interface graphique">
       <created>1717403773299</created>
@@ -216,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717743009414</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="feat: version la plus récente, ajout du menu seulement">
+      <created>1717746495552</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1717746495552</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,6 +246,7 @@
     <MESSAGE value="feat: ajout d'echec (il reste mat)" />
     <MESSAGE value="feat: version la plus récente" />
     <MESSAGE value="feat: version la plus récente, jeu fonctionnel et début implémention sauvegarde jeu" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: version la plus récente, jeu fonctionnel et début implémention sauvegarde jeu" />
+    <MESSAGE value="feat: version la plus récente, ajout du menu seulement" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: version la plus récente, ajout du menu seulement" />
   </component>
 </project>

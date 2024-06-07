@@ -11,7 +11,7 @@
          <children>
             <VBox alignment="CENTER" prefHeight="720.0" prefWidth="640.0">
                <children>
-                  <Button fx:id="saveGameButton" mnemonicParsing="false" text="Sauvegarder" />
+                  <Button fx:id="saveGameButton" styleClass="otherButton" mnemonicParsing="false" text="Sauvegarder" />
                   <GridPane fx:id="boardGrid" prefHeight="560.0" prefWidth="560.0">
                      <columnConstraints>
                         <ColumnConstraints maxWidth="70.0" minWidth="70.0" prefWidth="70.0" />
