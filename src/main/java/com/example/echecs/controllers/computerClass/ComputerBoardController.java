@@ -219,6 +219,7 @@ public class ComputerBoardController {
         // Vérifier si la case cliquée contient une pièce d'échecs
         if (clickedNode instanceof ImageView) {
             ChessPiece clickedPiece = (ChessPiece) clickedNode.getUserData();
+
             // Si une pièce est présente sur la case cliquée, gérer sa sélection
             if (clickedPiece != null) {
                 handlePieceSelection(clickedPiece);
@@ -598,8 +599,24 @@ public class ComputerBoardController {
                                 break;
                         }
                     }
+                } else if (parts.length == 2) {
+                    switch (parts[0]) {
+                        case "WhiteTurn":
+                            whiteTurn = Boolean.parseBoolean(parts[1]);
+                            break;
+                        case "WhiteTimeRemaining":
+                            whiteSecondsRemaining = Integer.parseInt(parts[1]);
+                            break;
+                        case "BlackTimeRemaining":
+                            blackSecondsRemaining = Integer.parseInt(parts[1]);
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
+            updateBoard();
+            initializeTimers();
         } catch (IOException e) {
             e.printStackTrace();
         }

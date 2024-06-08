@@ -141,7 +141,7 @@ public class MenuController {
     @FXML
     private void onTournamentButtonClick() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/echecs/views/computerFXML/ComputerSettings.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/echecs/views/computerFXML/Menu.fxml"));
             Parent root = fxmlLoader.load();
             Stage stage = (Stage) boardGrid.getScene().getWindow();
             Scene scene = new Scene(root);

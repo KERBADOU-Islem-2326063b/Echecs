@@ -138,16 +138,34 @@ public class FriendSettings {
         // Créer un sélecteur de fichiers
         FileChooser fileChooser = new FileChooser();
 
-        // Définir le filtre d'extension pour ne permettre que les fichiers CSV
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Fichiers CSV (*.csv)", "*.csv");
-        fileChooser.getExtensionFilters().add(extFilter);
-
         // Afficher la boîte de dialogue d'ouverture de fichier
         File selectedFile = fileChooser.showOpenDialog(boardGrid.getScene().getWindow());
 
+
         // Si un fichier est sélectionné, procéder au chargement
         if (selectedFile != null) {
-            // A faire
+            GameController.setCharge(1);
+            GameController.setChargedFile(selectedFile);
+
+            // Définir le filtre d'extension pour ne permettre que les fichiers CSV
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Fichiers CSV (*.csv)", "*.csv");
+            fileChooser.getExtensionFilters().add(extFilter);
+
+            // On change de fenêtre
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/echecs/views/friendFXML/FriendBoardGame.fxml"));
+                Parent root = fxmlLoader.load();
+
+                Stage stage = (Stage) boardGrid.getScene().getWindow();
+                Scene scene = new Scene(root);
+                scene.getStylesheets().add(getClass().getResource("/com/example/echecs/stylesheets/style.css").toExternalForm());
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
         }
     }
 
