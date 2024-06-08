@@ -19,10 +19,14 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+
 public class FriendBoardController {
     private ChessPiece[][] board = new ChessPiece[8][8];
     private List<Move> moveHistory = new ArrayList<>();
@@ -64,9 +68,12 @@ public class FriendBoardController {
     private Image whiteCaseImage, greenCaseImage, whiteCaseClickedImage, greenCaseClickedImage, whiteCaseDotImage, greenCaseDotImage, redSquareImage;
     @FXML
     public void initialize() {
-        initializeTimers(); // Initilisation du temps
         initializeImagesLabels(); // Initialisation des images
-        initializeBoard(); // Initialisation du plateau de jeu
+        if (GameController.getCharge() == 0)  {
+            initializeBoard(); // Initialisation du plateau de jeu
+            initializeTimers(); // Initilisation du temps
+        }
+        else restoreGameState(GameController.getChargedFile());
         player1ImageView.getStyleClass().add("player-turn");
         updateBoard(); // Mise à jour de l'affichage du plateau
 
@@ -383,12 +390,10 @@ public class FriendBoardController {
 
         // On change de tour et on check si y a un echec/echec et mat
         if (whiteKing.isCheckmate(board)) {
-            System.out.println("Blanc echec et mat");
             endGame("ECHEC ET MAT ! Victoire des noirs");
             return;
         }
         if (blackKing.isCheckmate(board)) {
-            System.out.println("Noir echec et mat");
             endGame("ECHEC ET MAT ! Victoire des blancs");
             return;
         }
@@ -498,6 +503,68 @@ public class FriendBoardController {
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }
+        }
+    }
+
+    private void restoreGameState(File gameStatus) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(gameStatus))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length == 4) {
+                    String pieceType = parts[0];
+                    String pieceColor = parts[1];
+                    int row = Integer.parseInt(parts[2]);
+                    int col = Integer.parseInt(parts[3]);
+
+                    if (pieceType.equals("Pawn")) {
+                        board[row][col] = new Pawn(pieceColor, col, row);
+                    } else {
+                        switch (pieceType) {
+                            case "Rook":
+                                board[row][col] = new Rook(pieceColor, col, row);
+                                break;
+                            case "Knight":
+                                board[row][col] = new Knight(pieceColor, col, row);
+                                break;
+                            case "Bishop":
+                                board[row][col] = new Bishop(pieceColor, col, row);
+                                break;
+                            case "Queen":
+                                board[row][col] = new Queen(pieceColor, col, row);
+                                break;
+                            case "King":
+                                board[row][col] = new King(pieceColor, col, row);
+                                if (pieceColor.equals("Black")) {
+                                    blackKing = (King) board[row][col];
+                                } else {
+                                    whiteKing = (King) board[row][col];
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                } else if (parts.length == 2) {
+                    switch (parts[0]) {
+                        case "WhiteTurn":
+                            whiteTurn = Boolean.parseBoolean(parts[1]);
+                            break;
+                        case "WhiteTimeRemaining":
+                            whiteSecondsRemaining = Integer.parseInt(parts[1]);
+                            break;
+                        case "BlackTimeRemaining":
+                            blackSecondsRemaining = Integer.parseInt(parts[1]);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            updateBoard();
+            initializeTimers();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

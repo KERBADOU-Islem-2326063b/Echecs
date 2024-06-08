@@ -440,12 +440,10 @@ public class ComputerBoardController {
 
         // On change de tour et on check si y a un echec/echec et mat
         if (whiteKing.isCheckmate(board)) {
-            System.out.println("Blanc echec et mat");
             endGame("ECHEC ET MAT ! Victoire des noirs");
             return;
         }
         if (blackKing.isCheckmate(board)) {
-            System.out.println("Noir echec et mat");
             endGame("ECHEC ET MAT ! Victoire des blancs");
             return;
         }

@@ -5,14 +5,26 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #3d3d3d;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.echecs.controllers.computerClass.ComputerBoardController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #302e2b;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.echecs.controllers.computerClass.ComputerBoardController">
     <children>
         <HBox alignment="CENTER" prefHeight="720.0" prefWidth="720.0">
             <children>
                 <VBox alignment="CENTER" prefHeight="720.0" prefWidth="640.0">
                     <children>
-                        <Button fx:id="saveGameButton" styleClass="otherButton" mnemonicParsing="false" text="Sauvegarder" />
-                        <GridPane fx:id="boardGrid" prefHeight="560.0" prefWidth="560.0">
+                        <HBox prefHeight="15.0" prefWidth="640.0" spacing="6.0">
+                            <children>
+                                <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../../img/white_profile.png" />
+                                    </image>
+                                </ImageView>
+                                <Label text="Adversaire" textFill="WHITE" />
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="10.0" left="36.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <GridPane fx:id="boardGrid" prefHeight="560.0" prefWidth="1271.0">
                             <columnConstraints>
                                 <ColumnConstraints maxWidth="70.0" minWidth="70.0" prefWidth="70.0" />
                                 <ColumnConstraints maxWidth="70.0" minWidth="70.0" prefWidth="70.0" />
@@ -34,15 +46,30 @@
                                 <RowConstraints maxHeight="70.0" minHeight="70.0" prefHeight="70.0" />
                             </rowConstraints>
                             <padding>
-                                <Insets left="35.0" top="20.0" />
+                                <Insets bottom="2.0" left="35.0" top="2.0" />
                             </padding>
+                            <VBox.margin>
+                                <Insets />
+                            </VBox.margin>
                         </GridPane>
+                        <HBox prefHeight="16.0" prefWidth="1266.0" spacing="6.0">
+                            <children>
+                                <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../../img/black_profile.png" />
+                                    </image></ImageView>
+                                <Label text="Vous" textFill="WHITE" />
+                            </children>
+                            <VBox.margin>
+                                <Insets left="36.0" top="10.0" />
+                            </VBox.margin>
+                        </HBox>
                     </children>
                     <HBox.margin>
                         <Insets />
                     </HBox.margin>
                 </VBox>
-                <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="610.0" style="-fx-background-color: #1e1e1e; -fx-background-radius: 50 50 50 50;">
+                <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="610.0" style="-fx-background-color: #262522; -fx-background-radius: 50 50 50 50;">
                     <children>
                         <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="640.0" spacing="310.0">
                             <padding>
@@ -109,7 +136,7 @@
                                     <padding>
                                         <Insets bottom="0" left="20" right="0" />
                                     </padding>
-                                    <Label fx:id="logJeu" alignment="TOP_LEFT" prefHeight="400" prefWidth="570" styleClass="playerInfo" textFill="WHITE" wrapText="true" />
+                                    <Label fx:id="logJeu" alignment="TOP_LEFT" prefHeight="99999" prefWidth="570" styleClass="playerInfo" textFill="WHITE" wrapText="true" />
                                 </VBox>
                             </content>
                         </ScrollPane>
@@ -137,6 +164,11 @@
                                             </image>
                                         </ImageView>
                                     </graphic></Button>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <Button fx:id="saveGameButton" styleClass="settingsButton" mnemonicParsing="false" text="Sauvegarder" />
                             </children>
                         </HBox>
                     </children>
