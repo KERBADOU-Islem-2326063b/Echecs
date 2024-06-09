@@ -7,11 +7,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class EchecsApp extends Application {
+public class ChessyApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         System.setProperty("prism.lcdtext", "false");
-        FXMLLoader fxmlLoader = new FXMLLoader(EchecsApp.class.getResource("views/Menu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ChessyApp.class.getResource("views/Menu.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         scene.getStylesheets().add(getClass().getResource("stylesheets/style.css").toExternalForm());

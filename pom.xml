@@ -44,6 +44,7 @@
       <scope>test</scope>
     </dependency>              </dependencies>
 
+
   <build>
         <plugins>
             <plugin>
@@ -64,7 +65,7 @@
             <!-- Default configuration for running with: mvn clean javafx:run -->
             <id>default-cli</id>
             <configuration>
-              <mainClass>com.example.echecs/com.example.echecs.EchecsApp</mainClass>
+              <mainClass>com.example.echecs/com.example.echecs.ChessyApp</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>
