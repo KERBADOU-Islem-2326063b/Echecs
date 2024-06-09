@@ -100,27 +100,16 @@
                                                 <MenuItem onAction="#handleMenuAction" mnemonicParsing="false" text="20 minutes" />
                                             </items>
                                         </MenuButton>
-                                        <Label text="Contre" textFill="WHITE">
-                                            <font>
-                                                <Font size="24.0" />
-                                            </font>
-                                        </Label>
-                                        <MenuButton fx:id="playerlistButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" styleClass="settingsButton" text="Islem" textFill="WHITE">
-                                            <items>
-                                            </items>
-                                        </MenuButton>
-                                        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="150.0" styleClass="settingsButton" text="Choisir" />
                                     </children>
                                 </VBox>
                                 <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="610.0" spacing="20.0">
                                     <children>
-                                        <Label text="Lancer une partie" textFill="WHITE">
+                                        <Label text="Lancer le tournoi" textFill="WHITE">
                                             <font>
                                                 <Font size="24.0" />
                                             </font>
                                         </Label>
                                         <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="150.0" styleClass="settingsButton" text="Commencer" />
-                                        <Button mnemonicParsing="false" prefWidth="150.0" styleClass="settingsButton" text="Charger" />
                                     </children>
                                 </VBox>
                             </children>

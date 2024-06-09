@@ -26,12 +26,8 @@ public class TournamentSettings {
     @FXML
     private MenuButton timeMenuButton;
     @FXML
-    private MenuButton playerlistButton;
-    @FXML
     private Label Name;
     @FXML
-    private Label ennemyName;
-    private Map<String, String[]> playersData = new HashMap<>();
     private ChessPiece[][] board = new ChessPiece[8][8];
     private Image whiteCaseImage, greenCaseImage;
     private King blackKing;
@@ -43,7 +39,6 @@ public class TournamentSettings {
         initializeImagesLabels(); // Initialisation des images
         initializeBoard(); // Initialisation du plateau de jeu
         updateBoard();
-        chargePlayers();
         GameController.setInitialTimeInSeconds(600); // On met de base le temps à 10 minutes
     }
     private void initializeImagesLabels() {
@@ -194,45 +189,4 @@ public class TournamentSettings {
 
     }
 
-    public void chargePlayers() {
-        String line;
-        String cvsSplitBy = ",";
-
-        // Use ClassLoader to get the resource as a stream
-        InputStream inputStream = getClass().getResourceAsStream("/com/example/echecs/accountFiles/accounts.csv");
-
-        // Check if the file was found
-        if (inputStream == null) {
-            System.err.println("File not found: /com/example/echecs/accountFiles/accounts.csv");
-            return;
-        }
-
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
-            while ((line = br.readLine()) != null) {
-                String[] player = line.split(cvsSplitBy);
-                String firstName = player[0];
-                MenuItem menuItem = new MenuItem(firstName);
-                menuItem.setOnAction(event -> {
-                    playerlistButton.setText(firstName);
-                });
-                playerlistButton.getItems().add(menuItem);
-                playersData.put(firstName, player);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void ennemyPlayer() {
-        String selectedEnemyName = playerlistButton.getText();
-        String[] enemyData = playersData.get(selectedEnemyName);
-        if (enemyData != null) {
-            ennemyName.setText(selectedEnemyName);
-            GameController.setEnemyFirstName(selectedEnemyName);
-            GameController.setEnemyLastName(enemyData[1]);
-            GameController.setEnemyGamesPlayed(Integer.parseInt(enemyData[2]));
-            GameController.setEnemyGamesWon(Integer.parseInt(enemyData[3]));
-        }
-    }
 }

@@ -4,29 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cafb6311-df47-41a5-b88f-fb5892fbb4c2" name="Changes" comment="feat: redesign de l'interface + correction de bugs">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/accountClass/loginAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/accountFiles/accounts.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/img/compte.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/accountFXML/Login.fxml" afterDir="false" />
+    <list default="true" id="cafb6311-df47-41a5-b88f-fb5892fbb4c2" name="Changes" comment="feat: ajout de système de compte">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/EchecsApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/ChessyApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/computerClass/ComputerBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/computerClass/ComputerBoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/computerClass/ComputerSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/computerClass/ComputerSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/friendClass/FriendBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/friendClass/FriendBoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/friendClass/FriendSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/friendClass/FriendSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/gameStatus/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/model/gameStatus/GameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/stylesheets/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/stylesheets/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/Menu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/computerFXML/ComputerBoardGame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/computerFXML/ComputerBoardGame.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/computerFXML/ComputerSettings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/computerFXML/ComputerSettings.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/friendFXML/FriendBoardGame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/friendFXML/FriendBoardGame.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/friendFXML/FriendSettings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/friendFXML/FriendSettings.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/tournamentFXML/tournamentSettings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/tournamentFXML/TournamentSettings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/tournamentClass/TournamentSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/tournamentClass/TournamentSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/tournamentFXML/TournamentSettings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/tournamentFXML/TournamentSettings.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +138,7 @@
       <workItem from="1717875816194" duration="13335000" />
       <workItem from="1717921694709" duration="12855000" />
       <workItem from="1717935308166" duration="3811000" />
-      <workItem from="1717943234675" duration="535000" />
+      <workItem from="1717943234675" duration="1215000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Rennomage des fichiers, et début interface graphique">
       <created>1717403773299</created>
@@ -278,7 +259,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717877616523</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="feat: ajout de système de compte">
+      <option name="closed" value="true" />
+      <created>1717944004858</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1717944004858</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -300,6 +289,7 @@
     <MESSAGE value="feat: ajout du choix de temps" />
     <MESSAGE value="feat: ajout du robot et de choix du temps" />
     <MESSAGE value="feat: redesign de l'interface + correction de bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: redesign de l'interface + correction de bugs" />
+    <MESSAGE value="feat: ajout de système de compte" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: ajout de système de compte" />
   </component>
 </project>
