@@ -12,4 +12,6 @@ module com.example.echecs {
     opens com.example.echecs.controllers.friendClass to javafx.fxml;
     exports com.example.echecs.controllers.tournamentClass;
     opens com.example.echecs.controllers.tournamentClass to javafx.fxml;
+    exports com.example.echecs.controllers.accountClass;
+    opens com.example.echecs.controllers.accountClass to javafx.fxml;
 }

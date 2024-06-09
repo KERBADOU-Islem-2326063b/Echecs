@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
@@ -17,12 +18,17 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ComputerSettings {
     @FXML
     private GridPane boardGrid;
     @FXML
     private MenuButton timeMenuButton;
+    @FXML
+    private Label Name;
+    @FXML
     private ChessPiece[][] board = new ChessPiece[8][8];
     private Image whiteCaseImage, greenCaseImage;
     private King blackKing;
@@ -30,6 +36,7 @@ public class ComputerSettings {
 
     @FXML
     public void initialize() {
+        if (GameController.getFirstName() != null) Name.setText(GameController.getFirstName());
         initializeImagesLabels(); // Initialisation des images
         initializeBoard(); // Initialisation du plateau de jeu
         updateBoard();

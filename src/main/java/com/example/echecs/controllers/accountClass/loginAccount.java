@@ -1,50 +1,50 @@
-package com.example.echecs.controllers.tournamentClass;
+package com.example.echecs.controllers.accountClass;
 
 import com.example.echecs.controllers.GameController;
 import com.example.echecs.model.pieces.*;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
 
-public class TournamentSettings {
+public class loginAccount {
     @FXML
     private GridPane boardGrid;
     @FXML
-    private MenuButton timeMenuButton;
+    private MenuButton playerlistButton;
     @FXML
-    private TextField playerNameField;
+    private TextField newUserField;
     @FXML
-    private Button addPlayerButton;
+    private Label gamesPlayedLabel;
     @FXML
-    private TextArea playerListTextArea;
-
+    private Label gamesWonLabel;
+    @FXML
+    private Label Name;
     private ChessPiece[][] board = new ChessPiece[8][8];
     private Image whiteCaseImage, greenCaseImage;
     private King blackKing;
     private King whiteKing;
-
-
-    private List<String> playerNames = new ArrayList<>();
+    private Map<String, String[]> playersData = new HashMap<>();
 
     @FXML
     public void initialize() {
+        if (GameController.getFirstName() != null) Name.setText(GameController.getFirstName());
         initializeImagesLabels(); // Initialisation des images
         initializeBoard(); // Initialisation du plateau de jeu
         updateBoard();
-        GameController.setInitialTimeInSeconds(600); // On met de base le temps à 10 minutes
+        chargePlayers();
     }
 
     private void initializeImagesLabels() {
@@ -90,7 +90,7 @@ public class TournamentSettings {
     }
 
     private void updateBoard() {
-        // Mise à jour de l'affichage de la grille de jeu
+        // Mis a jour de l'affichage de la grille de jeu
         boardGrid.getChildren().clear();
         for (int row = 0; row < 8; ++row) {
             for (int col = 0; col < 8; ++col) {
@@ -125,43 +125,37 @@ public class TournamentSettings {
     }
 
     private void resetCases(ImageView squareImageView, int row, int col) {
-        // On remet l'image d'origine à la case sélectionnée
+        // On remet l'image d'origine a la case selectionée
         squareImageView.setImage((row + col) % 2 == 0 ? whiteCaseImage : greenCaseImage);
     }
 
-    private void addPlayer() {
-        String playerName = playerNameField.getText().trim();
-        if (!playerName.isEmpty()) {
-            if (playerNames.size() < 10) {
-                playerNames.add(playerName);
-                updatePlayerList();
-            } else {
-                showAlert("Maximum de joueurs atteint", "Vous ne pouvez ajouter que 10 joueurs au maximum.");
-            }
-        } else {
-            showAlert("Champ vide", "Veuillez entrer un nom de joueur.");
-        }
-    }
-
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
-
-    private void updatePlayerList() {
-        playerListTextArea.clear();
-        for (String playerName : playerNames) {
-            playerListTextArea.appendText(playerName + "\n");
-        }
-    }
-
     @FXML
-    private void onNewGame() {
+    private void onCreate() {
+
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/echecs/views/tournamentFXML/TournamentBoardGame.fxml"));
+            String userInput = newUserField.getText().trim();
+            if (userInput.isEmpty() || !userInput.contains(" ")) {
+                return;
+            }
+
+            String[] nameParts = userInput.split(" ");
+            String firstName = nameParts[0];
+            String lastName = nameParts[1];
+
+            String newUserLine = firstName + "," + lastName + ",0,0";
+
+            try (FileWriter writer = new FileWriter("src/main/resources/com/example/echecs/accountFiles/accounts.csv", true)) {
+                writer.write("\n" + newUserLine);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            GameController.setFirstName(firstName);
+            GameController.setLastName(lastName);
+            GameController.setGamesPlayed(0);
+            GameController.setGamesWon(0);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/echecs/views/Menu.fxml"));
             Parent root = fxmlLoader.load();
 
             Stage stage = (Stage) boardGrid.getScene().getWindow();
@@ -174,56 +168,67 @@ public class TournamentSettings {
         }
     }
 
-
-
     @FXML
-    private void onChargeGame() {
-        // Créer un sélecteur de fichiers
-        FileChooser fileChooser = new FileChooser();
+    private void onConnect() {
+        try {
+            GameController.setFirstName(playerlistButton.getText());
+            String[] playerData = playersData.get(playerlistButton.getText());
+            GameController.setLastName(playerData[1]);
+            GameController.setGamesPlayed(Integer.parseInt(playerData[2]));
+            GameController.setGamesWon(Integer.parseInt(playerData[3]));
 
-        // Afficher la boîte de dialogue d'ouverture de fichier
-        File selectedFile = fileChooser.showOpenDialog(boardGrid.getScene().getWindow());
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/echecs/views/Menu.fxml"));
+            Parent root = fxmlLoader.load();
 
-
-        // Si un fichier est sélectionné, procéder au chargement
-        if (selectedFile != null) {
-            GameController.setCharge(1);
-            GameController.setChargedFile(selectedFile);
-
-            // Définir le filtre d'extension pour ne permettre que les fichiers CSV
-            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Fichiers CSV (*.csv)", "*.csv");
-            fileChooser.getExtensionFilters().add(extFilter);
-
-            // On change de fenêtre
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/echecs/views/friendFXML/FriendBoardGame.fxml"));
-                Parent root = fxmlLoader.load();
-
-                Stage stage = (Stage) boardGrid.getScene().getWindow();
-                Scene scene = new Scene(root);
-                scene.getStylesheets().add(getClass().getResource("/com/example/echecs/stylesheets/style.css").toExternalForm());
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-
+            Stage stage = (Stage) boardGrid.getScene().getWindow();
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/com/example/echecs/stylesheets/style.css").toExternalForm());
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    public void handleMenuAction(ActionEvent event) {
-        MenuItem source = (MenuItem) event.getSource();
-        timeMenuButton.setText(source.getText());
+    public void chargePlayers() {
+        String line;
+        String cvsSplitBy = ",";
 
-        if (timeMenuButton.getText().equals("5 minutes")) {
-            GameController.setInitialTimeInSeconds(300); // 5 minutes
-        } else if (timeMenuButton.getText().equals("10 minutes")) {
-            GameController.setInitialTimeInSeconds(600);; // 10 minutes
+        InputStream inputStream = getClass().getResourceAsStream("/com/example/echecs/accountFiles/accounts.csv");
+
+        if (inputStream == null) {
+            System.err.println("File not found: /com/example/echecs/accountFiles/accounts.csv");
+            return;
         }
-        else GameController.setInitialTimeInSeconds(1200); // 20 minutes
 
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
+            while ((line = br.readLine()) != null) {
+                String[] player = line.split(cvsSplitBy);
+                String firstName = player[0];
+                MenuItem menuItem = new MenuItem(firstName);
+                menuItem.setOnAction(event -> {
+                    playerlistButton.setText(firstName);
+                    updateLabels(firstName);
+                });
+                playerlistButton.getItems().add(menuItem);
 
+                // Check if player data array has enough elements
+                if (player.length >= 4) {
+                    playersData.put(firstName, player);
+                } else {
+                    System.err.println("Player data array does not have enough elements: " + line);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    private void updateLabels(String firstName) {
+        String[] player = playersData.get(firstName);
+        if (player != null) {
+            gamesPlayedLabel.setText("Parties jouées: " + player[2]);
+            gamesWonLabel.setText("Parties gagnées: " + player[3]);
+        }
     }
 }
