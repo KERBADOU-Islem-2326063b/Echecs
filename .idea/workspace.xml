@@ -5,7 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cafb6311-df47-41a5-b88f-fb5892fbb4c2" name="Changes" comment="feat: version finale du projet exécutable et ajout de la javadoc">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allclasses-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allpackages-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/computer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/copy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/element-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/help-doc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/member-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/overview-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/search-page.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/search.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tag-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/type-search-index.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +200,7 @@
       <workItem from="1717957356043" duration="276000" />
       <workItem from="1717957640543" duration="85000" />
       <workItem from="1717957726821" duration="455000" />
-      <workItem from="1717958195123" duration="8146000" />
+      <workItem from="1717958195123" duration="8473000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Rennomage des fichiers, et début interface graphique">
       <created>1717403773299</created>
@@ -335,7 +353,23 @@
       <option name="project" value="LOCAL" />
       <updated>1717966664710</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="feat: version finale du projet exécutable et ajout de la javadoc">
+      <option name="closed" value="true" />
+      <created>1717967002082</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1717967002082</updated>
+    </task>
+    <task id="LOCAL-00022" summary="feat: version finale du projet exécutable et ajout de la javadoc">
+      <option name="closed" value="true" />
+      <created>1717967021264</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1717967021264</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
