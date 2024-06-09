@@ -1,0 +1,9 @@
+module:com.example.echecs
+com.example.echecs
+com.example.echecs.controllers
+com.example.echecs.controllers.accountClass
+com.example.echecs.controllers.computerClass
+com.example.echecs.controllers.friendClass
+com.example.echecs.controllers.tournamentClass
+com.example.echecs.model.gameStatus
+com.example.echecs.model.pieces
