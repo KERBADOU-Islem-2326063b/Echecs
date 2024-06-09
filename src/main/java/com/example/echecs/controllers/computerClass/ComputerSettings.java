@@ -21,7 +21,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Contrôleur pour les paramètres contre le bot
+ */
 public class ComputerSettings {
+
     @FXML
     private GridPane boardGrid;
     @FXML
@@ -30,10 +34,14 @@ public class ComputerSettings {
     private Label Name;
     @FXML
     private ChessPiece[][] board = new ChessPiece[8][8];
-    private Image whiteCaseImage, greenCaseImage;
+    private Image whiteCaseImage;
+    private Image greenCaseImage;
     private King blackKing;
     private King whiteKing;
 
+    /**
+     * Méthode d'initialisation appelée après que tous les éléments FXML ont été injectés.
+     */
     @FXML
     public void initialize() {
         if (GameController.getFirstName() != null) Name.setText(GameController.getFirstName());
@@ -42,12 +50,19 @@ public class ComputerSettings {
         updateBoard();
         GameController.setInitialTimeInSeconds(600); // On met de base le temps à 10 minutes
     }
+
+    /**
+     * Initialise les images pour les cases.
+     */
     private void initializeImagesLabels() {
         // Chargement des images depuis les ressources
         whiteCaseImage = new Image("file:src/main/resources/com/example/echecs/img/white_case.png");
         greenCaseImage = new Image("file:src/main/resources/com/example/echecs/img/green_case.png");
     }
 
+    /**
+     * Initialise le plateau de jeu avec les pièces.
+     */
     private void initializeBoard() {
         // Initialisation des pièces sur le plateau
         for (int i = 0; i < 8; i++) {
@@ -84,8 +99,11 @@ public class ComputerSettings {
         board[7][4] = whiteKing;
     }
 
+    /**
+     * Met à jour l'affichage du plateau de jeu.
+     */
     private void updateBoard() {
-        // Mis a jour de l'affichage de la grille de jeu
+        // Mise à jour de l'affichage de la grille de jeu
         boardGrid.getChildren().clear();
         for (int row = 0; row < 8; ++row) {
             for (int col = 0; col < 8; ++col) {
@@ -101,6 +119,13 @@ public class ComputerSettings {
         }
     }
 
+    /**
+     * Crée une ImageView pour une case du plateau.
+     *
+     * @param row Ligne de la case.
+     * @param col Colonne de la case.
+     * @return ImageView pour la case.
+     */
     private ImageView createSquareImageView(int row, int col) {
         // Création d'une ImageView pour une case du plateau
         ImageView squareImageView = new ImageView();
@@ -110,6 +135,12 @@ public class ComputerSettings {
         return squareImageView;
     }
 
+    /**
+     * Crée une ImageView pour une pièce d'échecs.
+     *
+     * @param piece La pièce d'échecs.
+     * @return ImageView pour la pièce.
+     */
     private ImageView createPieceImageView(ChessPiece piece) {
         // Création d'une ImageView pour une pièce d'échecs
         ImageView pieceImageView = new ImageView(new Image(piece.getImagePath()));
@@ -119,11 +150,21 @@ public class ComputerSettings {
         return pieceImageView;
     }
 
+    /**
+     * Réinitialise l'apparence d'une case.
+     *
+     * @param squareImageView ImageView de la case.
+     * @param row             Ligne de la case.
+     * @param col             Colonne de la case.
+     */
     private void resetCases(ImageView squareImageView, int row, int col) {
         // On remet l'image d'origine a la case selectionée
         squareImageView.setImage((row + col) % 2 == 0 ? whiteCaseImage : greenCaseImage);
     }
 
+    /**
+     * Méthode appelée lorsqu'un nouveau jeu est lancé.
+     */
     @FXML
     private void onNewGame() {
         try {
@@ -141,6 +182,9 @@ public class ComputerSettings {
         }
     }
 
+    /**
+     * Méthode appelée lorsqu'une partie est chargée.
+     */
     @FXML
     private void onChargeGame() {
         // Créer un sélecteur de fichiers
@@ -148,7 +192,6 @@ public class ComputerSettings {
 
         // Afficher la boîte de dialogue d'ouverture de fichier
         File selectedFile = fileChooser.showOpenDialog(boardGrid.getScene().getWindow());
-
 
         // Si un fichier est sélectionné, procéder au chargement
         if (selectedFile != null) {
@@ -172,12 +215,14 @@ public class ComputerSettings {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
         }
     }
 
-
+    /**
+     * Gère l'action du menu.
+     *
+     * @param event L'événement associé à l'action du menu.
+     */
     public void handleMenuAction(ActionEvent event) {
         MenuItem source = (MenuItem) event.getSource();
         timeMenuButton.setText(source.getText());
@@ -185,11 +230,10 @@ public class ComputerSettings {
         if (timeMenuButton.getText().equals("5 minutes")) {
             GameController.setInitialTimeInSeconds(300); // 5 minutes
         } else if (timeMenuButton.getText().equals("10 minutes")) {
-            GameController.setInitialTimeInSeconds(600);; // 10 minutes
+            GameController.setInitialTimeInSeconds(600); // 10 minutes
+        } else {
+            GameController.setInitialTimeInSeconds(1200); // 20 minutes
         }
-        else GameController.setInitialTimeInSeconds(1200); // 20 minutes
-
-
-
     }
 }
+

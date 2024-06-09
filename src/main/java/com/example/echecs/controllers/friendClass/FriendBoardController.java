@@ -26,7 +26,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Contrôleur principal pour la gestion de la logique du jeu d'échecs.
+ * Ce contrôleur gère l'initialisation du plateau de jeu, la gestion des mouvements des pièces,
+ * la gestion des tours, la sauvegarde et restauration de l'état du jeu, ainsi que la gestion des événements tels que l'abandon et l'annulation de mouvements.
+ */
 public class FriendBoardController {
     private ChessPiece[][] board = new ChessPiece[8][8];
     private List<Move> moveHistory = new ArrayList<>();
@@ -74,6 +78,10 @@ public class FriendBoardController {
     private King whiteKing;
 
     private Image whiteCaseImage, greenCaseImage, whiteCaseClickedImage, greenCaseClickedImage, whiteCaseDotImage, greenCaseDotImage, redSquareImage;
+
+    /**
+     * Initialise le contrôleur et prépare le jeu pour commencer.
+     */
     @FXML
     public void initialize() {
         GameController.updateStats(GameController.getFirstName(), GameController.getLastName(), false);
@@ -97,7 +105,9 @@ public class FriendBoardController {
         saveGameButton.setOnAction(this::handleSaveButton);
     }
 
-
+    /**
+     * Initialise les timers pour gérer le temps restant pour chaque joueur.
+     */
     public void initializeTimers() {
         whiteTimeLabel.setText(formatTime(whiteSecondsRemaining));
         blackTimeLabel.setText(formatTime(blackSecondsRemaining));
@@ -129,12 +139,21 @@ public class FriendBoardController {
         whiteTimer.play();
     }
 
+    /**
+     * Formate le temps restant sous forme de chaîne "mm:ss".
+     *
+     * @param seconds Temps restant en secondes.
+     * @return Chaîne formattée du temps restant.
+     */
     private String formatTime(int seconds) {
         int minutes = seconds / 60;
         int remainingSeconds = seconds % 60;
         return String.format("%02d:%02d", minutes, remainingSeconds);
     }
 
+    /**
+     * Initialise les images et labels utilisés dans l'interface utilisateur.
+     */
     private void initializeImagesLabels() {
         // Chargement des images depuis les ressources
         whiteCaseImage = new Image("file:src/main/resources/com/example/echecs/img/white_case.png");
@@ -146,6 +165,9 @@ public class FriendBoardController {
         redSquareImage = new Image("file:src/main/resources/com/example/echecs/img/red_square.png");
     }
 
+    /**
+     * Initialise le plateau de jeu avec les pièces d'échecs.
+     */
     private void initializeBoard() {
         // Initialisation des pièces sur le plateau
         for (int i = 0; i < 8; i++) {
@@ -182,6 +204,9 @@ public class FriendBoardController {
         board[7][4] = whiteKing;
     }
 
+    /**
+     * Met à jour l'affichage du plateau de jeu.
+     */
     private void updateBoard() {
         // Mis a jour de l'affichage de la grille de jeu
         boardGrid.getChildren().clear();
@@ -199,6 +224,13 @@ public class FriendBoardController {
         }
     }
 
+    /**
+     * Crée une ImageView pour représenter une case du plateau de jeu.
+     *
+     * @param row Numéro de ligne de la case.
+     * @param col Numéro de colonne de la case.
+     * @return ImageView représentant la case.
+     */
     private ImageView createSquareImageView(int row, int col) {
         // Création d'une ImageView pour une case du plateau
         ImageView squareImageView = new ImageView();
@@ -209,6 +241,12 @@ public class FriendBoardController {
         return squareImageView;
     }
 
+    /**
+     * Crée une ImageView pour représenter une pièce d'échecs.
+     *
+     * @param piece Pièce à représenter.
+     * @return ImageView représentant la pièce.
+     */
     private ImageView createPieceImageView(ChessPiece piece) {
         // Création d'une ImageView pour une pièce d'échecs
         ImageView pieceImageView = new ImageView(new Image(piece.getImagePath()));
@@ -219,6 +257,11 @@ public class FriendBoardController {
         return pieceImageView;
     }
 
+    /**
+     * Gère le clic sur une case ou une pièce du plateau de jeu.
+     *
+     * @param event Événement de clic.
+     */
     private void onBoardClick(Event event) {
         // Vérifier si la partie est terminée
         if (endGame) return;
@@ -243,7 +286,11 @@ public class FriendBoardController {
         }
     }
 
-
+    /**
+     * Sélectionne une pièce sur le plateau de jeu.
+     *
+     * @param clickedPiece Pièce cliquée.
+     */
     private void handlePieceSelection(ChessPiece clickedPiece) {
         // Vérifier si la pièce sélectionnée est de la couleur correspondant au tour actuel
         if (clickedPiece.getColor().equals(whiteTurn ? "White" : "Black")) {
@@ -266,6 +313,13 @@ public class FriendBoardController {
         }
     }
 
+    /**
+     * Anime le mouvement d'une pièce sur le plateau de jeu.
+     *
+     * @param piece Pièce à déplacer.
+     * @param targetCol Colonne de destination.
+     * @param targetRow Ligne de destination.
+     */
     private void animatePieceMove(ChessPiece piece, int targetCol, int targetRow) {
         int row = piece.getRowIndex();
         int col = piece.getColumnIndex();
@@ -296,6 +350,13 @@ public class FriendBoardController {
         transition.play();
     }
 
+    /**
+     * Déplace une pièce sur le plateau de jeu.
+     *
+     * @param piece Pièce à déplacer.
+     * @param targetCol Colonne de destination.
+     * @param targetRow Ligne de destination.
+     */
     private void movePiece(ChessPiece piece, int targetCol, int targetRow) {
         int row = piece.getRowIndex();
         int col = piece.getColumnIndex();
@@ -322,6 +383,9 @@ public class FriendBoardController {
 
     }
 
+    /**
+     * Efface les cases mises en évidence sur le plateau de jeu.
+     */
     private void clearHighlightedSquares() {
         // Effacer les cases mises en évidence
         for (ImageView squareImageView : highlightedSquares) {
@@ -330,6 +394,11 @@ public class FriendBoardController {
         highlightedSquares.clear();
     }
 
+    /**
+     * Met en évidence les mouvements valides pour une pièce donnée.
+     *
+     * @param piece Pièce dont les mouvements doivent être mis en évidence.
+     */
     private void highlightValidMoves(ChessPiece piece) {
         clearHighlightedSquares();
         // Mettre en évidence des mouvements valides pour une pièce donnée
@@ -342,8 +411,14 @@ public class FriendBoardController {
         }
     }
 
+    /**
+     * Montre tout les mouvements possibles pour une pièce
+     *
+     * @param row Numéro de ligne de la case.
+     * @param col Numéro de colonne de la case.
+     * @param piece Piece cliquée
+     */
     private void dotSquare(int row, int col, ChessPiece piece) {
-        // Change un carré en un carré avec un point
         Node node = getNodeFromGridPane(boardGrid, row, col);
         if (node instanceof ImageView squareImageView) {
             if (board[row][col] != null && !board[row][col].getColor().equals(piece.getColor())) {
@@ -356,18 +431,31 @@ public class FriendBoardController {
         }
     }
 
+    /**
+     * Met en évidence la case sélectionnée par le joueur.
+     *
+     * @param squareImageView Case sélectionnée.
+     */
     private void highlightSelectedSquare(ImageView squareImageView) {
-        // On met en surbriance le carré selectionné
         int col = GridPane.getColumnIndex(squareImageView);
         int row = GridPane.getRowIndex(squareImageView);
         squareImageView.setImage((row + col) % 2 == 0 ? whiteCaseClickedImage : greenCaseClickedImage);
     }
 
+    /**
+     * Réinitialise l'apparence d'une case du plateau de jeu.
+     *
+     * @param squareImageView Case à réinitialiser.
+     * @param row Numéro de ligne de la case.
+     * @param col Numéro de colonne de la case.
+     */
     private void resetCases(ImageView squareImageView, int row, int col) {
-        // On remet l'image d'origine a la case selectionée
         squareImageView.setImage((row + col) % 2 == 0 ? whiteCaseImage : greenCaseImage);
     }
 
+    /**
+     * Change de tour entre le joueur blanc et le joueur noir.
+     */
     private void switchTurn() {
         // On arrete le timer du joueur en cours, et relance l'autre
         if (whiteTurn) {
@@ -388,6 +476,11 @@ public class FriendBoardController {
         updateTurnLabel();
     }
 
+    /**
+     * Termine la partie en indiquant le vainqueur.
+     *
+     * @param message Message indiquant la fin de la partie.
+     */
     private void endGame(String message) {
         // On met fin à la partie
         String currentText = logJeu.getText();
@@ -402,6 +495,9 @@ public class FriendBoardController {
         endGame = true;
     }
 
+    /**
+     * Met à jour le label indiquant le tour actuel.
+     */
     private void updateTurnLabel() {
         // Mettre à jour le label de tour et vérifier l'échec ou echec et mat
 
@@ -428,6 +524,11 @@ public class FriendBoardController {
         }
     }
 
+    /**
+     * Met en évidence la case où le roi est en échec.
+     *
+     * @param king Roi en échec.
+     */
     private void highlightCheckSquare(King king) {
         // On met en rouge le carré en dessous du roi
         int kingRow = king.getRowIndex();
@@ -438,6 +539,14 @@ public class FriendBoardController {
         }
     }
 
+    /**
+     * Récupère un nœud spécifique dans le GridPane.
+     *
+     * @param gridPane GridPane dans lequel chercher le nœud.
+     * @param row Numéro de ligne du nœud.
+     * @param col Numéro de colonne du nœud.
+     * @return Nœud trouvé.
+     */
     private Node getNodeFromGridPane(GridPane gridPane, int row, int col) {
         // Récupérer un noeud spécifique dans le GridPane
         for (Node node : gridPane.getChildren()) {
@@ -449,6 +558,14 @@ public class FriendBoardController {
         return null;
     }
 
+    /**
+     *  Récupère un noeud spécifique dans le GridPane qui contient la pièce.
+     *
+     * @param gridPane GridPane dans lequel chercher le nœud.
+     * @param row Numéro de ligne du nœud.
+     * @param col Numéro de colonne du nœud.
+     * @return Nœud trouvé.
+     */
     private Node getNodeFromGridPane(GridPane gridPane, int row, int col, ChessPiece piece) {
         // Récupérer un noeud spécifique dans le GridPane qui contient la pièce
         for (Node node : gridPane.getChildren()) {
@@ -461,12 +578,22 @@ public class FriendBoardController {
         return null;
     }
 
+    /**
+     * Gère l'événement de clic sur le bouton "Abandonner".
+     *
+     * @param event Événement de clic.
+     */
     private void handleSurrenderButton(ActionEvent event) {
         // Gestion de l'événement de clic sur le bouton "Abandonner"
         String winner = whiteTurn ? "noirs" : "blancs";
         endGame("Abandon, victoire des " + winner);
     }
 
+    /**
+     * Annule le dernier mouvement effectué.
+     *
+     * @param event Événement de clic.
+     */
     private void handleUndoButton(ActionEvent event) {
         if (!moveHistory.isEmpty()) {
             // On prend le dernier mouvement effectué
@@ -489,6 +616,11 @@ public class FriendBoardController {
         }
     }
 
+    /**
+     * Met à jour le journal du jeu avec le mouvement effectué.
+     *
+     * @param move Mouvement à ajouter au journal.
+     */
     public void updateLogJeu(String move) {
         // On met a jour l'historique des messages
         String currentText = logJeu.getText();
@@ -498,6 +630,13 @@ public class FriendBoardController {
         logJeu.setText(newText);
     }
 
+    /**
+     * Convertit les coordonnées de colonne et ligne en notation d'échecs.
+     *
+     * @param col Numéro de colonne.
+     * @param row Numéro de ligne.
+     * @return Notation d'échecs des coordonnées.
+     */
     private String coorPiece(int col, int row) {
         // On traduit en coordonne echec les colonnes et lignes
         char colLabel = (char) ('a' + col);
@@ -506,6 +645,11 @@ public class FriendBoardController {
     }
 
 
+    /**
+     * Sauvegarde l'état actuel du jeu dans un fichier CSV.
+     *
+     * @param event Événement de clic.
+     */
     private void handleSaveButton(ActionEvent event)  {
         // On sauvegarde dans un fichier CSV l'etat du jeu d'Echec
         GameState gameState = new GameState(board, moveHistory, whiteTurn, whiteSecondsRemaining, blackSecondsRemaining);
@@ -523,6 +667,11 @@ public class FriendBoardController {
         }
     }
 
+    /**
+     * Restaure l'état du jeu à partir d'un fichier CSV.
+     *
+     * @param gameStatus Chemin vers le fichier CSV contenant l'état du jeu.
+     */
     private void restoreGameState(File gameStatus) {
         try (BufferedReader reader = new BufferedReader(new FileReader(gameStatus))) {
             String line;

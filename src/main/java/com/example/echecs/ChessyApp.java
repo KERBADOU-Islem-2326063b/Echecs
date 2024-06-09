@@ -7,6 +7,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Classe principale de l'application ChessyApp.
+ * Cette classe gère le démarrage de l'application et la création de la scène principale.
+ */
 public class ChessyApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {

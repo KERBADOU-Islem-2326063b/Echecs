@@ -30,6 +30,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Contrôleur principal pour la gestion du plateau de jeu, des mouvements, et des interactions utilisateur dans le tournoi.
+ */
 public class TournamentBoardController {
     private ChessPiece[][] board = new ChessPiece[8][8];
     private List<Move> moveHistory = new ArrayList<>();
@@ -77,6 +80,10 @@ public class TournamentBoardController {
     private King whiteKing;
 
     private Image whiteCaseImage, greenCaseImage, whiteCaseClickedImage, greenCaseClickedImage, whiteCaseDotImage, greenCaseDotImage, redSquareImage;
+
+    /**
+     * Initialise le contrôleur lors de l'initialisation de la vue.
+     */
     @FXML
     public void initialize() {
         initializeImagesLabels();
@@ -92,12 +99,21 @@ public class TournamentBoardController {
         saveGameButton.setOnAction(this::handleSaveButton);
     }
 
+    /**
+     * Configure le tournoi en lisant les noms des joueurs à partir d'un fichier CSV.
+     */
     private void setupTournament() {
         List<String> players = readPlayerNamesFromCSV("src/main/resources/com/example/echecs/accountFiles/accounts.csv");
         Collections.shuffle(players); // Rend la liste de joueur aléatoire pour le tournoi
         tournament = new Tournament(players);
     }
 
+    /**
+     * Lit les noms des joueurs à partir d'un fichier CSV.
+     *
+     * @param fileName Chemin vers le fichier CSV contenant les noms des joueurs
+     * @return Liste des noms des joueurs
+     */
     private List<String> readPlayerNamesFromCSV(String fileName) {
         List<String> playerNames = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
@@ -112,6 +128,9 @@ public class TournamentBoardController {
         return playerNames;
     }
 
+    /**
+     * Démarre le match suivant dans le tournoi.
+     */
     private void startNextMatch() {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -133,8 +152,10 @@ public class TournamentBoardController {
         resetStage();
     }
 
+    /**
+     * Réinitialise l'état du plateau et des timers pour le match suivant.
+     */
     private void resetStage() {
-        // Réinitialiser les variables de jeu
         whiteSecondsRemaining = GameController.getInitialTimeInSeconds();
         blackSecondsRemaining = GameController.getInitialTimeInSeconds();
         whiteTurn = true;
@@ -154,6 +175,9 @@ public class TournamentBoardController {
         highlightedSquares.clear();
     }
 
+    /**
+     * Initialise les timers pour les deux joueurs.
+     */
     private void initializeTimers() {
         whiteTimeLabel.setText(formatTime(whiteSecondsRemaining));
         blackTimeLabel.setText(formatTime(blackSecondsRemaining));
@@ -186,12 +210,21 @@ public class TournamentBoardController {
         whiteTimer.play();
     }
 
+    /**
+     * Formate le temps restant en minutes et secondes.
+     *
+     * @param seconds Temps restant en secondes
+     * @return Temps formatté sous forme de chaîne "MM:SS"
+     */
     private String formatTime(int seconds) {
         int minutes = seconds / 60;
         int remainingSeconds = seconds % 60;
         return String.format("%02d:%02d", minutes, remainingSeconds);
     }
 
+    /**
+     * Charge les images nécessaires pour le plateau et les pièces.
+     */
     private void initializeImagesLabels() {
         // Chargement des images depuis les ressources
         whiteCaseImage = new Image("file:src/main/resources/com/example/echecs/img/white_case.png");
@@ -203,6 +236,9 @@ public class TournamentBoardController {
         redSquareImage = new Image("file:src/main/resources/com/example/echecs/img/red_square.png");
     }
 
+    /**
+     * Initialise le plateau de jeu avec les pièces de départ.
+     */
     private void initializeBoard() {
         // Initialisation des pièces sur le plateau
         for (int i = 0; i < 8; i++) {
@@ -239,6 +275,9 @@ public class TournamentBoardController {
         board[7][4] = whiteKing;
     }
 
+    /**
+     * Met à jour l'affichage du plateau après un mouvement.
+     */
     private void updateBoard() {
         // Mis a jour de l'affichage de la grille de jeu
         boardGrid.getChildren().clear();
@@ -256,6 +295,13 @@ public class TournamentBoardController {
         }
     }
 
+    /**
+     * Crée une ImageView pour représenter une case du plateau.
+     *
+     * @param row Numéro de ligne de la case
+     * @param col Numéro de colonne de la case
+     * @return ImageView représentant la case
+     */
     private ImageView createSquareImageView(int row, int col) {
         // Création d'une ImageView pour une case du plateau
         ImageView squareImageView = new ImageView();
@@ -266,6 +312,12 @@ public class TournamentBoardController {
         return squareImageView;
     }
 
+    /**
+     * Crée une ImageView pour représenter une pièce d'échecs.
+     *
+     * @param piece La pièce à représenter
+     * @return ImageView représentant la pièce
+     */
     private ImageView createPieceImageView(ChessPiece piece) {
         // Création d'une ImageView pour une pièce d'échecs
         ImageView pieceImageView = new ImageView(new Image(piece.getImagePath()));
@@ -276,6 +328,11 @@ public class TournamentBoardController {
         return pieceImageView;
     }
 
+    /**
+     * Gère le clic sur une case ou une pièce du plateau.
+     *
+     * @param event Événement de clic
+     */
     private void onBoardClick(Event event) {
         // Vérifier si la partie est terminée
         if (endGame) return;
@@ -300,7 +357,11 @@ public class TournamentBoardController {
         }
     }
 
-
+    /**
+     * Sélectionne une pièce sur le plateau.
+     *
+     * @param clickedPiece La pièce sélectionnée
+     */
     private void handlePieceSelection(ChessPiece clickedPiece) {
         // Vérifier si la pièce sélectionnée est de la couleur correspondant au tour actuel
         if (clickedPiece.getColor().equals(whiteTurn ? "White" : "Black")) {
@@ -323,6 +384,13 @@ public class TournamentBoardController {
         }
     }
 
+    /**
+     * Anime le mouvement d'une pièce sur le plateau.
+     *
+     * @param piece La pièce à déplacer
+     * @param targetCol Colonne cible du mouvement
+     * @param targetRow Ligne cible du mouvement
+     */
     private void animatePieceMove(ChessPiece piece, int targetCol, int targetRow) {
         int row = piece.getRowIndex();
         int col = piece.getColumnIndex();
@@ -353,6 +421,13 @@ public class TournamentBoardController {
         transition.play();
     }
 
+    /**
+     * Déplace une pièce sur le plateau.
+     *
+     * @param piece La pièce à déplacer
+     * @param targetCol Colonne cible du mouvement
+     * @param targetRow Ligne cible du mouvement
+     */
     private void movePiece(ChessPiece piece, int targetCol, int targetRow) {
         int row = piece.getRowIndex();
         int col = piece.getColumnIndex();
@@ -379,14 +454,21 @@ public class TournamentBoardController {
 
     }
 
+    /**
+     * Efface les cases mises en évidence.
+     */
     private void clearHighlightedSquares() {
-        // Effacer les cases mises en évidence
         for (ImageView squareImageView : highlightedSquares) {
             resetCases(squareImageView, GridPane.getRowIndex(squareImageView), GridPane.getColumnIndex(squareImageView));
         }
         highlightedSquares.clear();
     }
 
+    /**
+     * Met en évidence les mouvements valides pour une pièce donnée.
+     *
+     * @param piece La pièce dont les mouvements sont mis en évidence
+     */
     private void highlightValidMoves(ChessPiece piece) {
         clearHighlightedSquares();
         // Mettre en évidence des mouvements valides pour une pièce donnée
@@ -399,6 +481,13 @@ public class TournamentBoardController {
         }
     }
 
+    /**
+     * Change une case en un carré avec un point.
+     *
+     * @param row Numéro de ligne de la case
+     * @param col Numéro de colonne de la case
+     * @param piece La pièce concernée
+     */
     private void dotSquare(int row, int col, ChessPiece piece) {
         // Change un carré en un carré avec un point
         Node node = getNodeFromGridPane(boardGrid, row, col);
@@ -413,6 +502,11 @@ public class TournamentBoardController {
         }
     }
 
+    /**
+     * Met en surbrillance la case sélectionnée.
+     *
+     * @param squareImageView La case sélectionnée
+     */
     private void highlightSelectedSquare(ImageView squareImageView) {
         // On met en surbriance le carré selectionné
         int col = GridPane.getColumnIndex(squareImageView);
@@ -420,11 +514,20 @@ public class TournamentBoardController {
         squareImageView.setImage((row + col) % 2 == 0 ? whiteCaseClickedImage : greenCaseClickedImage);
     }
 
+    /**
+     * Réinitialise l'apparence d'une case.
+     *
+     * @param squareImageView La case à réinitialiser
+     * @param row Numéro de ligne de la case
+     * @param col Numéro de colonne de la case
+     */
     private void resetCases(ImageView squareImageView, int row, int col) {
-        // On remet l'image d'origine a la case selectionée
         squareImageView.setImage((row + col) % 2 == 0 ? whiteCaseImage : greenCaseImage);
     }
 
+    /**
+     * Change de tour entre les joueurs.
+     */
     private void switchTurn() {
         // On arrete le timer du joueur en cours, et relance l'autre
         if (whiteTurn) {
@@ -445,6 +548,11 @@ public class TournamentBoardController {
         updateTurnLabel();
     }
 
+    /**
+     * Termine la partie en fonction des conditions de victoire.
+     *
+     * @param message Message indiquant la raison de la fin de la partie
+     */
     private void endGame(String message) {
         String currentText = logJeu.getText();
         String newText = currentText + "\n" + message;
@@ -466,6 +574,9 @@ public class TournamentBoardController {
         }
     }
 
+    /**
+     * Met à jour le label indiquant le tour actuel.
+     */
     private void updateTurnLabel() {
         // Mettre à jour le label de tour et vérifier l'échec ou echec et mat
 
@@ -494,6 +605,11 @@ public class TournamentBoardController {
         }
     }
 
+    /**
+     * Met en surbrillance la case où se trouve le roi en échec.
+     *
+     * @param king Le roi en échec
+     */
     private void highlightCheckSquare(King king) {
         // On met en rouge le carré en dessous du roi
         int kingRow = king.getRowIndex();
@@ -504,6 +620,14 @@ public class TournamentBoardController {
         }
     }
 
+    /**
+     * Récupère un noeud spécifique dans le GridPane.
+     *
+     * @param gridPane Le GridPane
+     * @param row Numéro de ligne du noeud
+     * @param col Numéro de colonne du noeud
+     * @return Le noeud trouvé
+     */
     private Node getNodeFromGridPane(GridPane gridPane, int row, int col) {
         // Récupérer un noeud spécifique dans le GridPane
         for (Node node : gridPane.getChildren()) {
@@ -515,6 +639,15 @@ public class TournamentBoardController {
         return null;
     }
 
+    /**
+     * Récupère un noeud spécifique dans le GridPane qui contient la pièce.
+     *
+     * @param gridPane Le GridPane
+     * @param row Numéro de ligne du noeud
+     * @param col Numéro de colonne du noeud
+     * @param piece La pièce contenue dans le noeud
+     * @return Le noeud trouvé
+     */
     private Node getNodeFromGridPane(GridPane gridPane, int row, int col, ChessPiece piece) {
         // Récupérer un noeud spécifique dans le GridPane qui contient la pièce
         for (Node node : gridPane.getChildren()) {
@@ -527,7 +660,11 @@ public class TournamentBoardController {
         return null;
     }
 
-
+    /**
+     * Gère l'événement de clic sur le bouton "Abandonner".
+     *
+     * @param event Événement de clic
+     */
     private void handleSurrenderButton(ActionEvent event) {
         // Gestion de l'événement de clic sur le bouton "Abandonner"
         player1ImageView.getStyleClass().add("player-turn");
@@ -541,6 +678,11 @@ public class TournamentBoardController {
 
     }
 
+    /**
+     * Gère l'événement de clic sur le bouton "Annuler".
+     *
+     * @param event Événement de clic
+     */
     private void handleUndoButton(ActionEvent event) {
         if (!moveHistory.isEmpty()) {
             // On prend le dernier mouvement effectué
@@ -563,6 +705,11 @@ public class TournamentBoardController {
         }
     }
 
+    /**
+     * Met à jour le log des mouvements et des événements.
+     *
+     * @param move Le mouvement à ajouter au log
+     */
     public void updateLogJeu(String move) {
         // On met a jour l'historique des messages
         String currentText = logJeu.getText();
@@ -572,6 +719,13 @@ public class TournamentBoardController {
         logJeu.setText(newText);
     }
 
+    /**
+     * Convertit les coordonnées en notation d'échecs.
+     *
+     * @param col
+     * @param row
+     * @return
+     */
     private String coorPiece(int col, int row) {
         // On traduit en coordonne echec les colonnes et lignes
         char colLabel = (char) ('a' + col);
@@ -580,6 +734,11 @@ public class TournamentBoardController {
     }
 
 
+    /**
+     * Méthode qui gère le clique sur le bouton sauvegarder
+     *
+     * @param event
+     */
     private void handleSaveButton(ActionEvent event)  {
         // On sauvegarde dans un fichier CSV l'etat du jeu d'Echec
         GameState gameState = new GameState(board, moveHistory, whiteTurn, whiteSecondsRemaining, blackSecondsRemaining);

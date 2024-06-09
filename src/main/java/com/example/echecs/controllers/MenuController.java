@@ -13,31 +13,44 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Contrôleur du menu principal pour le jeu d'échecs.
+ */
 public class MenuController {
     @FXML
     private GridPane boardGrid;
+
     @FXML
     private Label Name;
+
     private ChessPiece[][] board = new ChessPiece[8][8];
     private Image whiteCaseImage, greenCaseImage;
     private King blackKing;
     private King whiteKing;
 
+    /**
+     * Méthode d'initialisation appelée après le chargement du fichier FXML.
+     */
     @FXML
     public void initialize() {
         if (GameController.getFirstName() != null) Name.setText(GameController.getFirstName());
         initializeImagesLabels(); // Initialisation des images
         initializeBoard(); // Initialisation du plateau de jeu
-        updateBoard();
+        updateBoard(); // Mise à jour de l'affichage du plateau de jeu
     }
+
+    /**
+     * Initialise les images pour les cases du plateau.
+     */
     private void initializeImagesLabels() {
-        // Chargement des images depuis les ressources
         whiteCaseImage = new Image("file:src/main/resources/com/example/echecs/img/white_case.png");
         greenCaseImage = new Image("file:src/main/resources/com/example/echecs/img/green_case.png");
     }
 
+    /**
+     * Initialise les pièces sur le plateau de jeu.
+     */
     private void initializeBoard() {
-        // Initialisation des pièces sur le plateau
         for (int i = 0; i < 8; i++) {
             board[1][i] = new Pawn("Black", i, 1);
             board[6][i] = new Pawn("White", i, 6);
@@ -72,8 +85,10 @@ public class MenuController {
         board[7][4] = whiteKing;
     }
 
+    /**
+     * Met à jour l'affichage de la grille de jeu.
+     */
     private void updateBoard() {
-        // Mis a jour de l'affichage de la grille de jeu
         boardGrid.getChildren().clear();
         for (int row = 0; row < 8; ++row) {
             for (int col = 0; col < 8; ++col) {
@@ -89,8 +104,14 @@ public class MenuController {
         }
     }
 
+    /**
+     * Crée une ImageView pour une case du plateau.
+     *
+     * @param row La ligne de la case.
+     * @param col La colonne de la case.
+     * @return L'ImageView de la case.
+     */
     private ImageView createSquareImageView(int row, int col) {
-        // Création d'une ImageView pour une case du plateau
         ImageView squareImageView = new ImageView();
         squareImageView.setFitWidth(72);
         squareImageView.setFitHeight(72);
@@ -98,8 +119,13 @@ public class MenuController {
         return squareImageView;
     }
 
+    /**
+     * Crée une ImageView pour une pièce d'échecs.
+     *
+     * @param piece La pièce d'échecs.
+     * @return L'ImageView de la pièce.
+     */
     private ImageView createPieceImageView(ChessPiece piece) {
-        // Création d'une ImageView pour une pièce d'échecs
         ImageView pieceImageView = new ImageView(new Image(piece.getImagePath()));
         pieceImageView.setUserData(piece);
         pieceImageView.setFitWidth(70);
@@ -107,11 +133,20 @@ public class MenuController {
         return pieceImageView;
     }
 
+    /**
+     * Réinitialise l'image de la case sélectionnée.
+     *
+     * @param squareImageView L'ImageView de la case.
+     * @param row             La ligne de la case.
+     * @param col             La colonne de la case.
+     */
     private void resetCases(ImageView squareImageView, int row, int col) {
-        // On remet l'image d'origine a la case selectionée
         squareImageView.setImage((row + col) % 2 == 0 ? whiteCaseImage : greenCaseImage);
     }
 
+    /**
+     * Gère le clic sur le bouton "Jouer contre un ami".
+     */
     @FXML
     private void onFriendButtonClick() {
         if (GameController.getFirstName() == null) {
@@ -130,6 +165,9 @@ public class MenuController {
         }
     }
 
+    /**
+     * Gère le clic sur le bouton "Jouer contre l'ordinateur".
+     */
     @FXML
     private void onComputerButtonClick() {
         try {
@@ -145,6 +183,9 @@ public class MenuController {
         }
     }
 
+    /**
+     * Gère le clic sur le bouton "Tournoi".
+     */
     @FXML
     private void onTournamentButtonClick() {
         try {
@@ -160,6 +201,9 @@ public class MenuController {
         }
     }
 
+    /**
+     * Gère le clic sur le bouton "Se connecter".
+     */
     @FXML
     private void onLoginButtonClick() {
         try {
@@ -174,5 +218,4 @@ public class MenuController {
             e.printStackTrace();
         }
     }
-
 }

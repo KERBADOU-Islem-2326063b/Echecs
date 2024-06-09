@@ -20,6 +20,9 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Classe représentant les paramètres pour jouer contre un ami
+ */
 public class FriendSettings {
     @FXML
     private GridPane boardGrid;
@@ -37,6 +40,9 @@ public class FriendSettings {
     private King blackKing;
     private King whiteKing;
 
+    /**
+     * Méthode d'initialisation appelée lors de la création du contrôleur.
+     */
     @FXML
     public void initialize() {
         if (GameController.getFirstName() != null) Name.setText(GameController.getFirstName());
@@ -46,14 +52,20 @@ public class FriendSettings {
         chargePlayers();
         GameController.setInitialTimeInSeconds(600); // On met de base le temps à 10 minutes
     }
+
+    /**
+     * Initialise les images utilisées dans l'interface.
+     */
     private void initializeImagesLabels() {
         // Chargement des images depuis les ressources
         whiteCaseImage = new Image("file:src/main/resources/com/example/echecs/img/white_case.png");
         greenCaseImage = new Image("file:src/main/resources/com/example/echecs/img/green_case.png");
     }
 
+    /**
+     * Initialise les pièces sur le plateau de jeu.
+     */
     private void initializeBoard() {
-        // Initialisation des pièces sur le plateau
         for (int i = 0; i < 8; i++) {
             board[1][i] = new Pawn("Black", i, 1);
             board[6][i] = new Pawn("White", i, 6);
@@ -88,8 +100,10 @@ public class FriendSettings {
         board[7][4] = whiteKing;
     }
 
+    /**
+     * Met à jour l'affichage du plateau de jeu.
+     */
     private void updateBoard() {
-        // Mis a jour de l'affichage de la grille de jeu
         boardGrid.getChildren().clear();
         for (int row = 0; row < 8; ++row) {
             for (int col = 0; col < 8; ++col) {
@@ -105,8 +119,14 @@ public class FriendSettings {
         }
     }
 
+    /**
+     * Crée une ImageView pour une case du plateau.
+     *
+     * @param row L'indice de la ligne de la case.
+     * @param col L'indice de la colonne de la case.
+     * @return L'ImageView de la case.
+     */
     private ImageView createSquareImageView(int row, int col) {
-        // Création d'une ImageView pour une case du plateau
         ImageView squareImageView = new ImageView();
         squareImageView.setFitWidth(72);
         squareImageView.setFitHeight(72);
@@ -114,8 +134,13 @@ public class FriendSettings {
         return squareImageView;
     }
 
+    /**
+     * Crée une ImageView pour une pièce d'échecs.
+     *
+     * @param piece La pièce d'échecs à représenter.
+     * @return L'ImageView de la pièce.
+     */
     private ImageView createPieceImageView(ChessPiece piece) {
-        // Création d'une ImageView pour une pièce d'échecs
         ImageView pieceImageView = new ImageView(new Image(piece.getImagePath()));
         pieceImageView.setUserData(piece);
         pieceImageView.setFitWidth(70);
@@ -123,11 +148,87 @@ public class FriendSettings {
         return pieceImageView;
     }
 
+    /**
+     * Réinitialise l'affichage d'une case du plateau.
+     *
+     * @param squareImageView L'ImageView de la case à réinitialiser.
+     * @param row             L'indice de la ligne de la case.
+     * @param col             L'indice de la colonne de la case.
+     */
     private void resetCases(ImageView squareImageView, int row, int col) {
-        // On remet l'image d'origine a la case selectionée
+        // On remet l'image d'origine à la case sélectionnée
         squareImageView.setImage((row + col) % 2 == 0 ? whiteCaseImage : greenCaseImage);
     }
 
+    /**
+     * Gère l'action du menu.
+     *
+     * @param event L'événement d'action du menu.
+     */
+    public void handleMenuAction(ActionEvent event) {
+        MenuItem source = (MenuItem) event.getSource();
+        timeMenuButton.setText(source.getText());
+
+        if (timeMenuButton.getText().equals("5 minutes")) {
+            GameController.setInitialTimeInSeconds(300); // 5 minutes
+        } else if (timeMenuButton.getText().equals("10 minutes")) {
+            GameController.setInitialTimeInSeconds(600); // 10 minutes
+        } else {
+            GameController.setInitialTimeInSeconds(1200); // 20 minutes
+        }
+    }
+
+    /**
+     * Charge les joueurs depuis un fichier CSV.
+     */
+    public void chargePlayers() {
+        String line;
+        String cvsSplitBy = ",";
+
+        // Utilisation de ClassLoader pour obtenir la ressource sous forme de flux
+        InputStream inputStream = getClass().getResourceAsStream("/com/example/echecs/accountFiles/accounts.csv");
+
+        // Vérifie si le fichier a été trouvé
+        if (inputStream == null) {
+            System.err.println("Fichier introuvable : /com/example/echecs/accountFiles/accounts.csv");
+            return;
+        }
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
+            while ((line = br.readLine()) != null) {
+                String[] player = line.split(cvsSplitBy);
+                String firstName = player[0];
+                if (GameController.getFirstName().equals(firstName)) continue;
+                MenuItem menuItem = new MenuItem(firstName);
+                menuItem.setOnAction(event -> {
+                    playerlistButton.setText(firstName);
+                });
+                playerlistButton.getItems().add(menuItem);
+                playersData.put(firstName, player);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Gère le choix de l'ennemi parmi la liste des joueurs chargés.
+     */
+    @FXML
+    private void ennemyPlayer() {
+        String selectedEnemyName = playerlistButton.getText();
+        String[] enemyData = playersData.get(selectedEnemyName);
+        if (enemyData != null) {
+            ennemyName.setText(selectedEnemyName);
+            GameController.setEnemyFirstName(selectedEnemyName);
+            GameController.setEnemyLastName(enemyData[1]);
+            GameController.setEnemyGamesPlayed(Integer.parseInt(enemyData[2]));
+            GameController.setEnemyGamesWon(Integer.parseInt(enemyData[3]));
+        }
+    }
+
+    /**
+     * Ouvre une nouvelle partie.
+     */
     @FXML
     private void onNewGame() {
         try {
@@ -144,6 +245,9 @@ public class FriendSettings {
         }
     }
 
+    /**
+     * Charge une partie existante.
+     */
     @FXML
     private void onChargeGame() {
         // Créer un sélecteur de fichiers
@@ -175,65 +279,7 @@ public class FriendSettings {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
-        }
-    }
-
-
-    public void handleMenuAction(ActionEvent event) {
-        MenuItem source = (MenuItem) event.getSource();
-        timeMenuButton.setText(source.getText());
-
-        if (timeMenuButton.getText().equals("5 minutes")) {
-            GameController.setInitialTimeInSeconds(300); // 5 minutes
-        } else if (timeMenuButton.getText().equals("10 minutes")) {
-            GameController.setInitialTimeInSeconds(600);; // 10 minutes
-        }
-        else GameController.setInitialTimeInSeconds(1200); // 20 minutes
-
-    }
-
-    public void chargePlayers() {
-        String line;
-        String cvsSplitBy = ",";
-
-        // Use ClassLoader to get the resource as a stream
-        InputStream inputStream = getClass().getResourceAsStream("/com/example/echecs/accountFiles/accounts.csv");
-
-        // Check if the file was found
-        if (inputStream == null) {
-            System.err.println("File not found: /com/example/echecs/accountFiles/accounts.csv");
-            return;
-        }
-
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
-            while ((line = br.readLine()) != null) {
-                String[] player = line.split(cvsSplitBy);
-                String firstName = player[0];
-                if (GameController.getFirstName().equals(firstName)) continue;
-                MenuItem menuItem = new MenuItem(firstName);
-                menuItem.setOnAction(event -> {
-                    playerlistButton.setText(firstName);
-                });
-                playerlistButton.getItems().add(menuItem);
-                playersData.put(firstName, player);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void ennemyPlayer() {
-        String selectedEnemyName = playerlistButton.getText();
-        String[] enemyData = playersData.get(selectedEnemyName);
-        if (enemyData != null) {
-            ennemyName.setText(selectedEnemyName);
-            GameController.setEnemyFirstName(selectedEnemyName);
-            GameController.setEnemyLastName(enemyData[1]);
-            GameController.setEnemyGamesPlayed(Integer.parseInt(enemyData[2]));
-            GameController.setEnemyGamesWon(Integer.parseInt(enemyData[3]));
         }
     }
 }
+

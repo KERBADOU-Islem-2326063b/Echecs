@@ -19,6 +19,9 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Cette classe gère la connexion et la création de comptes pour le jeu d'échecs.
+ */
 public class loginAccount {
     @FXML
     private GridPane boardGrid;
@@ -38,23 +41,31 @@ public class loginAccount {
     private King whiteKing;
     private Map<String, String[]> playersData = new HashMap<>();
 
+    /**
+     * Méthode d'initialisation appelée après le chargement du fichier FXML.
+     */
     @FXML
     public void initialize() {
         if (GameController.getFirstName() != null) Name.setText(GameController.getFirstName());
         initializeImagesLabels(); // Initialisation des images
         initializeBoard(); // Initialisation du plateau de jeu
-        updateBoard();
-        chargePlayers();
+        updateBoard(); // Mise à jour de l'affichage du plateau de jeu
+        chargePlayers(); // Chargement des joueurs
     }
 
+    /**
+     * Initialise les images des cases du plateau.
+     */
     private void initializeImagesLabels() {
-        // Chargement des images depuis les ressources
         whiteCaseImage = new Image("file:src/main/resources/com/example/echecs/img/white_case.png");
         greenCaseImage = new Image("file:src/main/resources/com/example/echecs/img/green_case.png");
     }
 
+    /**
+     * Initialise les pièces sur le plateau de jeu.
+     */
     private void initializeBoard() {
-        // Initialisation des pièces sur le plateau
+        // Initialisation des pions
         for (int i = 0; i < 8; i++) {
             board[1][i] = new Pawn("Black", i, 1);
             board[6][i] = new Pawn("White", i, 6);
@@ -89,8 +100,10 @@ public class loginAccount {
         board[7][4] = whiteKing;
     }
 
+    /**
+     * Met à jour l'affichage du plateau de jeu.
+     */
     private void updateBoard() {
-        // Mis a jour de l'affichage de la grille de jeu
         boardGrid.getChildren().clear();
         for (int row = 0; row < 8; ++row) {
             for (int col = 0; col < 8; ++col) {
@@ -106,8 +119,14 @@ public class loginAccount {
         }
     }
 
+    /**
+     * Crée une ImageView pour une case du plateau.
+     *
+     * @param row La ligne de la case.
+     * @param col La colonne de la case.
+     * @return Une ImageView représentant la case.
+     */
     private ImageView createSquareImageView(int row, int col) {
-        // Création d'une ImageView pour une case du plateau
         ImageView squareImageView = new ImageView();
         squareImageView.setFitWidth(72);
         squareImageView.setFitHeight(72);
@@ -115,8 +134,13 @@ public class loginAccount {
         return squareImageView;
     }
 
+    /**
+     * Crée une ImageView pour une pièce d'échecs.
+     *
+     * @param piece La pièce d'échecs.
+     * @return Une ImageView représentant la pièce d'échecs.
+     */
     private ImageView createPieceImageView(ChessPiece piece) {
-        // Création d'une ImageView pour une pièce d'échecs
         ImageView pieceImageView = new ImageView(new Image(piece.getImagePath()));
         pieceImageView.setUserData(piece);
         pieceImageView.setFitWidth(70);
@@ -124,14 +148,22 @@ public class loginAccount {
         return pieceImageView;
     }
 
+    /**
+     * Réinitialise l'image d'une case du plateau.
+     *
+     * @param squareImageView L'ImageView de la case.
+     * @param row             La ligne de la case.
+     * @param col             La colonne de la case.
+     */
     private void resetCases(ImageView squareImageView, int row, int col) {
-        // On remet l'image d'origine a la case selectionée
         squareImageView.setImage((row + col) % 2 == 0 ? whiteCaseImage : greenCaseImage);
     }
 
+    /**
+     * Crée un nouveau compte utilisateur.
+     */
     @FXML
     private void onCreate() {
-
         try {
             String userInput = newUserField.getText().trim();
             if (userInput.isEmpty() || !userInput.contains(" ")) {
@@ -168,6 +200,9 @@ public class loginAccount {
         }
     }
 
+    /**
+     * Connecte un utilisateur existant.
+     */
     @FXML
     private void onConnect() {
         try {
@@ -190,6 +225,9 @@ public class loginAccount {
         }
     }
 
+    /**
+     * Charge les informations des joueurs depuis un fichier CSV.
+     */
     public void chargePlayers() {
         String line;
         String cvsSplitBy = ",";
@@ -212,11 +250,11 @@ public class loginAccount {
                 });
                 playerlistButton.getItems().add(menuItem);
 
-                // Check if player data array has enough elements
+                // Vérifie si le tableau de données du joueur contient suffisamment d'éléments
                 if (player.length >= 4) {
                     playersData.put(firstName, player);
                 } else {
-                    System.err.println("Player data array does not have enough elements: " + line);
+                    System.err.println("Le tableau de données du joueur ne contient pas assez d'éléments : " + line);
                 }
             }
         } catch (IOException e) {
@@ -224,6 +262,11 @@ public class loginAccount {
         }
     }
 
+    /**
+     * Met à jour les labels des informations du joueur.
+     *
+     * @param firstName Le prénom du joueur.
+     */
     private void updateLabels(String firstName) {
         String[] player = playersData.get(firstName);
         if (player != null) {
