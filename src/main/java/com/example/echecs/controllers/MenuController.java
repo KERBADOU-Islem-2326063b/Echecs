@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -15,6 +16,8 @@ import java.io.IOException;
 public class MenuController {
     @FXML
     private GridPane boardGrid;
+    @FXML
+    private Label Name;
     private ChessPiece[][] board = new ChessPiece[8][8];
     private Image whiteCaseImage, greenCaseImage;
     private King blackKing;
@@ -22,6 +25,7 @@ public class MenuController {
 
     @FXML
     public void initialize() {
+        if (GameController.getFirstName() != null) Name.setText(GameController.getFirstName());
         initializeImagesLabels(); // Initialisation des images
         initializeBoard(); // Initialisation du plateau de jeu
         updateBoard();
@@ -110,6 +114,9 @@ public class MenuController {
 
     @FXML
     private void onFriendButtonClick() {
+        if (GameController.getFirstName() == null) {
+            return;
+        }
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/echecs/views/friendFXML/FriendSettings.fxml"));
             Parent root = fxmlLoader.load();
@@ -141,7 +148,22 @@ public class MenuController {
     @FXML
     private void onTournamentButtonClick() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/echecs/views/computerFXML/Menu.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/echecs/views/tournamentFXML/TournamentSettings.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage stage = (Stage) boardGrid.getScene().getWindow();
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/com/example/echecs/stylesheets/style.css").toExternalForm());
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void onLoginButtonClick() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/echecs/views/accountFXML/Login.fxml"));
             Parent root = fxmlLoader.load();
             Stage stage = (Stage) boardGrid.getScene().getWindow();
             Scene scene = new Scene(root);

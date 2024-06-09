@@ -19,7 +19,7 @@
                                         <Image url="@../../img/white_profile.png" />
                                     </image>
                                 </ImageView>
-                                <Label text="Adversaire" textFill="WHITE" />
+                                <Label fx:id="ennemyName" text="Adversaire" textFill="WHITE" />
                             </children>
                             <VBox.margin>
                                 <Insets bottom="10.0" left="36.0" />
@@ -59,7 +59,7 @@
                                     <image>
                                         <Image url="@../../img/black_profile.png" />
                                     </image></ImageView>
-                                <Label text="Vous" textFill="WHITE" />
+                                <Label fx:id="Name" text="Vous" textFill="WHITE" />
                             </children>
                             <VBox.margin>
                                 <Insets left="36.0" top="10.0" />
@@ -89,9 +89,9 @@
                                 </ImageView>
                             </children>
                         </VBox>
-                        <VBox alignment="TOP_CENTER" prefHeight="309.0" prefWidth="618.0" spacing="24.0">
+                        <VBox alignment="TOP_CENTER" prefHeight="309.0" prefWidth="618.0" spacing="22.0">
                             <children>
-                                <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="22.0">
                                     <children>
                                         <MenuButton fx:id="timeMenuButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" styleClass="settingsButton" text="10 minutes">
                                             <items>
@@ -100,6 +100,16 @@
                                                 <MenuItem mnemonicParsing="false" onAction="#handleMenuAction" text="20 minutes" />
                                             </items>
                                         </MenuButton>
+                                        <Label text="Contre" textFill="WHITE">
+                                            <font>
+                                                <Font size="24.0" />
+                                            </font>
+                                        </Label>
+                                        <MenuButton fx:id="playerlistButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" styleClass="settingsButton" text="Islem" textFill="WHITE">
+                                            <items>
+                                            </items>
+                                        </MenuButton>
+                                        <Button onAction="#ennemyPlayer" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="150.0" styleClass="settingsButton" text="Choisir" />
                                     </children>
                                 </VBox>
                                 <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="610.0" spacing="20.0">

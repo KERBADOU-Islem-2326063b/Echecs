@@ -57,6 +57,10 @@ public class ComputerBoardController {
     private Button surrenderButton;
     @FXML
     private Button saveGameButton;
+    @FXML
+    private Label Name;
+    @FXML
+    private Label rightName;
     private Timeline whiteTimer;
     private Timeline blackTimer;
     int whiteSecondsRemaining = GameController.getInitialTimeInSeconds(); // On récupère le temps défini avant
@@ -68,6 +72,11 @@ public class ComputerBoardController {
     private Image whiteCaseImage, greenCaseImage, whiteCaseClickedImage, greenCaseClickedImage, whiteCaseDotImage, greenCaseDotImage, redSquareImage;
     @FXML
     public void initialize() {
+        if (GameController.getFirstName() != null) {
+            Name.setText(GameController.getFirstName());
+            rightName.setText(GameController.getFirstName());
+            GameController.updateStats(GameController.getFirstName(), GameController.getLastName(), false);
+        }
         initializeImagesLabels(); // Initialisation des images
 
         if (GameController.getCharge() == 0)  {
@@ -428,6 +437,7 @@ public class ComputerBoardController {
         // On met fin à la partie
         String currentText = logJeu.getText();
         String newText = currentText + "\n" + message;
+        if (!whiteTurn) GameController.updateStats(GameController.getFirstName(), GameController.getLastName(), true);
 
         logJeu.setText(newText);
         whiteTimer.stop();

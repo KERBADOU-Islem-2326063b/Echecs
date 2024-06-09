@@ -18,7 +18,7 @@
                               <Image url="@../../img/white_profile.png" />
                            </image>
                         </ImageView>
-                        <Label text="Adversaire" textFill="WHITE" />
+                        <Label fx:id="ennemyName" text="Adversaire" textFill="WHITE" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="10.0" left="36.0" />
@@ -58,7 +58,7 @@
                            <image>
                               <Image url="@../../img/black_profile.png" />
                            </image></ImageView>
-                        <Label text="Vous" textFill="WHITE" />
+                        <Label fx:id="Name" text="Vous" textFill="WHITE" />
                      </children>
                      <VBox.margin>
                         <Insets left="36.0" top="10.0" />
@@ -81,7 +81,7 @@
                                     <Insets left="35.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label alignment="CENTER" maxWidth="Infinity" prefHeight="22.0" prefWidth="107.0" styleClass="playerName" text="Guest8123" textFill="WHITE" textOverrun="CLIP">
+                              <Label fx:id="rightEnnemyName" alignment="CENTER" maxWidth="Infinity" prefHeight="22.0" prefWidth="107.0" styleClass="playerName" text="Guest8123" textFill="WHITE" textOverrun="CLIP">
                               </Label>
                            </children>
                            <VBox.margin>

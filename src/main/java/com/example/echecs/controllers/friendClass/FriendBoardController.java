@@ -57,6 +57,12 @@ public class FriendBoardController {
     private Button surrenderButton;
     @FXML
     private Button saveGameButton;
+    @FXML
+    private Label Name;
+    @FXML
+    private Label ennemyName;
+    @FXML
+    private Label rightEnnemyName;
     private Timeline whiteTimer;
     private Timeline blackTimer;
     int whiteSecondsRemaining = GameController.getInitialTimeInSeconds(); // On récupère le temps défini avant
@@ -68,6 +74,11 @@ public class FriendBoardController {
     private Image whiteCaseImage, greenCaseImage, whiteCaseClickedImage, greenCaseClickedImage, whiteCaseDotImage, greenCaseDotImage, redSquareImage;
     @FXML
     public void initialize() {
+        GameController.updateStats(GameController.getFirstName(), GameController.getLastName(), false);
+        GameController.ennemyUpdateStats(GameController.getEnemyFirstName(), GameController.getEnemyLastName(), false);
+        Name.setText(GameController.getFirstName());
+        ennemyName.setText(GameController.getEnemyFirstName());
+        rightEnnemyName.setText(GameController.getEnemyFirstName());
         initializeImagesLabels(); // Initialisation des images
         if (GameController.getCharge() == 0)  {
             initializeBoard(); // Initialisation du plateau de jeu
@@ -380,6 +391,9 @@ public class FriendBoardController {
         String newText = currentText + "\n" + message;
 
         logJeu.setText(newText);
+
+        if (!whiteTurn) GameController.updateStats(GameController.getFirstName(), GameController.getLastName(), true);
+        else GameController.ennemyUpdateStats(GameController.getEnemyFirstName(), GameController.getEnemyLastName(), true);
         whiteTimer.stop();
         blackTimer.stop();
         endGame = true;
