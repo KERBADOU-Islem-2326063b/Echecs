@@ -60,6 +60,8 @@ public class FriendBoardController {
     @FXML
     private Label Name;
     @FXML
+    private Label rightName;
+    @FXML
     private Label ennemyName;
     @FXML
     private Label rightEnnemyName;
@@ -77,6 +79,7 @@ public class FriendBoardController {
         GameController.updateStats(GameController.getFirstName(), GameController.getLastName(), false);
         GameController.ennemyUpdateStats(GameController.getEnemyFirstName(), GameController.getEnemyLastName(), false);
         Name.setText(GameController.getFirstName());
+        rightName.setText(GameController.getFirstName());
         ennemyName.setText(GameController.getEnemyFirstName());
         rightEnnemyName.setText(GameController.getEnemyFirstName());
         initializeImagesLabels(); // Initialisation des images

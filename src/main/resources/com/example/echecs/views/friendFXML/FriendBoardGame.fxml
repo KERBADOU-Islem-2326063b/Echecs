@@ -76,7 +76,7 @@
                               <Insets bottom="10.0" />
                            </padding>
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="22.0" prefWidth="115.0" styleClass="playerName" text="Islem" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+                              <Label fx:id="rightName" alignment="CENTER" contentDisplay="CENTER" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="22.0" prefWidth="115.0" styleClass="playerName" text="Islem" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
                                  <HBox.margin>
                                     <Insets left="35.0" />
                                  </HBox.margin>

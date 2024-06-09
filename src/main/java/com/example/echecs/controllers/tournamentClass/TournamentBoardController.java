@@ -1,6 +1,7 @@
 package com.example.echecs.controllers.tournamentClass;
 
 import com.example.echecs.Tournament;
+import com.example.echecs.controllers.GameController;
 import com.example.echecs.model.gameStatus.GameState;
 import com.example.echecs.model.gameStatus.Move;
 import com.example.echecs.model.pieces.*;
@@ -20,10 +21,13 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class TournamentBoardController {
@@ -56,32 +60,18 @@ public class TournamentBoardController {
     @FXML
     private Button saveGameButton;
     @FXML
-    private TextField player1Name;
+    private Label Name;
     @FXML
-    private TextField player2Name;
+    private Label rightName;
     @FXML
-    private TextField player3Name;
+    private Label ennemyName;
     @FXML
-    private TextField player4Name;
-    @FXML
-    private TextField player5Name;
-    @FXML
-    private TextField player6Name;
-    @FXML
-    private TextField player7Name;
-    @FXML
-    private TextField player8Name;
-    @FXML
-    private TextField player9Name;
-    @FXML
-    private TextField player10Name;
+    private Label ennemyRightName;
 
-    @FXML
-    private Button startTournamentButton;
     private Timeline whiteTimer;
     private Timeline blackTimer;
-    int whiteSecondsRemaining = 1200; // 1200 secondes = 20 minutes
-    int blackSecondsRemaining = 1200;
+    int whiteSecondsRemaining = GameController.getInitialTimeInSeconds();; // 1200 secondes = 20 minutes
+    int blackSecondsRemaining = GameController.getInitialTimeInSeconds();;
 
     private King blackKing;
     private King whiteKing;
@@ -103,8 +93,23 @@ public class TournamentBoardController {
     }
 
     private void setupTournament() {
-        List<String> players = Arrays.asList("Joueur A", "Joueur B", "Joueur C", "Joueur D", "Joueur E", "Joueur F", "Joueur G", "Joueur H", "Joueur I", "Joueur J");
+        List<String> players = readPlayerNamesFromCSV("src/main/resources/com/example/echecs/accountFiles/accounts.csv");
+        Collections.shuffle(players); // Rend la liste de joueur aléatoire pour le tournoi
         tournament = new Tournament(players);
+    }
+
+    private List<String> readPlayerNamesFromCSV(String fileName) {
+        List<String> playerNames = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                playerNames.add(parts[0]);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return playerNames;
     }
 
     private void startNextMatch() {
@@ -115,6 +120,10 @@ public class TournamentBoardController {
         }
         currentMatch = tournament.getCurrentMatch();
         if (currentMatch != null) {
+            Name.setText(currentMatch.getPlayer1());
+            rightName.setText(currentMatch.getPlayer1());
+            ennemyName.setText(currentMatch.getPlayer2());
+            ennemyRightName.setText(currentMatch.getPlayer2());
             logJeu.setText("TOURNOI : " + currentMatch.getPlayer1() + " vs " + currentMatch.getPlayer2());
             initializeBoard();
             updateBoard();
@@ -126,8 +135,8 @@ public class TournamentBoardController {
 
     private void resetStage() {
         // Réinitialiser les variables de jeu
-        whiteSecondsRemaining = 1200;
-        blackSecondsRemaining = 1200;
+        whiteSecondsRemaining = GameController.getInitialTimeInSeconds();
+        blackSecondsRemaining = GameController.getInitialTimeInSeconds();
         whiteTurn = true;
         endGame = false;
 

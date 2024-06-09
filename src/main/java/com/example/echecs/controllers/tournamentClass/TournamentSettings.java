@@ -161,7 +161,7 @@ public class TournamentSettings {
     @FXML
     private void onNewGame() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/echecs/views/tournamentFXML/TournamentBoardGame.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/echecs/views/tournamentFXML/tournamentBoardGame.fxml"));
             Parent root = fxmlLoader.load();
 
             Stage stage = (Stage) boardGrid.getScene().getWindow();
