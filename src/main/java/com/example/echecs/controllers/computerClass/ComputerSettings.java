@@ -158,7 +158,6 @@ public class ComputerSettings {
      * @param col             Colonne de la case.
      */
     private void resetCases(ImageView squareImageView, int row, int col) {
-        // On remet l'image d'origine a la case selectionée
         squareImageView.setImage((row + col) % 2 == 0 ? whiteCaseImage : greenCaseImage);
     }
 

@@ -169,7 +169,6 @@ public class FriendBoardController {
      * Initialise le plateau de jeu avec les pièces d'échecs.
      */
     private void initializeBoard() {
-        // Initialisation des pièces sur le plateau
         for (int i = 0; i < 8; i++) {
             board[1][i] = new Pawn("Black", i, 1);
             board[6][i] = new Pawn("White", i, 6);
@@ -208,7 +207,6 @@ public class FriendBoardController {
      * Met à jour l'affichage du plateau de jeu.
      */
     private void updateBoard() {
-        // Mis a jour de l'affichage de la grille de jeu
         boardGrid.getChildren().clear();
         for (int row = 0; row < 8; ++row) {
             for (int col = 0; col < 8; ++col) {
@@ -232,7 +230,6 @@ public class FriendBoardController {
      * @return ImageView représentant la case.
      */
     private ImageView createSquareImageView(int row, int col) {
-        // Création d'une ImageView pour une case du plateau
         ImageView squareImageView = new ImageView();
         squareImageView.setFitWidth(72);
         squareImageView.setFitHeight(72);
@@ -248,7 +245,6 @@ public class FriendBoardController {
      * @return ImageView représentant la pièce.
      */
     private ImageView createPieceImageView(ChessPiece piece) {
-        // Création d'une ImageView pour une pièce d'échecs
         ImageView pieceImageView = new ImageView(new Image(piece.getImagePath()));
         pieceImageView.setUserData(piece);
         pieceImageView.setOnMouseClicked(this::onBoardClick);
@@ -387,7 +383,6 @@ public class FriendBoardController {
      * Efface les cases mises en évidence sur le plateau de jeu.
      */
     private void clearHighlightedSquares() {
-        // Effacer les cases mises en évidence
         for (ImageView squareImageView : highlightedSquares) {
             resetCases(squareImageView, GridPane.getRowIndex(squareImageView), GridPane.getColumnIndex(squareImageView));
         }
@@ -401,7 +396,6 @@ public class FriendBoardController {
      */
     private void highlightValidMoves(ChessPiece piece) {
         clearHighlightedSquares();
-        // Mettre en évidence des mouvements valides pour une pièce donnée
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
                 if (piece.canMove(col, row, board)) {
@@ -499,8 +493,6 @@ public class FriendBoardController {
      * Met à jour le label indiquant le tour actuel.
      */
     private void updateTurnLabel() {
-        // Mettre à jour le label de tour et vérifier l'échec ou echec et mat
-
         // On change de tour et on check si y a un echec/echec et mat
         if (whiteKing.isCheckmate(board)) {
             endGame("ECHEC ET MAT ! Victoire des noirs");
@@ -530,7 +522,6 @@ public class FriendBoardController {
      * @param king Roi en échec.
      */
     private void highlightCheckSquare(King king) {
-        // On met en rouge le carré en dessous du roi
         int kingRow = king.getRowIndex();
         int kingCol = king.getColumnIndex();
         ImageView squareImageView = (ImageView) getNodeFromGridPane(boardGrid, kingRow, kingCol);
@@ -584,7 +575,6 @@ public class FriendBoardController {
      * @param event Événement de clic.
      */
     private void handleSurrenderButton(ActionEvent event) {
-        // Gestion de l'événement de clic sur le bouton "Abandonner"
         String winner = whiteTurn ? "noirs" : "blancs";
         endGame("Abandon, victoire des " + winner);
     }
@@ -622,7 +612,6 @@ public class FriendBoardController {
      * @param move Mouvement à ajouter au journal.
      */
     public void updateLogJeu(String move) {
-        // On met a jour l'historique des messages
         String currentText = logJeu.getText();
         String playerColor = whiteTurn ? "Vous :" : "Adversaire :";
         String newText = currentText + "\n" + playerColor + " " + move;
@@ -638,7 +627,6 @@ public class FriendBoardController {
      * @return Notation d'échecs des coordonnées.
      */
     private String coorPiece(int col, int row) {
-        // On traduit en coordonne echec les colonnes et lignes
         char colLabel = (char) ('a' + col);
         int rowLabel = 8 - row;
         return colLabel + Integer.toString(rowLabel);
@@ -651,7 +639,6 @@ public class FriendBoardController {
      * @param event Événement de clic.
      */
     private void handleSaveButton(ActionEvent event)  {
-        // On sauvegarde dans un fichier CSV l'etat du jeu d'Echec
         GameState gameState = new GameState(board, moveHistory, whiteTurn, whiteSecondsRemaining, blackSecondsRemaining);
 
         FileChooser fileChooser = new FileChooser();

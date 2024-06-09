@@ -226,7 +226,6 @@ public class TournamentBoardController {
      * Charge les images nécessaires pour le plateau et les pièces.
      */
     private void initializeImagesLabels() {
-        // Chargement des images depuis les ressources
         whiteCaseImage = new Image("file:src/main/resources/com/example/echecs/img/white_case.png");
         greenCaseImage = new Image("file:src/main/resources/com/example/echecs/img/green_case.png");
         whiteCaseClickedImage = new Image("file:src/main/resources/com/example/echecs/img/white_case_clicked.png");
@@ -303,7 +302,6 @@ public class TournamentBoardController {
      * @return ImageView représentant la case
      */
     private ImageView createSquareImageView(int row, int col) {
-        // Création d'une ImageView pour une case du plateau
         ImageView squareImageView = new ImageView();
         squareImageView.setFitWidth(72);
         squareImageView.setFitHeight(72);
@@ -319,7 +317,6 @@ public class TournamentBoardController {
      * @return ImageView représentant la pièce
      */
     private ImageView createPieceImageView(ChessPiece piece) {
-        // Création d'une ImageView pour une pièce d'échecs
         ImageView pieceImageView = new ImageView(new Image(piece.getImagePath()));
         pieceImageView.setUserData(piece);
         pieceImageView.setOnMouseClicked(this::onBoardClick);
@@ -471,7 +468,6 @@ public class TournamentBoardController {
      */
     private void highlightValidMoves(ChessPiece piece) {
         clearHighlightedSquares();
-        // Mettre en évidence des mouvements valides pour une pièce donnée
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
                 if (piece.canMove(col, row, board)) {
@@ -489,7 +485,6 @@ public class TournamentBoardController {
      * @param piece La pièce concernée
      */
     private void dotSquare(int row, int col, ChessPiece piece) {
-        // Change un carré en un carré avec un point
         Node node = getNodeFromGridPane(boardGrid, row, col);
         if (node instanceof ImageView squareImageView) {
             if (board[row][col] != null && !board[row][col].getColor().equals(piece.getColor())) {
@@ -508,7 +503,6 @@ public class TournamentBoardController {
      * @param squareImageView La case sélectionnée
      */
     private void highlightSelectedSquare(ImageView squareImageView) {
-        // On met en surbriance le carré selectionné
         int col = GridPane.getColumnIndex(squareImageView);
         int row = GridPane.getRowIndex(squareImageView);
         squareImageView.setImage((row + col) % 2 == 0 ? whiteCaseClickedImage : greenCaseClickedImage);
@@ -578,8 +572,6 @@ public class TournamentBoardController {
      * Met à jour le label indiquant le tour actuel.
      */
     private void updateTurnLabel() {
-        // Mettre à jour le label de tour et vérifier l'échec ou echec et mat
-
         // On change de tour et on check si y a un echec/echec et mat
         if (whiteKing.isCheckmate(board)) {
             System.out.println("Blanc echec et mat");
@@ -629,7 +621,6 @@ public class TournamentBoardController {
      * @return Le noeud trouvé
      */
     private Node getNodeFromGridPane(GridPane gridPane, int row, int col) {
-        // Récupérer un noeud spécifique dans le GridPane
         for (Node node : gridPane.getChildren()) {
             if (GridPane.getRowIndex(node) != null && GridPane.getRowIndex(node) == row &&
                     GridPane.getColumnIndex(node) != null && GridPane.getColumnIndex(node) == col) {
@@ -649,7 +640,6 @@ public class TournamentBoardController {
      * @return Le noeud trouvé
      */
     private Node getNodeFromGridPane(GridPane gridPane, int row, int col, ChessPiece piece) {
-        // Récupérer un noeud spécifique dans le GridPane qui contient la pièce
         for (Node node : gridPane.getChildren()) {
             if (GridPane.getRowIndex(node) != null && GridPane.getRowIndex(node) == row &&
                     GridPane.getColumnIndex(node) != null && GridPane.getColumnIndex(node) == col &&
@@ -666,7 +656,6 @@ public class TournamentBoardController {
      * @param event Événement de clic
      */
     private void handleSurrenderButton(ActionEvent event) {
-        // Gestion de l'événement de clic sur le bouton "Abandonner"
         player1ImageView.getStyleClass().add("player-turn");
         player2ImageView.getStyleClass().remove("player-turn");
         String winner = whiteTurn ? "noirs" : "blancs";
@@ -711,7 +700,6 @@ public class TournamentBoardController {
      * @param move Le mouvement à ajouter au log
      */
     public void updateLogJeu(String move) {
-        // On met a jour l'historique des messages
         String currentText = logJeu.getText();
         String playerColor = whiteTurn ? "Vous :" : "Adversaire :";
         String newText = currentText + "\n" + playerColor + " " + move;
