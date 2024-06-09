@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="cafb6311-df47-41a5-b88f-fb5892fbb4c2" name="Changes" comment="feat: tournoi fonctionnel à 100% ; need noms custom">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/accountFiles/accounts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/accountFiles/accounts.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/tournamentFXML/TournamentSettings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/tournamentFXML/TournamentSettings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/tournamentFXML/tournamentBoardGame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/tournamentFXML/tournamentBoardGame.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +24,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -63,7 +70,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "MyBranch",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Nassim/IdeaProjects/Echecs/src/main/resources/com/example/echecs/views/tournamentFXML",
     "node.js.detected.package.eslint": "true",
@@ -99,13 +106,24 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="EchecApp" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="com.example.echecs.EchecsApp" />
+    <configuration name="ChessyApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.echecs.ChessyApp" />
       <module name="Echecs" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.echecs.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ChessyApp" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -137,7 +155,7 @@
       <workItem from="1717746040515" duration="8748000" />
       <workItem from="1717759749656" duration="7115000" />
       <workItem from="1717869122758" duration="10587000" />
-      <workItem from="1717945309103" duration="10099000" />
+      <workItem from="1717945309103" duration="11116000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Rennomage des fichiers, et début interface graphique">
       <created>1717403773299</created>
@@ -266,7 +284,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717955357728</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="feat: tournoi fonctionnel à 100% ; need noms custom">
+      <option name="closed" value="true" />
+      <created>1717955474042</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1717955474042</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
