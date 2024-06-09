@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cafb6311-df47-41a5-b88f-fb5892fbb4c2" name="Changes" comment="feat: ajout de système de compte">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/tournamentClass/TournamentSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/tournamentClass/TournamentSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/tournamentFXML/TournamentSettings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/views/tournamentFXML/TournamentSettings.fxml" afterDir="false" />
+    <list default="true" id="cafb6311-df47-41a5-b88f-fb5892fbb4c2" name="Changes" comment="feat: version la plus récente">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/accountClass/loginAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/echecs/controllers/accountClass/loginAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/echecs/accountFiles/accounts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/echecs/accountFiles/accounts.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +137,7 @@
       <workItem from="1717875816194" duration="13335000" />
       <workItem from="1717921694709" duration="12855000" />
       <workItem from="1717935308166" duration="3811000" />
-      <workItem from="1717943234675" duration="1215000" />
+      <workItem from="1717943234675" duration="1602000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Rennomage des fichiers, et début interface graphique">
       <created>1717403773299</created>
@@ -267,7 +266,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717944004858</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="feat: version la plus récente">
+      <option name="closed" value="true" />
+      <created>1717944534206</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1717944534206</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,13 +290,13 @@
     <MESSAGE value="feat: augmentation de la fenêtre et du tableau de jeu" />
     <MESSAGE value="feat: ajout de nouvelles fonctionnalités" />
     <MESSAGE value="feat: ajout d'echec (il reste mat)" />
-    <MESSAGE value="feat: version la plus récente" />
     <MESSAGE value="feat: version la plus récente, jeu fonctionnel et début implémention sauvegarde jeu" />
     <MESSAGE value="feat: version la plus récente, ajout du menu seulement" />
     <MESSAGE value="feat: ajout du choix de temps" />
     <MESSAGE value="feat: ajout du robot et de choix du temps" />
     <MESSAGE value="feat: redesign de l'interface + correction de bugs" />
     <MESSAGE value="feat: ajout de système de compte" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: ajout de système de compte" />
+    <MESSAGE value="feat: version la plus récente" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: version la plus récente" />
   </component>
 </project>

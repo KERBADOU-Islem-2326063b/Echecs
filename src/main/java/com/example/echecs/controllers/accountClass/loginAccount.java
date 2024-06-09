@@ -131,37 +131,41 @@ public class loginAccount {
 
     @FXML
     private void onCreate() {
-        String userInput = newUserField.getText().trim();
-        if (userInput.isEmpty() || !userInput.contains(" ")) {
-            // Handle invalid input, such as showing an alert to the user
-            return;
-        }
 
-        String[] nameParts = userInput.split(" ");
-        String firstName = nameParts[0];
-        String lastName = nameParts[1];
+        try {
+            String userInput = newUserField.getText().trim();
+            if (userInput.isEmpty() || !userInput.contains(" ")) {
+                return;
+            }
 
-        // Create a new user with default stats
-        String newUserLine = firstName + "," + lastName + ",0,0";
+            String[] nameParts = userInput.split(" ");
+            String firstName = nameParts[0];
+            String lastName = nameParts[1];
 
-        // Append the new user to the CSV file
-        try (FileWriter writer = new FileWriter("src/main/resources/com/example/echecs/accountFiles/accounts.csv", true)) {
-            writer.write("\n" + newUserLine);
+            String newUserLine = firstName + "," + lastName + ",0,0";
+
+            try (FileWriter writer = new FileWriter("src/main/resources/com/example/echecs/accountFiles/accounts.csv", true)) {
+                writer.write("\n" + newUserLine);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            GameController.setFirstName(firstName);
+            GameController.setLastName(lastName);
+            GameController.setGamesPlayed(0);
+            GameController.setGamesWon(0);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/echecs/views/Menu.fxml"));
+            Parent root = fxmlLoader.load();
+
+            Stage stage = (Stage) boardGrid.getScene().getWindow();
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/com/example/echecs/stylesheets/style.css").toExternalForm());
+            stage.setScene(scene);
+            stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        // Add the new user to the MenuButton and playersData
-        MenuItem menuItem = new MenuItem(firstName);
-        menuItem.setOnAction(event -> {
-            playerlistButton.setText(firstName);
-            updateLabels(firstName);
-        });
-        playerlistButton.getItems().add(menuItem);
-        playersData.put(firstName, new String[]{lastName, "0", "0"});
-
-        // Clear the text field
-        newUserField.clear();
     }
 
     @FXML
@@ -190,10 +194,8 @@ public class loginAccount {
         String line;
         String cvsSplitBy = ",";
 
-        // Use ClassLoader to get the resource as a stream
         InputStream inputStream = getClass().getResourceAsStream("/com/example/echecs/accountFiles/accounts.csv");
 
-        // Check if the file was found
         if (inputStream == null) {
             System.err.println("File not found: /com/example/echecs/accountFiles/accounts.csv");
             return;
